@@ -50,11 +50,18 @@ h1 {
     color: #5E6C84;
     background-color: #F9FAFC;
     font: inherit;
-    border: 1px solid #CDD2D4;
+    border: 2px solid #DFE1E6;
     border-radius: 5px;
     box-sizing: border-box;
     
 }
+
+.login__email:focus {
+    outline: none;
+    border:1px solid rgb(15, 74, 223);
+    box-shadow: 0 0 10px #719ECE;
+    transition-duration: 0.4s;
+  }
 
 .login__password {
     width:100%;
@@ -66,21 +73,34 @@ h1 {
     color: #5E6C84;
     background-color: #F9FAFC;
     font: inherit;
-    border: 1px solid #CDD2D4;
+    border: 2px solid #DFE1E6;
     border-radius: 5px;
-    box-sizing: border-box;
+    box-sizing: border-box;    
+}
+
+.login__password:focus {
+    outline: none;
+    border:1px solid rgb(15, 74, 223);
+    box-shadow: 0 0 10px #719ECE;
+    transition-duration: 0.4s;
+  }
     
-}
-
 .login__politics {
-    text-align:justify;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5E6C84;
+    display: flex;    
+    justify-content: center;   
+    margin-top: 5px;    
+    font-size: 15px;   
+    color: #0052CC;
 }
 
+.login__politics__Service {
+    margin: 10px;
+}
+
+.login__politics_Privacy {
+    margin: 10px;
+}
+   
 .login__button {
     
     color: rgb(255, 255, 255);
@@ -90,18 +110,24 @@ h1 {
     border: none;
     background-color: #5AAC44;
     border-radius: 5px;
-    cursor: pointer
-    
+    cursor: pointer;     
+}
+
+.login__button:hover {
+    transition-duration: 0.4s;
+    background-color: rgb(111, 187, 90);       
 }
 
 .login__with {
     display: block;
+    margin-bottom: 20px;
     
 }
 
 .login__with__button {
     width:100%;
     margin-top: 10px;
+    margin-bottom: 10px;
     font: inherit;
     box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
     border: antiquewhite;
@@ -114,19 +140,14 @@ h1 {
     color: #5E6C84;
     cursor: pointer;
     display: flex;
-    justify-content: center; 
-    
-     
-    
-    
+    justify-content: center;       
 }
 
 .login__with__button:hover {
     transition-duration: 0.4s;
-    background-color: #f6f6f6;
-    
-    
-  }
+    background-color: #f6f6f6;       
+}
+
 
 .login__with__img {
     height: 18px;
@@ -140,7 +161,8 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid hsl(0,0%,80%);
-    margin: 2em ;
+    margin: 2em;
+   
   
 }
 .login__language {
@@ -155,4 +177,29 @@ hr {
     height: 50px;
     padding: 0.5em;
     
+}
+
+a {
+    color: #0052CC;
+    text-decoration: none;
+}
+
+.login__cantlog {
+    display: inline;    
+    justify-content: center;   
+    margin-top: 5px;    
+    font-size: 15px;   
+    color: #0052CC;
+}
+
+ul {
+    text-align: center;
+    font-size: 14px;
+    
+    padding: 0;
+    list-style-type: none;    
+}
+
+li {
+    margin-bottom: 10px;
 }
