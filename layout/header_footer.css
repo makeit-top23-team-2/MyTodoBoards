@@ -10,7 +10,7 @@ body{
     background-color: #293856;
 }
 
-.header__navigator{
+.header__nav{
     background: #ffffff;
     height: 100px;
     width: 100%;
@@ -31,14 +31,20 @@ body{
     background-color: #ffffff;
     top: 100px;
     text-align: center;
-    /* right: -100%; */
+    right: -100%;
     transition: all .5s;
 }
 .header__li{
     display: block;
     margin: 50px ,0;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 30px;
+    padding-top: 60px;
+}
+.header__li :hover{
+    display: block;
+    background-color: dimgray;
+    color: #ffffff;
 }
 .header__check{
     display: none;
@@ -52,21 +58,80 @@ body{
     margin-right: 40px;
     cursor: pointer;
 }
+.header__checkbtn :hover{
+    background-color: dimgray;
+}
 
+.footer{
+    padding-top: 20px;
+    background-color: #172b4d;
+    display: block;
+}
+/* .footer__section{
+
+} */
+
+.footer__logo{
+    margin-left: 30px;
+    height: 40px;
+}
+
+.footer__div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__div__a{
+    margin-right: 30px;
+}
+
+.footer__ul{
+    padding-top: 15px;
+    width: 100%;
+    padding-left: 22px;
+    color: white;
+}
+
+.footer__li{
+    padding: 10px;
+    color: white;
+    display: block;
+}
+
+.footer__div__down{
+    border-top: 1px solid #505f79;
+    display: flex;
+    padding: 50px 30px;
+}
+
+.redes{
+    padding-right: 50px;
+    color: #fff;
+}
 @media (min-width: 768px) {
     .header__checkbtn{
         display: none;
     }
     .header__ul{
-        display:flex;
-        right: 0%;
+
+        flex-basis: 70%;
+        position:static;
+        display: flex;
+        top: 100px;
         height:fit-content;
-        justify-content: space-around;
     }
     .header__li{
-        font-size: 1.4rem;
+        padding: 1.2%;
+        font-size: 1rem;
         margin: 1px;
     }
 
+    .footer__section__down{
+        border-top: 1px solid #505f79;
+        display: flex;
+
+    }
 }
 
