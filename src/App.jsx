@@ -4,10 +4,14 @@ import './App.css';
 //Pages
 import SignUp from './pages/signup';
 import LogIn from './pages/login';
+import MainBoard from './pages/board';
 
 function App() {
   return (
-    <SignUp/>
+
+    <MainBoard/>
+
+    
   );
 }
 
