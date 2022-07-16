@@ -6,6 +6,7 @@ import LogIn from './pages/login';
 import MainBoard from './pages/board';
 //componets
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path= "/logIn" element={<LogIn />}/>
         <Route path= "/board" element={<MainBoard />}/>
       </Routes>
+      <Footer />
+
     </BrowserRouter>
   );
 }
