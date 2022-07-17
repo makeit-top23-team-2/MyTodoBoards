@@ -14,8 +14,9 @@ const NavBar = () => {
         {/* <li class="header__li"><NavLink to="" class="header__a"></NavLink></li>
         <li class="header__li"><NavLink to="" class="header__a"></NavLink></li> */}
         <li class="header__li"><NavLink to="/board" class="header__a">Board</NavLink></li>
-        <li class="header__li"><NavLink to="/signup" class="header__a">Sign Up</NavLink></li>
+        <li class="header__li"><NavLink to="/create_boards" class="header__a">New Board</NavLink></li>
         <li class="header__li"><NavLink to="/login" class="header__a">Login</NavLink></li>
+        <li class="header__li"><NavLink to="/signup" class="header__a">Sign Up</NavLink></li>
       </ul>
     </nav>
   )
