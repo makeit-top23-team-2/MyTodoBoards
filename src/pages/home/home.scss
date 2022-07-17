@@ -1,0 +1,58 @@
+.homeIntro{
+    background-color: #293856;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+    margin: 20px 0px 20px 0px;
+    text-align: center;
+    color: #fff;
+
+
+    h2{
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    
+    }
+
+    .iconsHome{
+       
+        max-width: 2rem;
+        max-height: 2rem;
+        margin: 0px auto;
+        background-color:#272833;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .iconsHome:hover{
+        background-color: #17171a;
+        transition: all .3s ;
+        padding: 12px;
+        max-width: 3rem;
+        max-height: 3rem;
+    }
+
+    //Aplicacion de escritorio
+    @media (min-width: 768px) {
+        .icons{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .iconsHome{
+            max-width: 3rem;
+            max-height: 3rem;
+            margin: 0px auto;
+            background-color:#272833;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+
+
+
+        
+        
+}
+}
