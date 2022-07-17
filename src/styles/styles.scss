@@ -3,6 +3,12 @@
 //Components
 @import './components/NavBar';
 @import './components/Footer';
+@import './components/createBoard.scss';
+@import './components/backgroundBoard.scss';
 
 
 //Pages
+@import './pages/home.scss';
+@import './pages/login.scss';
+@import './pages/signup.scss';
+@import './pages/mainboard.scss';

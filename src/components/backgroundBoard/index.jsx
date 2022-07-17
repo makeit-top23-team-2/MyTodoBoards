@@ -1,4 +1,3 @@
-import './backgroundBoard.scss'
 
 function BackgroundBoard() {
   return (

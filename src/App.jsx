@@ -5,11 +5,11 @@ import SignUp from './pages/signup';
 import LogIn from './pages/login';
 import MainBoard from './pages/board';
 import Home from './pages/home';
-import CreateBoard from './pages/createBoard'
 
 //components
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import CreateBoard from './components/createBoard';
 
 function App() {
   return (

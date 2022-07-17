@@ -1,33 +1,34 @@
-.login {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
+.signup {
+  display: flexbox;
+  align-items: center;
+  justify-content: center; 
+  height: 100vh;
 }
 
-.login__header {
+.signup__header {
   display: flex;    
   justify-content: space-around;
   width: 350px;
   margin-left: auto;
   margin-right: auto;  
+  margin-top: 15px;
   padding-left: 40px;
   padding-right: 40px;
 }
 
-.login__header__logo {
+.signup__header__logo {
   display: block;
   height: 43px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
-.login__form {
+.signup__form {
   
   display: block;    
   padding: 10px;
-  height: 600px;
+  height: 520px;
   width: 350px;
   text-align:center;    
   background-color: #FFFFFF;
@@ -39,9 +40,9 @@
   margin-top: auto;
   margin-bottom: auto;
   justify-content: space-around;
-  font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
-  
+  font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;    
 }
+
 h1 {
   text-align: center;
   color: #5E6C84;
@@ -52,98 +53,56 @@ h1 {
   margin-bottom: 25px;
 }
 
-.login__email {
+.signup__email {
   width:100%;
   height: 44px;
   margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 12px;
-  line-height: 16px;
-  color: #5E6C84;
-  background-color: #F9FAFC;
-  font: inherit;
-  border: 2px solid #DFE1E6;
-  border-radius: 5px;
-  box-sizing: border-box;
-  
-}
-
-.login__email:focus {
-  outline: none;
-  border:1px solid rgb(15, 74, 223);
-  box-shadow: 0 0 10px #719ECE;
-  transition-duration: 0.4s;
-}
-
-.login__password {
-  width:100%;
-  height: 44px;
-  margin-top: 10px;
   margin-bottom: 20px;
   font-size: 12px;
   line-height: 16px;
   color: #5E6C84;
   background-color: #F9FAFC;
   font: inherit;
-  border: 2px solid #DFE1E6;
+  border: 1px solid #CDD2D4;
   border-radius: 5px;
   box-sizing: border-box;    
 }
 
-.login__password:focus {
+.signup__email:focus {
   outline: none;
   border:1px solid rgb(15, 74, 223);
   box-shadow: 0 0 10px #719ECE;
   transition-duration: 0.4s;
 }
+
+.signup__politics {
+  text-align:justify;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5E6C84;
   
-.login__politics {
-  display: flex;    
-  justify-content: center;           
-  font-size: 15px;   
-  color: #0052CC;  
-  width: 350px;       
-  margin-left: auto;
-  margin-right: auto;  
-  padding-left: 40px;
-  padding-right: 40px;
 }
 
-.login__politics__Service {
-  margin: 10px;
-}
-
-.login__politics_Privacy {
-  margin: 10px;
-}
- 
-.login__button {
-  
-  color: rgb(255, 255, 255);
+.signup__button {    
+  color: hsl(0,0%,55%);
   width:100%;
   height: 8%;
   font: inherit;
   border: none;
-  background-color: #5AAC44;
+  background-color: rgba(123, 116, 116, 0.312);
   border-radius: 5px;
-  cursor: pointer;     
+  cursor: pointer    
 }
 
-.login__button:hover {
-  transition-duration: 0.4s;
-  background-color: rgb(111, 187, 90);       
+.signup__with {
+  display: block;    
 }
 
-.login__with {
-  display: block;
-  margin-bottom: 20px;
-  
-}
-
-.login__with__button {
+.signup__with__button {
   width:100%;
   margin-top: 10px;
-  margin-bottom: 10px;
   font: inherit;
   box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
   border: antiquewhite;
@@ -156,16 +115,15 @@ h1 {
   color: #5E6C84;
   cursor: pointer;
   display: flex;
-  justify-content: center;       
+  justify-content: center;    
 }
 
-.login__with__button:hover {
+.signup__with__button:hover {
   transition-duration: 0.4s;
-  background-color: #f6f6f6;       
+  background-color: #f6f6f6;    
 }
 
-
-.login__with__img {
+.signup__with__img {
   height: 18px;
   width: 18px;
   margin-top: 3px;
@@ -177,11 +135,10 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid hsl(0,0%,80%);
-  margin: 2em;
- 
+  margin: 2em ;
 
 }
-.login__language {
+.signup__language {
   display: flex;
   justify-content: center;
   margin-top: 1em;
@@ -189,12 +146,13 @@ hr {
   display: flex;    
   justify-content: space-around;    
   margin-left: auto;
-  margin-right: auto;    
+  margin-right: auto;
+  margin-bottom: 1em;    
   padding-left: 40px;
   padding-right: 40px;
 }
 
-.login__language-picker {
+.signup__language-picker {
   background: none;
   border: 2px solid #EDEFF0;
   height: 50px;
@@ -205,24 +163,4 @@ hr {
 a {
   color: #0052CC;
   text-decoration: none;
-}
-
-.login__cantlog {
-  display: inline;    
-  justify-content: center;   
-  margin-top: 5px;    
-  font-size: 15px;   
-  color: #0052CC;
-}
-
-ul {
-  text-align: center;
-  font-size: 14px;
-  
-  padding: 0;
-  list-style-type: none;    
-}
-
-li {
-  margin-bottom: 10px;
 }

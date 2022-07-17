@@ -1,6 +1,5 @@
 import React from 'react';
 
-import  './signup.scss';
 
 function SignUp() {
   return(
