@@ -1,9 +1,10 @@
 import React from "react"
-
+import NavBar from "../../components/NavBar"
+import Footer from "../../components/Footer"
 const MainBoard= () => {
   return(
         <div>
-
+        <NavBar/>
           <div className="mainBoard">
                         <header className="headerBoard">
                                 <input className="nameBoard"  type="text" placeholder=" Tittle"/>
@@ -22,7 +23,7 @@ const MainBoard= () => {
                         </div>
                 </div>
 
-
+        <Footer/>
         </div>
 )   
 

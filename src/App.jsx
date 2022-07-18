@@ -15,7 +15,6 @@ import CreateBoard from './components/createBoard';
 function App() {
   return (
     <BrowserRouter>
-     <NavBar />
       <Routes>
         <Route path= "/signUp" element={<SignUp />}/>
         <Route path= "/logIn" element={<LogIn />}/>
@@ -24,8 +23,6 @@ function App() {
         <Route path= "/" element={<Home />}/>
         <Route path= "/manage_board" element={<ManageBoard />} />
       </Routes>
-      <Footer />
-
     </BrowserRouter>
   )
 }

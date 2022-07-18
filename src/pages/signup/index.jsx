@@ -1,10 +1,10 @@
 import React from 'react';
-
+import {NavLink} from 'react-router-dom';
 
 function SignUp() {
   return(
     <div className='signup'>
-      <header className="signup__header"> <img className="signup__header__logo"  src="..\img\trello.png" alt=""/></header>
+      <NavLink to= "/" className="signup__header"> <img className="signup__header__logo"  src="..\img\trello.png" alt=""/></NavLink>
       <div className="signup__form">
         <h1>Sign up for your account</h1>
         <input className="signup__email "type="email" name="email" placeholder= " Enter email"/>
@@ -17,8 +17,8 @@ function SignUp() {
         <button className="signup__with__button"> <img className="signup__with__img" src="..\img\apple.png" alt=""/> <b>Continue with Apple</b> </button>
         </div>
         <hr/>
-        <a href="">Already have an account? Log In</a>
-      </div>    
+        <NavLink to="/login">Already have an account? Log In</NavLink>
+      </div>
       <div className="signup__language">
         <select name="Language Picker" className="signup__language-picker">
           <option value="">Select your language…</option>
@@ -28,7 +28,7 @@ function SignUp() {
           <option value="">Italiano</option>
           <option value="">Türkçe</option>
           <option value="">ภาษาไทย</option>
-          <option value="">Українська</option>    
+          <option value="">Українська</option>
         </select>
       </div>
     </div>

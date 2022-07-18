@@ -7,7 +7,9 @@ const Footer = () => {
         <div class="footer_section__up">
           <div class="footer__div">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Trello-logo-blue.svg/2560px-Trello-logo-blue.svg.png" alt="" class="footer__logo"/>
-            <NavLink to = "/login" class="redes">Login</NavLink>
+            <div class="footer__a">
+              <NavLink to = "/login">Login</NavLink>
+            </div>
           </div>
         </div>
       </section>

@@ -1,13 +1,19 @@
 .footer{
-  padding-top: 20px;
+  padding: 20px 0px;
   background-color: #172b4d;
   display: block;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer__logo{
-  margin-left: 30px;
   height: 40px;
+  margin-left: 30px;
+}
+
+.footer__a{
+  margin-right: 30px;
 }
 
 .footer__div{
@@ -17,11 +23,9 @@
   align-items: center;
 }
 
-.footer__div__a{
-  margin-right: 30px;
-}
-
 .footer__ul{
+  display: flex;
+  flex-direction: column;
   padding-top: 15px;
   width: 100%;
   padding-left: 22px;
@@ -29,7 +33,7 @@
 }
 
 .footer__li{
-  padding: 10px;
+  margin-bottom: 10px;
   color: white;
   display: block;
 }
@@ -58,7 +62,7 @@
     justify-content: space-between;
   }
   .footer__ul{
-    display: flex;
+    flex-direction: row;
     justify-content: space-around;
   }
   .footer__div__down{
