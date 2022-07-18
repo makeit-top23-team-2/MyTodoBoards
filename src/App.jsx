@@ -5,6 +5,7 @@ import SignUp from './pages/signup';
 import LogIn from './pages/login';
 import MainBoard from './pages/board';
 import Home from './pages/home';
+import ManageBoard from './pages/manageBoard'
 
 //components
 import NavBar from './components/NavBar';
@@ -21,6 +22,7 @@ function App() {
         <Route path= "/board" element={<MainBoard />}/>
         <Route path= "/create_boards" element={<CreateBoard />}/>
         <Route path= "/" element={<Home />}/>
+        <Route path= "/manage_board" element={<ManageBoard />} />
       </Routes>
       <Footer />
 
