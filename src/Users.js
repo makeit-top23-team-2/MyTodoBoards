@@ -1,4 +1,4 @@
-const Usuarios = [
+const Users = [
   {
     name: 'David',
     img: '',
@@ -52,4 +52,4 @@ const Usuarios = [
   }
 ];
 
-export default {Usuarios};
+export default Users;
