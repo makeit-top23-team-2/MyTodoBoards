@@ -31,6 +31,9 @@ function SignUp() {
           <option value="">Українська</option>
         </select>
       </div>
+      <div className="signup__footer__img">
+        <img className="signup__footer__img1" src="..\img\logSing__footer__img1.png"/><img className="signup__footer__img2" src="..\img\logSing__footer__img2.png"/>
+      </div>
     </div>
   );
 }
