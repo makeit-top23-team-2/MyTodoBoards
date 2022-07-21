@@ -1,3 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+ 
+    //Seccion 1 del Home
+.section1__img{
+    width: 80%;
+    height: auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.home__section1{
+    text-align: center;
+    background: linear-gradient(to bottom, white, #EAE6FD);
+    padding-bottom: 20px;
+    
+}
+
+.home__section1__tittle{
+    text-align: center;
+    font-size: 30px;
+    color: #243555;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.home__section1__datail__paragraph{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px;
+    margin: 0 40px;
+    color: rgb(94, 108, 132);
+    text-align: center;
+}
+
+//Seccion 2 del Home
+
+.home__section2{
+    text-align: center;
+    background: linear-gradient(to bottom, #EAE6FD, white);
+    padding-bottom: 20px;
+}
+.section2__img{
+    width: 80%;
+    height: auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+.home__section2__tittle{
+    text-align: center;
+    font-size: 35px;
+    color: #243555;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.home__section2__datail__paragraph{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px;
+    margin: 0 40px;
+    color: rgb(94, 108, 132);
+}
+
+//Seccion 3 del Home
+
+
+.home__section3{
+    text-align: center;
+    background: linear-gradient(to bottom, white , #EAE6FD);
+    padding-bottom: 20px;
+}
+.section3__img{
+    width: 80%;
+    height: auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+.home__section3__tittle{
+    text-align: center;
+    font-size: 35px;
+    color: #243555;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.home__section3__datail__paragraph{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px;
+    margin: 0 40px;
+    color: rgb(94, 108, 132);
+}
+
+//Seccion 4 del Home
+
+.home__section4{
+    text-align: center;
+    background: linear-gradient(to bottom, #EAE6FD , white );
+    padding-bottom: 20px;
+}
+.section4__img{
+    width: 80%;
+    height: auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+.home__section4__tittle{
+    text-align: center;
+    font-size: 35px;
+    color: #243555;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.home__section4__datail__paragraph{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px;
+    margin: 0 40px;
+    color: rgb(94, 108, 132);
+}
+
+@media (min-width: 768px )  {
+    p{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 450px;
+        color: rgb(94, 108, 132);
+
+    }
+
+    h2{
+        font-size: 35px;
+        color: #243555;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+
+   .home__section1{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white, #EAE6FD);
+    padding-bottom: 20px;
+    
+   }
+   .section1__img{
+    width: 350px;
+    margin-right: 50px;
+    height: auto;
+    padding-left: 25px;
+
+    
+   }
+
+   .home__section1__datail{
+    width: 300px;  
+   }
+
+   // Seccion 2 del Home
+   .home__section2{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD, white );
+    padding-bottom: 20px;
+    
+   }
+   .section2__img{
+    width: 350px;
+    margin-left: 50px;
+    height: auto;
+    padding-right: 25px;    
+   }
+   .home__section2__datail{
+    width: 300px; 
+   }
+
+   //Seccion 3 del Home
+
+   .home__section3{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white,  #EAE6FD );
+    padding-bottom: 20px;
+    
+   }
+   .section3__img{
+    width: 350px;
+    margin-right: 50px;
+    height: auto;
+    padding-left: 25px;    
+   }
+   .home__section3__datail{
+    width: 300px; 
+   }
+
+
+   //seccion 4 del Home
+   .home__section4{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD , white  );
+    padding-bottom: 20px;
+    
+   }
+   .section4__img{
+    width: 350px;
+    margin-right: 50px;
+    height: auto;
+    padding-left: 25px;    
+   }
+   .home__section4__datail{
+    width: 300px; 
+   }
+
+
+}
+
+
+
+
+@media (min-width: 992px )  {
+    p{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 450px;
+        color: rgb(94, 108, 132);
+
+    }
+
+    h2{
+        font-size: 35px;
+        color: #243555;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+
+   .home__section1{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white, #EAE6FD);
+    padding-bottom: 20px;
+    
+   }
+   .section1__img{
+    width: 350px;
+    margin-right: 100px;
+    height: auto;
+    padding-left: 100px;
+
+    
+   }
+
+   .home__section1__datail{
+    width: 300px;  
+   }
+
+   // Seccion 2 del Home
+   .home__section2{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD, white );
+    padding-bottom: 20px;
+    
+   }
+   .section2__img{
+    width: 350px;
+    margin-left: 100px;
+    height: auto;
+    padding-right: 100px;    
+   }
+   .home__section2__datail{
+    width: 300px; 
+   }
+
+   //Seccion 3 del Home
+
+   .home__section3{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white,  #EAE6FD );
+    padding-bottom: 20px;
+    
+   }
+   .section3__img{
+    width: 350px;
+    margin-right: 100px;
+    height: auto;
+    padding-left: 100px;    
+   }
+   .home__section3__datail{
+    width: 300px; 
+   }
+
+
+   //seccion 4 del Home
+   .home__section4{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD , white  );
+    padding-bottom: 20px;
+    
+   }
+   .section4__img{
+    width: 350px;
+    margin-right: 100px;
+    height: auto;
+    padding-left: 100px;    
+   }
+   .home__section4__datail{
+    width: 300px; 
+   }
+
+
+}
+
+
+
+
+@media (min-width: 1260px)  {
+    p{
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.3;
+        max-width: 450px;
+        color: rgb(94, 108, 132);
+
+    }
+
+    h2{
+        font-size: 35px;
+        color: #243555;
+        font-family: 'Noto Sans', sans-serif;
+    }
+
+
+   .home__section1{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white, #EAE6FD);
+    padding-bottom: 20px;
+    
+   }
+   .section1__img{
+    width: 350px;
+    margin-right: 200px;
+    height: auto;
+    padding-left: 200px;
+
+    
+   }
+
+   .home__section1__datail{
+    width: 400px;  
+   }
+
+   // Seccion 2 del Home
+   .home__section2{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD, white );
+    padding-bottom: 20px;
+    
+   }
+   .section2__img{
+    width: 600px;
+    margin-left: 150px;
+    height: auto;
+    padding-right: 200px;    
+   }
+   .home__section2__datail{
+    width: 400px; 
+   }
+
+   //Seccion 3 del Home
+
+   .home__section3{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to bottom, white,  #EAE6FD );
+    padding-bottom: 20px;
+    
+   }
+   .section3__img{
+    width: 350px;
+    margin-right: 200px;
+    height: auto;
+    padding-left: 200px;    
+   }
+   .home__section3__datail{
+    width: 400px; 
+   }
+
+
+   //seccion 4 del Home
+   .home__section4{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #EAE6FD , white  );
+    padding-bottom: 20px;
+    
+   }
+   .section4__img{
+    width: 450px;
+    margin-right: 200px;
+    height: auto;
+    padding-left: 200px;    
+   }
+   .home__section4__datail{
+    width: 400px; 
+   }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 .homeIntro{
     background-color: #293856;
     width: 100%;
@@ -56,3 +500,5 @@
         
 }
 }
+*/
+

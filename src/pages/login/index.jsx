@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import Users from '../Data';
+//import Users from '../Data';
 
 function LogIn() {
   
