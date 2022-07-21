@@ -1,0 +1,81 @@
+// *{
+//   padding: 0;
+//   margin: 0;
+//   text-decoration: none;
+//   list-style: none;
+//   box-sizing: border-box;
+//   font-family: "Charlie Text", sans-serif;
+// }
+// body{
+//   background-color: #293856;
+// }
+
+.header__nav{
+  background: #ffffff;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.header__logo{
+  margin-left: 30px;
+  height: 40px;
+}
+
+.header__ul{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  top: 100px;
+  text-align: center;
+  right: -100%;
+  transition: all .5s;
+}
+.header__li{
+  display: block;
+  margin: 50px ,0;
+  line-height: 30px;
+  font-size: 30px;
+  padding-top: 60px;
+}
+.header__li :hover{
+  display: block;
+  background-color: dimgray;
+  color: #ffffff;
+}
+.header__check{
+  display: none;
+}
+
+.header__checkbtn{
+  font-size: 30px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+.header__checkbtn :hover{
+  background-color: dimgray;
+}
+
+@media (min-width: 768px) {
+  .header__checkbtn{
+      display: none;
+  }
+  .header__ul{
+
+      //flex-basis: 15%;
+      justify-content: right;
+      position:static;
+      display: flex;
+      top: 100px;
+      height:fit-content;
+  }
+  .header__li{
+      padding: 1.2%;
+      font-size: 1rem;
+      margin: 1px;
+  }
+
+}

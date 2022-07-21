@@ -1,0 +1,205 @@
+.login__header {
+    display: flex;    
+    justify-content: space-around;
+}
+
+.login__header__logo {
+    display: block;
+    height: 43px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.login {
+    
+    display: block;    
+    padding: 10px;
+    height: 600px;
+    width: 350px;
+    text-align:center;    
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    padding: 25px 40px;
+    box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: space-around;
+    font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    
+}
+h1 {
+    text-align: center;
+    color: #5E6C84;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.login__email {
+    width:100%;
+    height: 44px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5E6C84;
+    background-color: #F9FAFC;
+    font: inherit;
+    border: 2px solid #DFE1E6;
+    border-radius: 5px;
+    box-sizing: border-box;
+    
+}
+
+.login__email:focus {
+    outline: none;
+    border:1px solid rgb(15, 74, 223);
+    box-shadow: 0 0 10px #719ECE;
+    transition-duration: 0.4s;
+  }
+
+.login__password {
+    width:100%;
+    height: 44px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #5E6C84;
+    background-color: #F9FAFC;
+    font: inherit;
+    border: 2px solid #DFE1E6;
+    border-radius: 5px;
+    box-sizing: border-box;    
+}
+
+.login__password:focus {
+    outline: none;
+    border:1px solid rgb(15, 74, 223);
+    box-shadow: 0 0 10px #719ECE;
+    transition-duration: 0.4s;
+  }
+    
+.login__politics {
+    display: flex;    
+    justify-content: center;   
+    margin-top: 5px;    
+    font-size: 15px;   
+    color: #0052CC;
+}
+
+.login__politics__Service {
+    margin: 10px;
+}
+
+.login__politics_Privacy {
+    margin: 10px;
+}
+   
+.login__button {
+    
+    color: rgb(255, 255, 255);
+    width:100%;
+    height: 8%;
+    font: inherit;
+    border: none;
+    background-color: #5AAC44;
+    border-radius: 5px;
+    cursor: pointer;     
+}
+
+.login__button:hover {
+    transition-duration: 0.4s;
+    background-color: rgb(111, 187, 90);       
+}
+
+.login__with {
+    display: block;
+    margin-bottom: 20px;
+    
+}
+
+.login__with__button {
+    width:100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font: inherit;
+    box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+    border: antiquewhite;
+    background-color: #ffffff;
+    padding: 5px;
+    align-items: center;
+    border-radius: 5px;
+    text-align:center; 
+    vertical-align:middle;
+    color: #5E6C84;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;       
+}
+
+.login__with__button:hover {
+    transition-duration: 0.4s;
+    background-color: #f6f6f6;       
+}
+
+
+.login__with__img {
+    height: 18px;
+    width: 18px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid hsl(0,0%,80%);
+    margin: 2em;
+   
+  
+}
+.login__language {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login__language-picker {
+    background: none;
+    border: 2px solid #EDEFF0;
+    height: 50px;
+    padding: 0.5em;
+    
+}
+
+a {
+    color: #0052CC;
+    text-decoration: none;
+}
+
+.login__cantlog {
+    display: inline;    
+    justify-content: center;   
+    margin-top: 5px;    
+    font-size: 15px;   
+    color: #0052CC;
+}
+
+ul {
+    text-align: center;
+    font-size: 14px;
+    
+    padding: 0;
+    list-style-type: none;    
+}
+
+li {
+    margin-bottom: 10px;
+}
