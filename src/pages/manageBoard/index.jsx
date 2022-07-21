@@ -1,8 +1,17 @@
 import {NavLink} from 'react-router-dom';
 import NavBar from "../../components/NavBar"
 import Footer from "../../components/Footer"
+import CreateBoard from '../../components/createBoard';
+import {useState} from 'react';
 
 function ManageBoard() {
+
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(!modal);
+  }
+
   return (
     <div>
       <NavBar/>
@@ -22,15 +31,17 @@ function ManageBoard() {
               </NavLink>
             </li>
             <li className='container__article__li'>
-              <NavLink to="/create_Boards" className="container__article__a">
+              <button onClick={handleModal} className="container__article__a">
                 <p className='container__article__p'>
                   <span>Create a new board</span>
                 </p>
-              </NavLink>
+              </button>
             </li>
           </ul>
         </article>
       </main>
+
+      <CreateBoard modal={modal} setModal={setModal}/>
       <Footer/>
     </div>
   )

@@ -18,8 +18,7 @@ function App() {
       <Routes>
         <Route path= "/signUp" element={<SignUp />}/>
         <Route path= "/logIn" element={<LogIn />}/>
-        <Route path= "/board" element={<MainBoard />}/>
-        <Route path= "/create_boards" element={<CreateBoard />}/>
+        <Route path= "/board" element={<MainBoard />}/>        
         <Route path= "/" element={<Home />}/>
         <Route path= "/manage_board" element={<ManageBoard />} />
       </Routes>
