@@ -6,6 +6,7 @@ import LogIn from './pages/login';
 import MainBoard from './pages/board';
 import Home from './pages/home';
 import ManageBoard from './pages/manageBoard'
+import NotFound from './pages/NotFound/NotFound';
 
 //components
 import NavBar from './components/NavBar';
@@ -21,6 +22,7 @@ function App() {
         <Route path= "/board" element={<MainBoard />}/>        
         <Route path= "/" element={<Home />}/>
         <Route path= "/manage_board" element={<ManageBoard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
