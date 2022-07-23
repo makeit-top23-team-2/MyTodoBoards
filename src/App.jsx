@@ -8,6 +8,7 @@ import Home from './pages/home';
 import ManageBoard from './pages/manageBoard'
 import NotFound from './pages/NotFound/NotFound';
 
+
 //components
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
