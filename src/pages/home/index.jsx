@@ -46,20 +46,6 @@ const Home= () => {
             <p className="home__section4__datail__paragraph">Frello cards are your portal to more organized work—where every single part of your task can be managed, tracked, and shared with teammates. Open any card to uncover an ecosystem of checklists, due dates, attachments, conversations, and more.</p>
           </div>
         </section>
-
-
-
-
-       
-
-
-       
-
-
-
-
-
-
       <Footer />
     
     
@@ -71,37 +57,3 @@ const Home= () => {
 export default Home;
 
 
-/*
-<NavBar/>
-        <div className="homeIntro">
-            <div className="tittle">
-                <h2>Hi, This is Trello</h2>
-                <hr/>
-            </div>
-            <div className="icons">
-            <section>
-                <img className="iconsHome" src="..\img\file-solid.png" alt="" />
-                <h4>laoreet accumsan</h4>
-                <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec.</p>
-            </section>
-            <section>
-                <img className="iconsHome" src="..\img\paper-plane-solid.png" alt="" />
-                <h4>laoreet accumsan</h4>
-                <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. </p>
-            </section>
-            <section>
-                <img className="iconsHome" src="..\img\table-solid.png" alt="" />
-                <h4>laoreet accumsan</h4>
-                <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. </p>
-            </section>
-            <section>
-                <img className="iconsHome" src="..\img\tablet-alt-solid.png" alt="" />
-                <h3>laoreet accumsan</h3>
-                <p>Feugiat accumsan lorem eu ac lorem amet accumsan donec.</p>
-            </section>
-            </div>
-        </div>
-
-
-
-*/
