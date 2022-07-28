@@ -1,130 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="create_board.css" />
+    <script
+      src="https://kit.fontawesome.com/8d5861605d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Create Board</title>
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="create_board.css">
-        <script src="https://kit.fontawesome.com/8d5861605d.js" crossorigin="anonymous"></script>
-        <title>Create Board</title>
-    </head>
+  <body>
+    <main class="board">
+      <header class="board__header">
+        <div class="board__header__div">Create Board</div>
+        <button class="board__header__button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
 
-    <body>
-        <main class="board">
-            <header class="board__header">
-                <div class="board__header__div">Create Board</div>
-                <button class="board__header__button">
-                    <i class="fa-solid fa-xmark"></i>
+      <section class="board__section">
+        <div class="board__image">
+          <div class="board__image__background">
+            <img
+              src="https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg"
+              alt=""
+              role="presentation"
+            />
+          </div>
+        </div>
+
+        <div class="board__background">
+          <div>
+            <label class="board__background__label">Background</label>
+          </div>
+          <div>
+            <ul class="board__ul">
+              <li class="board__li">
+                <button class="board__button1" type="button"></button>
+              </li>
+              <li class="board__li">
+                <button class="board__button2" type="button"></button>
+              </li>
+              <li class="board__li">
+                <button class="board__button3" type="button"></button>
+              </li>
+              <li class="board__li">
+                <button class="board__button4" type="button"></button>
+              </li>
+            </ul>
+            <ul class="board__ul">
+              <li class="board__li button__li">
+                <button class="board__button5" type="button"></button>
+              </li>
+              <li class="board__li button__li">
+                <button class="board__button6" type="button"></button>
+              </li>
+              <li class="board__li button__li">
+                <button class="board__button7" type="button"></button>
+              </li>
+              <li class="board__li button__li">
+                <button class="board__button8" type="button"></button>
+              </li>
+              <li class="board__li button__li">
+                <button class="board__button9" type="button"></button>
+              </li>
+              <li class="board__li button__li">
+                <button class="board__button10" type="button">
+                  <i class="fa-solid fa-ellipsis"></i>
                 </button>
-            </header>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-            <section class="board__section">
-                <div class="board__image">
-                    <div class="board__image__background">
-                        <img src="https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg"
-                            alt="" role="presentation">
-                    </div>
-                </div>
+        <form>
+          <div>
+            <label class="board__form">
+              <div>
+                Board Title
+                <span class="board__form__span">*</span>
+              </div>
+              <input
+                class="board__form__input"
+                aria-invalid="true"
+                aria-required="true"
+                autocomplete="off"
+                type="text"
+                autofocus
+                required
+                value=""
+              />
+            </label>
+          </div>
 
-                <div class="board__background">
-                    <div>
-                        <label class="board__background__label">Background</label>
-                    </div>
-                    <div>
-                        <ul class="board__ul">
-                            <li class="board__li">
-                                <button class="board__button1" type="button"></button>
-                            </li>
-                            <li class="board__li">
-                                <button class="board__button2" type="button"></button>
-                            </li>
-                            <li class="board__li">
-                                <button class="board__button3" type="button"></button>
-                            </li>
-                            <li class="board__li">
-                                <button class="board__button4" type="button"></button>
-                            </li>
-                        </ul>
-                        <ul class="board__ul">
-                            <li class="board__li button__li">
-                                <button class="board__button5" type="button"></button>
-                            </li>
-                            <li class="board__li button__li">
-                                <button class="board__button6" type="button"></button>
-                            </li>
-                            <li class="board__li button__li">
-                                <button class="board__button7" type="button"></button>
-                            </li>
-                            <li class="board__li button__li">
-                                <button class="board__button8" type="button"></button>
-                            </li>
-                            <li class="board__li button__li">
-                                <button class="board__button9" type="button"></button>
-                            </li>
-                            <li class="board__li button__li">
-                                <button class="board__button10" type="button">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="board__title">
+            <span class="board__title__span">👋</span>
+            <p>Board title is required</p>
+          </div>
+          <label class="board__form">Visibility</label>
+          <div class="board__workspace">
+            <span class="board__workspace__span"></span>
+            <div class="board__workspace__arrow">
+              <div class="board__workspace__space">
+                <div class="board__space">Workspace</div>
+                <input
+                  readonly=""
+                  tabindex="0"
+                  aria-autocomplete="list"
+                  class="board__workspace__input"
+                  value
+                />
+              </div>
+              <i class="fa-solid fa-angle-down board__i"></i>
+            </div>
+          </div>
+          <p class="board__p">
+            This Workspace has 10 boards remaining. Free Workspaces can only
+            have 10 open boards. For unlimited boards, upgrade your Workspace.
+          </p>
 
-                <form>
-                    <div>
-                        <label class="board__form">
-                            <div>
-                                Board Title
-                                <span class="board__form__span">*</span>
-                            </div>
-                            <input class="board__form__input" aria-invalid="true" aria-required="true" autocomplete="off"
-                                type="text" autofocus required value="">
-                        </label>
-                    </div>
-
-                    <div class="board__title">
-                        <span class="board__title__span">👋</span>
-                        <p>Board title is required</p>
-                    </div>
-                    <label class="board__form">Visibility</label>
-                    <div class="board__workspace">
-                        <span class="board__workspace__span"></span>
-                        <div class="board__workspace__arrow">                        
-                            <div class="board__workspace__space">                            
-                                <div class="board__space">Workspace</div>
-                                <input readonly="" tabindex="0" aria-autocomplete="list" class="board__workspace__input"
-                                    value>
-                                
-                            </div> 
-                            <i class="fa-solid fa-angle-down board__i"></i>
-                        </div>
-                    </div>
-                    <p class="board__p">
-                        This Workspace has 10 boards remaining.
-                        Free Workspaces can only have 10 open boards. For unlimited boards, upgrade your Workspace.
-                    </p>
-
-                    <div class="board__form__div">
-                        <button class="board__form__button">                        
-                                <span class="board__form__button__span">
-                                    <svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V6H19V20H5V6H7V5ZM9 6H15V5H9V6ZM7 9C7 8.44772 7.44772 8 8 8H10C10.5523 8 11 8.44772 11 9V16C11 16.5523 10.5523 17 10 17H8C7.44772 17 7 16.5523 7 16V9ZM14 8C13.4477 8 13 8.44772 13 9V14C13 14.5523 13.4477 15 14 15H16C16.5523 15 17 14.5523 17 14V9C17 8.44772 16.5523 8 16 8H14Z" fill="currentColor"></path><path d="M4 6C2.89543 6 2 6.89543 2 8V18C2 19.1046 2.89543 20 4 20L4 6Z" fill="currentColor"></path><path d="M20 20V6C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20Z" fill="currentColor"></path></svg>
-                                </span>     
-                            <div class="board__form__button__div">Start free trial</div>
-                        </button>
-                    </div>
-                    <button disabled="" class="board__form__button__create" type="button">Create</button>
-                </form>
-                <button class="board__button" type="button">Start with a template</button>
-                <div class="form__div">
-                    <div class="form__div__div">By using images from Unsplash, you agree to their
-                        <a href="https://unsplash.com/license" target="_blank">license</a>
-                        and
-                        <a href="https://unsplash.com/terms" target="_blank">Terms of Service</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </body>
-
+          <div class="board__form__div">
+            <button class="board__form__button">
+              <span class="board__form__button__span">
+                <svg
+                  width="24"
+                  height="24"
+                  role="presentation"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M7 5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V6H19V20H5V6H7V5ZM9 6H15V5H9V6ZM7 9C7 8.44772 7.44772 8 8 8H10C10.5523 8 11 8.44772 11 9V16C11 16.5523 10.5523 17 10 17H8C7.44772 17 7 16.5523 7 16V9ZM14 8C13.4477 8 13 8.44772 13 9V14C13 14.5523 13.4477 15 14 15H16C16.5523 15 17 14.5523 17 14V9C17 8.44772 16.5523 8 16 8H14Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M4 6C2.89543 6 2 6.89543 2 8V18C2 19.1046 2.89543 20 4 20L4 6Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M20 20V6C21.1046 6 22 6.89543 22 8V18C22 19.1046 21.1046 20 20 20Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </span>
+              <div class="board__form__button__div">Start free trial</div>
+            </button>
+          </div>
+          <button disabled="" class="board__form__button__create" type="button">
+            Create
+          </button>
+        </form>
+        <button class="board__button" type="button">
+          Start with a template
+        </button>
+        <div class="form__div">
+          <div class="form__div__div">
+            By using images from Unsplash, you agree to their
+            <a href="https://unsplash.com/license" target="_blank">license</a>
+            and
+            <a href="https://unsplash.com/terms" target="_blank"
+              >Terms of Service</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

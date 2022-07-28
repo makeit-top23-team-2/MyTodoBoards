@@ -1,137 +1,134 @@
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
-    font-family: "Charlie Text", sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Charlie Text', sans-serif;
 }
-body{
-    background-color: #293856;
-}
-
-.header__nav{
-    background: #ffffff;
-    height: 100px;
-    width: 100%;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
+body {
+  background-color: #293856;
 }
 
-.header__logo{
-    margin-left: 30px;
-    height: 40px;
+.header__nav {
+  background: #ffffff;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.header__ul{
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    top: 100px;
-    text-align: center;
-    right: -100%;
-    transition: all .5s;
+.header__logo {
+  margin-left: 30px;
+  height: 40px;
 }
-.header__li{
-    display: block;
-    margin: 50px ,0;
-    line-height: 30px;
-    font-size: 30px;
-    padding-top: 60px;
+
+.header__ul {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  top: 100px;
+  text-align: center;
+  right: -100%;
+  transition: all 0.5s;
 }
-.header__li :hover{
-    display: block;
-    background-color: dimgray;
-    color: #ffffff;
+.header__li {
+  display: block;
+  margin: 50px, 0;
+  line-height: 30px;
+  font-size: 30px;
+  padding-top: 60px;
 }
-.header__check{
-    display: none;
+.header__li :hover {
+  display: block;
+  background-color: dimgray;
+  color: #ffffff;
 }
- /* #check :checked ~ ul{
+.header__check {
+  display: none;
+}
+/* #check :checked ~ ul{
     right: 0%;
 }  */
 
-.header__checkbtn{
-    font-size: 30px;
-    margin-right: 40px;
-    cursor: pointer;
+.header__checkbtn {
+  font-size: 30px;
+  margin-right: 40px;
+  cursor: pointer;
 }
-.header__checkbtn :hover{
-    background-color: dimgray;
+.header__checkbtn :hover {
+  background-color: dimgray;
 }
 
-.footer{
-    padding-top: 20px;
-    background-color: #172b4d;
-    display: block;
+.footer {
+  padding-top: 20px;
+  background-color: #172b4d;
+  display: block;
 }
 /* .footer__section{
 
 } */
 
-.footer__logo{
-    margin-left: 30px;
-    height: 40px;
+.footer__logo {
+  margin-left: 30px;
+  height: 40px;
 }
 
-.footer__div{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer__div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.footer__div__a{
-    margin-right: 30px;
+.footer__div__a {
+  margin-right: 30px;
 }
 
-.footer__ul{
-    padding-top: 15px;
-    width: 100%;
-    padding-left: 22px;
-    color: white;
+.footer__ul {
+  padding-top: 15px;
+  width: 100%;
+  padding-left: 22px;
+  color: white;
 }
 
-.footer__li{
-    padding: 10px;
-    color: white;
-    display: block;
+.footer__li {
+  padding: 10px;
+  color: white;
+  display: block;
 }
 
-.footer__div__down{
-    border-top: 1px solid #505f79;
-    display: flex;
-    padding: 50px 30px;
+.footer__div__down {
+  border-top: 1px solid #505f79;
+  display: flex;
+  padding: 50px 30px;
 }
 
-.redes{
-    padding-right: 50px;
-    color: #fff;
+.redes {
+  padding-right: 50px;
+  color: #fff;
 }
 @media (min-width: 768px) {
-    .header__checkbtn{
-        display: none;
-    }
-    .header__ul{
+  .header__checkbtn {
+    display: none;
+  }
+  .header__ul {
+    flex-basis: 70%;
+    position: static;
+    display: flex;
+    top: 100px;
+    height: fit-content;
+  }
+  .header__li {
+    padding: 1.2%;
+    font-size: 1rem;
+    margin: 1px;
+  }
 
-        flex-basis: 70%;
-        position:static;
-        display: flex;
-        top: 100px;
-        height:fit-content;
-    }
-    .header__li{
-        padding: 1.2%;
-        font-size: 1rem;
-        margin: 1px;
-    }
-
-    .footer__section__down{
-        border-top: 1px solid #505f79;
-        display: flex;
-
-    }
+  .footer__section__down {
+    border-top: 1px solid #505f79;
+    display: flex;
+  }
 }
-

@@ -1,86 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
-.headerBoard{
-    width: 100%;
+.headerBoard {
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  list-style: none;
+  float: none;
+  background-color: #0079bf;
+  height: 300px;
+  a {
+    text-align: center;
+    color: rgb(49, 132, 180);
+    opacity: 0.9;
+    text-decoration: none;
+    background-color: rgb(82, 164, 212);
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px 10px 8px 0px;
     color: white;
-    cursor: pointer;
-    list-style: none;
-    float: none;
-    background-color: #0079BF;
-    height: 300px;
-     a {
-        text-align: center;
-        color: rgb(49, 132, 180);
-        opacity: 0.9;
-        text-decoration: none;
-        background-color:rgb(82, 164, 212);
-        border-radius: 5px;
-        padding: 5px 10px;
-        margin: 5px 10px 8px 0px;
-        color: white;
-        display: block;
-        margin: 5px;
-        font-size: 15px;
-        
-        
-      }
+    display: block;
+    margin: 5px;
+    font-size: 15px;
+  }
 
-      a:hover{
-        background-color: rgb(30,73,98);
-        transition: all .3s ;
-        padding: 6px 11px;
-        margin: 6px 11px 9px 1px;
-        border: white;
-    }
-     
-      input{
-        display: flex;
-        justify-content: center;
-        background-color: transparent;
-        border: none;
-        margin: 5px 10px 8px 50px;
-        color: white;
-        font-size: 20px;
-        font-family: 'Noto Sans', sans-serif;
-      }
+  a:hover {
+    background-color: rgb(30, 73, 98);
+    transition: all 0.3s;
+    padding: 6px 11px;
+    margin: 6px 11px 9px 1px;
+    border: white;
+  }
 
-      input::placeholder{
-        color: white;
-        font-size: 20px;
-        font-family: 'Noto Sans', sans-serif;
-      }
+  input {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    margin: 5px 10px 8px 50px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Noto Sans', sans-serif;
+  }
 
-      input:hover{
-        background-color: rgb(30, 73, 98);
-        border-radius: 3px;
-      }
+  input::placeholder {
+    color: white;
+    font-size: 20px;
+    font-family: 'Noto Sans', sans-serif;
+  }
 
-      .iconsBoard{
-        max-width: .9rem;
-        max-height: .9rem;
-       
+  input:hover {
+    background-color: rgb(30, 73, 98);
+    border-radius: 3px;
+  }
 
-      }
+  .iconsBoard {
+    max-width: 0.9rem;
+    max-height: 0.9rem;
+  }
 
-
-      //Aplicacion de escritorio
-      @media (min-width: 768px) {
-
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: auto;
+  //Aplicacion de escritorio
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+  }
 }
 
-}
-
-.workSpace{
-  background-color: #0079BF;
+.workSpace {
+  background-color: #0079bf;
   width: 100%;
   min-height: 90vh;
   height: auto;
   padding-top: 30px;
-  
-  .textContent{
+
+  .textContent {
     background-color: rgb(82, 164, 212);
     width: 200px;
     height: 30px;
@@ -91,37 +84,31 @@
     border-radius: 3px;
     display: block;
     margin: 30px 0 0 45px;
-    
-
   }
 
-  .buttonCard::placeholder{
+  .buttonCard::placeholder {
     color: white;
-    
   }
 
-  .colums{
+  .colums {
     background-color: rgb(82, 164, 212);
     margin: 10px 10px;
     border-radius: 5px;
     display: inline-block;
     color: white;
     font-size: 15px;
-   
-
   }
 
-  .list__Columns__Board{
+  .list__Columns__Board {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     margin: 0;
     justify-content: center;
   }
- /*  @media {
+  /*  @media {
     .list__Columns__Board{
 
     }
   } */
-
 }

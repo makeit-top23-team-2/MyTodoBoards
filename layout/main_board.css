@@ -1,148 +1,128 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,200&display=swap');
-:root{
-    --fondo:#0079BF;
-    --contraste:rgb(82, 164, 212);
+:root {
+  --fondo: #0079bf;
+  --contraste: rgb(82, 164, 212);
 }
 
-*{
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    text-decoration: none;
-    outline: none;
-    border: none;
-    text-transform: capitalize;
-    color: white;
-    list-style: none;
-    
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  color: white;
+  list-style: none;
 }
 
-body{
-    background: var(--fondo);
+body {
+  background: var(--fondo);
 }
 
-
-header{
-    background-color:var(--fondo);
-    width: 100%;
-    height: 2rem;  
-    list-style: none;
-    
-    
+header {
+  background-color: var(--fondo);
+  width: 100%;
+  height: 2rem;
+  list-style: none;
 }
 
-.header__left > li{
-    position: relative;
-    font-size: .8rem;
-    background-color: var(--contraste);
-    float: left;
-    list-style-type: none;
-    padding: 5px 10px;
-    margin: 0px 8px 8px 0px;
-    cursor: pointer;
-    border-radius: 3px;
-    left: 5px;
-    
-    
+.header__left > li {
+  position: relative;
+  font-size: 0.8rem;
+  background-color: var(--contraste);
+  float: left;
+  list-style-type: none;
+  padding: 5px 10px;
+  margin: 0px 8px 8px 0px;
+  cursor: pointer;
+  border-radius: 3px;
+  left: 5px;
 }
 
-header nav ul .header__left__nameboard{
-    background-color: var(--fondo);
+header nav ul .header__left__nameboard {
+  background-color: var(--fondo);
 }
 
-.header__right >li{
-    position: relative;
-    font-size: .8rem;
-    background-color: var(--contraste);
-    float: right;
-    list-style-type: none;
-    padding: 5px 10px;
-    text-align: center;
-    margin: 0px 8px 8px 0px;
-    cursor: pointer;
-    border-radius: 3px;  
-    right: 30px;
-    
+.header__right > li {
+  position: relative;
+  font-size: 0.8rem;
+  background-color: var(--contraste);
+  float: right;
+  list-style-type: none;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 0px 8px 8px 0px;
+  cursor: pointer;
+  border-radius: 3px;
+  right: 30px;
 }
 
-
-
-
-.header__left > li:hover{
-
-    background-color: rgb(49, 132, 180);
-    transition: all .3s ;
+.header__left > li:hover {
+  background-color: rgb(49, 132, 180);
+  transition: all 0.3s;
 }
 
-.header__right > li:hover{
-
-    background-color: rgb(49, 132, 180);
-    transition: all .3s ;
+.header__right > li:hover {
+  background-color: rgb(49, 132, 180);
+  transition: all 0.3s;
 }
 
-
-
-.header__left__items{
-    top: 40px;
-   position: absolute;
-   background: white;
-   display: none;
-   border-radius: 3px;
-    width: 20rem;
-    text-align: left;
+.header__left__items {
+  top: 40px;
+  position: absolute;
+  background: white;
+  display: none;
+  border-radius: 3px;
+  width: 20rem;
+  text-align: left;
 }
 
-.header__right__items{
-    top: 40px;
-    position: absolute;
-    background: white;
-    width: 18rem;
-    display: none;
-    margin: 2px;
-   border-radius: 3px;
-   text-align: left;
- }
-
-
-.header__left__items li  a{
-    display: block;
-    padding: 10px;
-    color: white;
-    color: #858FA2;
-    text-align: left;
-}
-.header__right__items li a{
-    display: block;
-    padding: 10px;
-    color: white;
-    color: #858FA2
+.header__right__items {
+  top: 40px;
+  position: absolute;
+  background: white;
+  width: 18rem;
+  display: none;
+  margin: 2px;
+  border-radius: 3px;
+  text-align: left;
 }
 
-
-.header__left li:hover .header__left__items{
-    display: block;
+.header__left__items li a {
+  display: block;
+  padding: 10px;
+  color: white;
+  color: #858fa2;
+  text-align: left;
+}
+.header__right__items li a {
+  display: block;
+  padding: 10px;
+  color: white;
+  color: #858fa2;
 }
 
-
-.header__right li:hover .header__right__items{
-    display: block;
+.header__left li:hover .header__left__items {
+  display: block;
 }
 
-
-.textContent{
-    background-color: rgb(82, 164, 212);
-    width: 200px;
-    height: 30px;
-    font-size: 15px;
-    border: none;
-    color: white;
-    outline: none;
-    border-radius: 3px;
-    display: block;
-    margin: 30px 0 0 45px;
-    
-
+.header__right li:hover .header__right__items {
+  display: block;
 }
 
-.buttonCard::placeholder{
-    color: white;
+.textContent {
+  background-color: rgb(82, 164, 212);
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  border: none;
+  color: white;
+  outline: none;
+  border-radius: 3px;
+  display: block;
+  margin: 30px 0 0 45px;
+}
+
+.buttonCard::placeholder {
+  color: white;
 }

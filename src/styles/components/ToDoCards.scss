@@ -1,5 +1,5 @@
-button{
-  background-color: #0079BF;
+button {
+  background-color: #0079bf;
   border: none;
   border-radius: 3px;
   color: #e2dce9;
@@ -7,16 +7,16 @@ button{
   margin-left: 3px;
 }
 
-
 .ToDo {
   background-color: rgb(161, 150, 150);
   height: 100vh;
 }
-.ToDo__columns{
+.ToDo__columns {
   display: inline-flex;
 }
 .ToDo__column {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
   color: #172b4d;
   background-color: transparent;
   border-radius: 3px;
@@ -26,10 +26,10 @@ button{
   height: auto;
   margin-left: 10px;
 }
-.ToDo__listTitle{
+.ToDo__listTitle {
   margin-left: 20px;
 }
-.ToDo__listTitle__input{
+.ToDo__listTitle__input {
   border: 0;
   border-radius: 3px;
   background-color: transparent;
@@ -41,12 +41,12 @@ button{
   background-color: #e2dce9;
 }
 
-.ToDo__listTitle__input::placeholder{
+.ToDo__listTitle__input::placeholder {
   color: white;
   font-size: 20px;
 }
 
-.ToDo__cards{
+.ToDo__cards {
   font: inherit;
   color: #172b4d;
   display: block;
@@ -66,19 +66,19 @@ button{
   cursor: pointer;
   justify-content: center;
 }
-.ToDo_hr{
+.ToDo_hr {
   margin-left: 10px;
   margin-right: 10px;
   width: auto;
 }
-.ToDo__cardlist{
+.ToDo__cardlist {
   margin-left: 10px;
   margin-right: 10px;
   padding: 0;
   list-style: none;
   text-align: left;
 }
-.ToDo__cardlist__item{
+.ToDo__cardlist__item {
   border-radius: 3px;
   background-color: white;
   margin-top: 5px;
@@ -91,13 +91,13 @@ button{
   display: flex;
   justify-content: center;
 }
-.ToDo__input{
+.ToDo__input {
   margin-right: 5px;
 }
-.ToDo__input__text{
+.ToDo__input__text {
   border: 0;
   border-radius: 3px;
-  background-color: #F4F5F7;
+  background-color: #f4f5f7;
 }
 .ToDo__input__text:hover {
   transition-duration: 0.4s;
