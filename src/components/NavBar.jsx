@@ -17,11 +17,6 @@ function NavBar() {
       </label>
       <ul className='header__ul'>
         <li className='header__li'>
-          <NavLink to='/board' className='header__a'>
-            Board
-          </NavLink>
-        </li>
-        <li className='header__li'>
           <NavLink to='/manage_board' className='header__a'>
             Manage board
           </NavLink>

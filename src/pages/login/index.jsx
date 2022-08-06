@@ -1,7 +1,29 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { getUserBy } from '../../services/users';
 
 function LogIn() {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({});
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const fetchData = async () => {
+      const findUser = await getUserBy('email', form.email);
+      if (findUser[0]?.email === form?.email && findUser[0]?.password === form?.password) {
+        navigate(`/manage_board/${findUser[0].id}`, { replace: true });
+      }else{
+        alert('invalid credentials');
+      }
+    };
+    fetchData();
+  };
+
+  const handleChange = e => {
+    const { value, name } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
   return (
     <div className='login'>
       <div className='login__header'>
@@ -14,21 +36,23 @@ function LogIn() {
           />{' '}
         </NavLink>
       </div>
-      <div className='login__form'>
+      <form className='login__form' onSubmit={handleLogin}>
         <h1>Log in to Trello</h1>
         <input
           className='login__email '
           type='email'
           name='email'
           placeholder=' Enter email'
+          onChange={handleChange}
         />
         <input
           className='login__password '
           type='password'
-          name='email'
+          name='password'
           placeholder=' Enter password'
+          onChange={handleChange}
         />
-        <button type='button' className='login__button'>
+        <button type='submit' className='login__button'>
           <b>Log in</b>
         </button>
         <p>OR</p>
@@ -74,7 +98,7 @@ function LogIn() {
             </li>
           </ul>
         </div>
-      </div>
+      </form>
       <div className='login__politics'>
         <p className='login__politics__Service'>
           <a href='*'>Terms of Service</a>

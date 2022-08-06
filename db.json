@@ -1,0 +1,119 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "David",
+      "img": "",
+      "userName": "Davincho",
+      "email": "david@mail.com",
+      "password": "abc123123",
+      "boards": []
+    },
+    {
+      "id": 2,
+      "name": "Mauricio",
+      "img": "",
+      "userName": "Mauhack",
+      "email": "mauricio@mail.com",
+      "password": "abc123123",
+      "boards": [
+        {
+          "id": 1,
+          "Tittle": "tareas",
+          "Description": "tareas por hacer",
+          "listas": [
+            {
+              "name": "todo",
+              "tareas": []
+            },
+            {
+              "name": "doing",
+              "tareas": []
+            },
+            {
+              "name": "done",
+              "tareas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bryan",
+      "img": "",
+      "userName": "Bxtard",
+      "email": "bryan@mail.com",
+      "password": "abc123123",
+      "boards": [
+        {
+          "id": 2,
+          "Tittle": "misiones",
+          "Description": "misiones por completar",
+          "listas": [
+            {
+              "name": "todo",
+              "tareas": []
+            },
+            {
+              "name": "doing",
+              "tareas": []
+            },
+            {
+              "name": "done",
+              "tareas": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Guillo",
+      "img": "",
+      "userName": "Guillocuras",
+      "email": "guillermo@mail.com",
+      "password": "abc123123",
+      "boards": [
+        {
+          "id": 3,
+          "Tittle": "tablero 1",
+          "Description": "este es el primer tablero",
+          "listas": [
+            {
+              "name": "todo",
+              "tareas": []
+            },
+            {
+              "name": "doing",
+              "tareas": []
+            },
+            {
+              "name": "done",
+              "tareas": []
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "Tittle": "tablero 2",
+          "Description": "este es el segundo tablero",
+          "listas": [
+            {
+              "name": "todo",
+              "tareas": []
+            },
+            {
+              "name": "doing",
+              "tareas": []
+            },
+            {
+              "name": "done",
+              "tareas": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
