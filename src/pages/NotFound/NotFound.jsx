@@ -1,8 +1,16 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 function NotFound() {
-  return (
+  return (     
     <main className='main'>
+      <NavLink to='/' className='header__a'>
+        <img
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Trello-logo-blue.svg/2560px-Trello-logo-blue.svg.png'
+          alt=''
+          className='main__logo'
+        />
+      </NavLink>
       <aside className='main__Description'>
         <h2 className='main__error'>UPS! PAGE NOT FOUND</h2>
       </aside>
@@ -23,6 +31,7 @@ function NotFound() {
         />
       </footer>
     </main>
+    
   );
 }
 
