@@ -1,14 +1,12 @@
-/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
+import { ReactSortable } from 'react-sortablejs';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
 
 function MainBoard() {
-  /*
- Este useState es para agregar cada columna de las tarjetas. Usa props para colocar el nombre 
-*/
-  const [columns, setColums] = useState([]);
+  const [columns, setColumns] = useState([]);
+  const [Task, setTask] = useState({});
 
   const handleSubmit = event => {
     if (event.code === 'Enter' && event.target.value !== '') {
@@ -17,13 +15,18 @@ function MainBoard() {
           name: event.target.value,
           id: Date.now(),
           tasks: [],
+          inputId: Date.now() + 1,
         };
-        setColums([...columns, newColumn]);
+        setColumns([...columns, newColumn]);
         event.target.value = '';
       } else {
         alert('The column name is too long');
       }
     }
+  };
+
+  const taskTaker = Taker => {
+    setTask(Taker);
   };
 
   return (
@@ -74,13 +77,25 @@ function MainBoard() {
               placeholder='+ Add a list'
             />
             <div>
-              <ul className='list__Columns__Board'>
+              <ReactSortable
+                list={columns}
+                setList={setColumns}
+                group='group'
+                animation={150}
+                className='list__Columns__Board'
+                delay={20}
+                chosenClass='sortable-chosen'
+                dragClass='sortable-drag'
+                ghostClass='sortable-ghost'
+                tag='ul'
+                handle='.columns__handler'
+              >
                 {columns.map(column => (
-                  <li key={column.id} className='colums'>
-                    <ToDo column={column} />
+                  <li key={column.id} className='columns'>
+                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
                   </li>
                 ))}
-              </ul>
+              </ReactSortable>
             </div>
           </div>
         </div>
