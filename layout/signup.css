@@ -1,144 +1,142 @@
 .signup__header {
-    display: flex;    
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .signup__header__logo {
-    display: block;
-    height: 43px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 40px;
+  display: block;
+  height: 43px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 .signup {
-    
-    display: block;    
-    padding: 10px;
-    height: 520px;
-    width: 350px;
-    text-align:center;    
-    background-color: #FFFFFF;
-    border-radius: 3px;
-    padding: 25px 40px;
-    box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    justify-content: space-around;
-    font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;    
+  display: block;
+  padding: 10px;
+  height: 520px;
+  width: 350px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 25px 40px;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: space-around;
+  font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1 {
-    text-align: center;
-    color: #5E6C84;
-    font-size: 16px;
-    letter-spacing: -0.01em;
-    line-height: 28px;
-    margin-top: 10px;
-    margin-bottom: 25px;
+  text-align: center;
+  color: #5e6c84;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .signup__email {
-    width:100%;
-    height: 44px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5E6C84;
-    background-color: #F9FAFC;
-    font: inherit;
-    border: 1px solid #CDD2D4;
-    border-radius: 5px;
-    box-sizing: border-box;    
+  width: 100%;
+  height: 44px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5e6c84;
+  background-color: #f9fafc;
+  font: inherit;
+  border: 1px solid #cdd2d4;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .signup__email:focus {
-    outline: none;
-    border:1px solid rgb(15, 74, 223);
-    box-shadow: 0 0 10px #719ECE;
-    transition-duration: 0.4s;
-  }
-
-.signup__politics {
-    text-align:justify;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #5E6C84;
+  outline: none;
+  border: 1px solid rgb(15, 74, 223);
+  box-shadow: 0 0 10px #719ece;
+  transition-duration: 0.4s;
 }
 
-.signup__button {    
-    color: hsl(0,0%,55%);
-    width:100%;
-    height: 8%;
-    font: inherit;
-    border: none;
-    background-color: rgba(123, 116, 116, 0.312);
-    border-radius: 5px;
-    cursor: pointer    
+.signup__politics {
+  text-align: justify;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5e6c84;
+}
+
+.signup__button {
+  color: hsl(0, 0%, 55%);
+  width: 100%;
+  height: 8%;
+  font: inherit;
+  border: none;
+  background-color: rgba(123, 116, 116, 0.312);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .signup__with {
-    display: block;    
+  display: block;
 }
 
 .signup__with__button {
-    width:100%;
-    margin-top: 10px;
-    font: inherit;
-    box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
-    border: antiquewhite;
-    background-color: #ffffff;
-    padding: 5px;
-    align-items: center;
-    border-radius: 5px;
-    text-align:center; 
-    vertical-align:middle;
-    color: #5E6C84;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;    
+  width: 100%;
+  margin-top: 10px;
+  font: inherit;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+  border: antiquewhite;
+  background-color: #ffffff;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  color: #5e6c84;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .signup__with__button:hover {
-    transition-duration: 0.4s;
-    background-color: #f6f6f6;    
-  }
+  transition-duration: 0.4s;
+  background-color: #f6f6f6;
+}
 
 .signup__with__img {
-    height: 18px;
-    width: 18px;
-    margin-top: 3px;
-    margin-right: 5px;
+  height: 18px;
+  width: 18px;
+  margin-top: 3px;
+  margin-right: 5px;
 }
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid hsl(0,0%,80%);
-    margin: 2em ;
-  
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid hsl(0, 0%, 80%);
+  margin: 2em;
 }
 .signup__language {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .signup__language-picker {
-    background: none;
-    border: 2px solid #EDEFF0;
-    height: 50px;
-    padding: 0.5em;
-    
+  background: none;
+  border: 2px solid #edeff0;
+  height: 50px;
+  padding: 0.5em;
 }
 
 a {
-    color: #0052CC;
-    text-decoration: none;
+  color: #0052cc;
+  text-decoration: none;
 }
