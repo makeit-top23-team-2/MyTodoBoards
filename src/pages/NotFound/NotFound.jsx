@@ -1,8 +1,8 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function NotFound() {
-  return (     
+  return (
     <main className='main'>
       <NavLink to='/' className='header__a'>
         <img
@@ -31,7 +31,6 @@ function NotFound() {
         />
       </footer>
     </main>
-    
   );
 }
 

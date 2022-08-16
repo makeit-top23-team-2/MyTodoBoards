@@ -44,12 +44,12 @@ function Footer() {
               </li>
             </ul>
           </div>
-          {/* <div className="footer__div__down">
-            <a className="redes" href="#"><i className="fa-brands fa-instagram"></i></a>
-            <a className="redes" href="#"><i className="fa-brands fa-facebook"></i></a>
-            <a className="redes" href="#"><i className="fa-brands fa-linkedin"></i></a>
-            <a className="redes" href="#"><i className="fa-brands fa-twitter"></i></a>
-            <a className="redes" href="#"><i className="fa-brands fa-youtube"></i></a>
+          {/* <div classNameName="footer__div__down">
+            <a classNameName="redes" href="#"><i classNameName="fa-brands fa-instagram"></i></a>
+            <a classNameName="redes" href="#"><i classNameName="fa-brands fa-facebook"></i></a>
+            <a classNameName="redes" href="#"><i classNameName="fa-brands fa-linkedin"></i></a>
+            <a classNameName="redes" href="#"><i classNameName="fa-brands fa-twitter"></i></a>
+            <a classNameName="redes" href="#"><i classNameName="fa-brands fa-youtube"></i></a>
           </div> */}
         </div>
       </section>
