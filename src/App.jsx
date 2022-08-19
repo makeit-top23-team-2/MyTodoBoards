@@ -10,6 +10,7 @@ import MainBoard from './pages/board';
 import Home from './pages/home';
 import ManageBoard from './pages/manageBoard';
 import NotFound from './pages/NotFound/NotFound';
+import ActivateAccount from './pages/ActivateAccount';
 
 /*
 components
@@ -24,6 +25,7 @@ function App() {
         <Route path='/board' element={<MainBoard />} />
         <Route path='/' element={<Home />} />
         <Route path='/manage_board' element={<ManageBoard />} />
+        <Route path='/ActivateAccount/:id' element={<ActivateAccount />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

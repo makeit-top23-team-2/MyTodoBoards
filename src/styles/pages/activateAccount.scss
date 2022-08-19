@@ -1,0 +1,30 @@
+.ActivateAccount{
+  height: 100vh;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ActivateAccount__container{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 80%;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  align-items: center;
+  justify-content: center;
+}
+.ActivateAccount__button{
+  display: inline;
+  width: 100px;
+}
+.ActivateAccount__image{
+  align-items: center;
+  justify-content: center;
+}
+.ActivateAccount__logo{
+  max-width: 80%;
+}
