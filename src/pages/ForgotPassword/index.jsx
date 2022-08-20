@@ -5,7 +5,9 @@ function ForgotPassword () {
   return (
     <div className="forgot">
       <main>
-        <img src="..\img\trello.png" alt="Logo Trello" className="forgot__logo"/> 
+        <NavLink to='/'>
+          <img src="..\img\trello.png" alt="Logo Trello" className="forgot__logo"/> 
+        </NavLink>
         <section className="forgot__section">
           <div className="forgot__section__container">
             <h1>Cannot Log in?</h1>
