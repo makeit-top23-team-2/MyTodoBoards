@@ -90,7 +90,7 @@ function LogIn() {
         <div className='login__cantlog'>
           <ul>
             <li>
-              <NavLink to=''>Can not log in?</NavLink>
+              <NavLink to='/forgot-password'>Can not log in?</NavLink>
             </li>
             <li>
               {' '}

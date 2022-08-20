@@ -11,6 +11,7 @@ import Home from './pages/home';
 import ManageBoard from './pages/manageBoard';
 import NotFound from './pages/NotFound/NotFound';
 import ActivateAccount from './pages/ActivateAccount';
+import ForgotPassword from './pages/ForgotPassword';
 
 /*
 components
@@ -26,6 +27,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/manage_board' element={<ManageBoard />} />
         <Route path='/ActivateAccount/:id' element={<ActivateAccount />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
