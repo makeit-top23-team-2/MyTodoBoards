@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+
+
+.profile__section1{
+  background: linear-gradient(to bottom, white, #F4F5F7);
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.profile__section1__photo {
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #5cb85c;
+  margin-right: 10px;
+}
+.profile__section1__name h1{
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #0C3953;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.profile__section2{
+  width: 530px;
+  display:block;
+  margin:auto;
+  background: white;
+  margin-top: 32px;
+  margin-bottom: 100px;
+}
+
+
+.profile__section2 img{
+  width: 100%;
+  margin: 18px 0.025px 42px;
+}
+.profile__section2__manage h1{
+  font-size: 24px;
+  color: #172B4D;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.profile__section2__about{
+  border-bottom: rgb(211, 204, 204) 1px solid;
+  margin: 0 10px;
+}
+h3{
+  margin: 0;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+h4{
+  margin: 0;
+  font-size: 14px;
+  color: #172B4D;
+  padding: 8px;
+  margin-left: 8px;
+}
+input{
+  margin-left: 8px;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  color: #172b4d;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  border-radius: 3px;
+  padding: 8px 12px;
+  box-shadow: inset 0 0 0 2px #dfe1e6;
+  background-color: #fafbfc;
+  width: 60%;
+  margin-bottom: 0;
+}
+input:hover{
+  background-color: #f0f1f5;
+}
+.profile__section2__about__userName{
+  margin: 10px 0;
+}
+.profile__section2__about__name{
+  margin: 10px 0;
+}
+
+.profile__section2__button{
+  width: 60%;
+  margin-top: 40px;
+  box-shadow: none;
+  border: none;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  text-decoration: none;
+  white-space: normal;
+  margin-left: 8px;
+}
+.profile__section2__button:hover{
+  background-color: #026AA7;
+  
+}
