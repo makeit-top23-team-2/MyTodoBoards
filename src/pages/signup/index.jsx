@@ -10,19 +10,15 @@ function SignUp() {
       </NavLink>
       <div className='signup__form'>
         <h1>Sign up for your account</h1>
-        <input
-          className='signup__email '
-          type='email'
-          name='email'
-          placeholder=' Enter email'
-        />
+        <NavLink to='/signUp-form'>
+          <button type='button' className='signup__button'>
+            <b>Sign Up</b>{' '}
+          </button>
+        </NavLink>
         <p className='signup__politics'>
           By signing up, you confirm that you have read and accepted our{' '}
           <a href='*'>Terms of Service</a> and <a href='*'>Privacy Policy</a>.
         </p>
-        <button type='button' className='signup__button'>
-          <b>Continue</b>{' '}
-        </button>
         <p>OR</p>
         <div className='signup__with'>
           <button type='button' className='signup__with__button'>

@@ -14,6 +14,7 @@ import ActivateAccount from './pages/ActivateAccount';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/profile';
 import ProfileSettings from './pages/profileSettings';
+import SignupForm from './pages/signupForm';
 /*
 components
 */
@@ -32,6 +33,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile_settings' element={<ProfileSettings />} />
+        <Route path='/signUp-form' element={<SignupForm />} />
       </Routes>
     </BrowserRouter>
   );
