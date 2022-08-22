@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import BurgerButton from './BurgerButton';
 
 function NavBar() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, /* setIsLogged */ ] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   return (
