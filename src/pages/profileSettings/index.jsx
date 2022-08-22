@@ -63,6 +63,9 @@ function ProfileSettings() {
             <NavLink to='/' className='profile__section2__about__deleteAcount'>
               <h4>Delete acount</h4>
             </NavLink>
+            <NavLink to='/' className='profile__section2__about__profilePhoto'>
+              <h4>Change profile photo</h4>
+            </NavLink>
           </div>
         </section>
       </section>
