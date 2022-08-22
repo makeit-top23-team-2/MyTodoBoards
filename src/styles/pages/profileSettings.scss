@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+*{
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.profile__section__buttonsInSettings{
+  background-color: #F4F5F7;
+  border-bottom: rgb(211, 204, 204) 1px solid;
+  height: 30px;
+  text-align: center;
+ }
+
+.profile__section__buttons__settingsInSettings {
+   background-color: white;
+   border-left: rgb(211, 204, 204) 1px solid;
+   border-right: rgb(211, 204, 204) 1px solid;
+   border-top: rgb(211, 204, 204) 1px solid;
+   border-top-left-radius: 3px 3px;
+   border-top-right-radius: 3px 3px;
+   color:#0C3959 ;
+   font-size: 15px;
+   font-weight: bold;
+   height: 100px;
+   margin: 2px 2px -1px 5px;
+   padding: 8px 20px 10px 20px;
+   width: 100px;
+ }
+ 
+.profile__section__buttons__profileInSettings{
+   background-color: #C1C7D0;
+   border-top-left-radius: 3px 3px;
+   border-top-right-radius: 3px 3px;
+   color:#0C3959 ;
+   font-size: 15px;
+   font-weight: bold;
+   height: 100px;
+   margin: 2px 5px 0px 2px;
+   padding: 8px 20px 8.5px 20px;
+   width: 100px; 
+ }
+ .profile__section__buttons__profileInSettings:hover{
+  background-color: #b2b5b8;
+ }
+ 
+
+.profile__settings{
+  background: white;
+  display:block;
+  margin:auto;
+  margin-bottom: 100px;
+  text-align: left;
+  width: 530px;
+}
+.profile__settings{
+  width: 80%;
+
+  h4{
+  margin: 0;
+  padding: 20px 10px;
+  text-align: center;
+  }
+}
+
+.profile__section2__about__changeEmail:hover{
+  background-color: #C1C7D0;
+  border-radius: 3px;
+}
+.profile__section2__about__changePassword:hover{
+  background-color: #C1C7D0;
+  border-radius: 3px;
+}
+.profile__section2__about__deleteAcount:hover{
+  background-color: #C1C7D0;
+  border-radius: 3px;
+}
+.profile__section2__manageAcount{
+  border-bottom: rgb(211, 204, 204) 1px solid;
+  height: 50px;
+  width: 100%;
+}
+  h1{
+    color: #172B4D;
+    font-size: 24px;
+    text-align: center;
+  }
+
+ @media (min-width: 768px) {
+
+ 
+  .profile__settings__detail{
+   display: flex;
+   justify-content: space-between;
+   padding-top: 30px;
+  }
+  .profile__section2__manageAcount{
+    border-bottom: rgb(211, 204, 204) 1px solid;
+    height: 50px;
+    width: 100%;
+  }
+    h1{
+      color: #172B4D;
+      font-size: 24px;
+      text-align: left;
+    }
+    .profile__settings{
+      width: 80%;
+    
+      h4{
+      margin: 0;
+      padding: 10px 15px;
+      text-align: center;
+      }
+    }
+  }
+  

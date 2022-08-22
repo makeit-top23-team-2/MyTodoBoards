@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound/NotFound';
 import ActivateAccount from './pages/ActivateAccount';
 import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/profile';
-
+import ProfileSettings from './pages/profileSettings';
 /*
 components
 */
@@ -31,6 +31,7 @@ function App() {
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/profile_settings' element={<ProfileSettings />} />
       </Routes>
     </BrowserRouter>
   );
