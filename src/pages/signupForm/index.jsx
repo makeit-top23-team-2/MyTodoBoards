@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { getUserByEmail, createUser } from '../../services/users';
 
 function SignupForm() {
+  const [form, setForm] = useState({});
+  console.log('🚀 ~ file: index.jsx ~ line 6 ~ SignupForm ~ form', form);
+
+  const handleLogin = e => {
+    e.preventDefault();
+    const newUser = async () => {
+      await createUser(form);
+    };
+    newUser();
+  };
+
+  const handleChange = e => {
+    const { value, name } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
   return (
     <div className='signupForm'>
       <NavLink to='/' className='signupForm__header'>
@@ -12,7 +29,7 @@ function SignupForm() {
           alt=''
         />
       </NavLink>
-      <div className='signupForm__form'>
+      <form className='signupForm__form' onSubmit={handleLogin}>
         <h1>Sign Up to Trello</h1>
         <input
           className='signupForm__email '
@@ -20,6 +37,7 @@ function SignupForm() {
           name='email'
           placeholder=' Enter email'
           required
+          onChange={handleChange}
         />
         <input
           className='signupForm__userName'
@@ -27,6 +45,7 @@ function SignupForm() {
           name='userName'
           placeholder=' Enter a user name'
           required
+          onChange={handleChange}
         />
         <input
           className='signupForm__name'
@@ -34,6 +53,7 @@ function SignupForm() {
           name='name'
           placeholder=' Enter your name'
           required
+          onChange={handleChange}
         />
         <input
           className='signupForm__lastName'
@@ -41,6 +61,7 @@ function SignupForm() {
           name='lastName'
           placeholder=' Enter your last name'
           required
+          onChange={handleChange}
         />
         <input
           className='signupForm__password'
@@ -48,6 +69,7 @@ function SignupForm() {
           name='password'
           placeholder=' Enter a password'
           required
+          onChange={handleChange}
         />
         <input
           className='signupForm__password'
@@ -55,14 +77,15 @@ function SignupForm() {
           name='cheking-password'
           placeholder=' Confirm your password'
           required
+          onChange={handleChange}
         />
 
-        <button type='button' className='signupForm__button'>
+        <button type='submit' className='signupForm__button'>
           <b>Sign Up</b>{' '}
         </button>
         <hr />
         <NavLink to='/login'>Already have an account? Log In</NavLink>
-      </div>
+      </form>
 
       <div className='signupForm__footer__img'>
         <img

@@ -28,7 +28,7 @@ function App() {
         <Route path='/board' element={<MainBoard />} />
         <Route path='/' element={<Home />} />
         <Route path='/manage_board' element={<ManageBoard />} />
-        <Route path='/ActivateAccount/:id' element={<ActivateAccount />} />
+        <Route path='/activate-account/:id' element={<ActivateAccount />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/profile' element={<Profile />} />
