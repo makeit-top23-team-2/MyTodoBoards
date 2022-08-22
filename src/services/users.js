@@ -6,13 +6,7 @@ export async function getUsers() {
 }
 
 export async function getUserByEmail(email) {
-  const response = await fetch(`${BASE_URL}/api/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(email),
-  });
+  const response = await fetch(`${BASE_URL}/api/users/${email}`, {});
   return response.json();
 }
 export async function getUserBy(name, value) {
