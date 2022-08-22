@@ -41,7 +41,9 @@
  .profile__section__buttons__profileInSettings:hover{
   background-color: #b2b5b8;
  }
- 
+ .profile__section2 h1{
+      text-align: center;
+}
 
 .profile__settings{
   background: white;
@@ -70,6 +72,10 @@
   border-radius: 3px;
 }
 .profile__section2__about__deleteAcount:hover{
+  background-color: #C1C7D0;
+  border-radius: 3px;
+}
+.profile__section2__about__profilePhoto:hover{
   background-color: #C1C7D0;
   border-radius: 3px;
 }
@@ -102,5 +108,10 @@
       text-align: center;
       }
     }
+    .profile__section2 h1{
+      text-align: left;
+}
+
+    
   }
   
