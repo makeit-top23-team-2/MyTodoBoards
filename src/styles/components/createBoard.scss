@@ -8,10 +8,10 @@
   border-radius: 3px;
   box-shadow: 0 8px 16px -4px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
   box-sizing: border-box;
-  left: 4px;
+  left: 10px;
   overflow: hidden;
-  position: fixed;
-  top: 90px;
+  position: absolute;
+  top: 100px;
   width: 304px;
   will-change: top, left;
 
@@ -159,6 +159,7 @@
       background-color: #fafbfc;
       width: 100%;
       margin-bottom: 0;
+      margin-left: 2px;
 
       &:hover {
         box-shadow: inset 0 0 0 2px #eb5a46;
@@ -206,56 +207,36 @@
         color: #a5adba;
         cursor: not-allowed;
       }
-    }
-
-    &__foooter {
-      color: #5e6c84;
-      margin-bottom: 8px;
-    }
-
-    &__text {
-      text-align: left;
-      font-family: 'Helvetica Neue', sans-serif;
-      font-size: 12px;
-    }
-
-    &__a {
-      color: #5e6c84;
-      cursor: pointer;
-      font-size: 12px;
-      line-height: 16px;
-      margin-left: 3px;
-      margin-right: 3px;
-    }
+    }    
   }
 }
 
 @media (min-width: 768px) {
   .board {
-    position: fixed;
+    position: absolute;
     width: 304px;
     will-change: top, left;
-    top: 90px;
-    left: 270px;
+    top: 110px;
+    left: 200px;
   }
 }
 
 @media (min-width: 992px) {
   .board {
-    position: fixed;
+    position: absolute;
     width: 304px;
     will-change: top, left;
-    top: 90px;
+    top: 110px;
     left: 400px;
   }
 }
 
-@media (min-width: 1290px) {
+@media (min-width: 1200px) {
   .board {
-    position: fixed;
+    position: absolute;
     width: 304px;
     will-change: top, left;
-    top: 90px;
-    left: 985px;
+    top: 110px;
+    left: 600px;
   }
 }
