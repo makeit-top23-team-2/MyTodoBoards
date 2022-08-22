@@ -6,6 +6,7 @@
 @import './components/createBoard.scss';
 @import './components/backgroundBoard.scss';
 @import './components/ToDoCards.scss';
+@import './components/BurgerButton';
 
 //Pages
 @import './pages/home.scss';
@@ -15,3 +16,7 @@
 @import './pages/manageBoard.scss';
 @import './pages/notFound.scss';
 @import './pages/notFound.scss';
+@import './pages/activateAccount.scss';
+@import './pages/forgotPassword.scss';
+@import './pages/profile.scss';
+@import './pages/profileSettings.scss'

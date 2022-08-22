@@ -1,16 +1,4 @@
-// *{
-//   padding: 0;
-//   margin: 0;
-//   text-decoration: none;
-//   list-style: none;
-//   box-sizing: border-box;
-//   font-family: "Charlie Text", sans-serif;
-// }
-// body{
-//   background-color: #293856;
-// }
-
-.header__nav {
+.navBar {
   background: #ffffff;
   height: 100px;
   width: 100%;
@@ -18,62 +6,66 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.header__logo {
+.navBar__logo {
   margin-left: 30px;
   height: 40px;
 }
-
-.header__ul {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: #ffffff;
-  top: 100px;
+.navBar__links{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  right: -700px;
+  top: 80px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
-  right: -100%;
-  transition: all 0.5s;
+  transition: 600ms;
+  background: rgb(36,53,85);
+  background: linear-gradient(13deg, rgba(36,53,85,1) 0%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 100%);
+  width: 100%;
+  height: 80vh;
+  z-index: 1;
 }
-.header__li {
-  display: block;
-  margin: 50px, 0;
-  line-height: 30px;
-  font-size: 30px;
-  padding-top: 60px;
-}
-.header__li :hover {
-  display: block;
-  background-color: dimgray;
-  color: #ffffff;
-}
-.header__check {
-  display: none;
-}
+.navBar__links--active{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: rgb(36,53,85);
+  background: linear-gradient(13deg, rgba(36,53,85,1) 0%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 100%);background-color: #025ed9;
+  transition: 600ms;
+  height: 90vh;
+  z-index: 1;
 
-.header__checkbtn {
-  font-size: 30px;
-  margin-right: 40px;
-  cursor: pointer;
 }
-.header__checkbtn :hover {
-  background-color: dimgray;
+.navBar__navLink{
+  color: #ffffff;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
-  .header__checkbtn {
-    display: none;
-  }
-  .header__ul {
-    //flex-basis: 15%;
-    justify-content: right;
-    position: static;
+  .navBar__links{
+    background: #ffffff;
+    position: initial;
+    height: 100%;
+    align-items: center;
+    justify-content: end;
+    right: 0px;
+    margin:0;
     display: flex;
-    top: 100px;
-    height: fit-content;
+    flex-direction: row;
+    margin-right: 10px;
   }
-  .header__li {
-    padding: 1.2%;
+  .navBar__navLink{
     font-size: 1rem;
-    margin: 1px;
+    margin: 15px;
+    color: #243555;
   }
 }
