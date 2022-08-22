@@ -5,10 +5,10 @@ import Footer from '../../components/Footer';
 import CreateBoard from '../../components/createBoard';
 
 function ManageBoard() {
-  const [modal, setModal] = useState(false);
+  const [isModalOpened, setIsModalOpened] = useState(false); 
 
-  const handleModal = () => {
-    setModal(!modal);
+  const handleOpenModal = () => {
+    setIsModalOpened(true);
   };
 
   return (
@@ -19,7 +19,7 @@ function ManageBoard() {
           <span className='container__span'>
             <i className='fa-solid fa-user' />
           </span>
-          <p className='container__p'>Your Boards</p>
+            <p className='container__p'>Your Boards</p>                  
         </header>
 
         <article className='container__article'>
@@ -30,11 +30,11 @@ function ManageBoard() {
                   <span className='container__article__span'>Homework</span>
                 </p>
               </NavLink>
-            </li>
+            </li>   
             <li className='container__article__li'>
               <button
                 type='button'
-                onClick={handleModal}
+                onClick={handleOpenModal}
                 className='container__article__a'
               >
                 <p className='container__article__p'>
@@ -46,7 +46,7 @@ function ManageBoard() {
         </article>
       </main>
 
-      <CreateBoard modal={modal} setModal={setModal} />
+      <CreateBoard isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened}/>
       <Footer />
     </div>
   );
