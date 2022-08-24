@@ -10,53 +10,36 @@ export async function getColumnById(id) {
   return response.json();
 }
 
-export async function getAllColumnsByBoardId(boardId) {
-  const response = await fetch(`${BASE_URL}/api/columns/${boardId}`);
+export async function getColumnByBoardId(id) {
+  const response = await fetch(`${BASE_URL}/api/columns/board/${id}`);
   return response.json();
 }
 
-export async function createColumn(column, token) {
-  const response = await fetch(`${BASE_URL}/api/columns`, {
+export async function createColumnByBoardId(id, column) {
+  const response = await fetch(`${BASE_URL}/api/columns/board/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(column),
   });
   return response.json();
 }
 
-export async function updateColumn(id, column, token) {
+export async function updateColumn(id, column) {
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(column),
   });
   return response.json();
 }
 
-export async function deleteColumn(id, token) {
+export async function deleteColumn(id) {
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'DELETE',
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
-  return response.json();
-}
-
-export async function moveColumn(id, column, token) {
-  const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(column),
   });
   return response.json();
 }
