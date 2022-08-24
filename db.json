@@ -114,6 +114,15 @@
           ]
         }
       ]
+    },
+    {
+      "email": "cmauricio.arango@gmail.com",
+      "userName": "ffyto",
+      "name": "Mauricio",
+      "lastName": "Arango",
+      "password": "12345",
+      "cheking-password": "12345",
+      "id": 5
     }
   ]
 }

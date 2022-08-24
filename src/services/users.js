@@ -1,12 +1,17 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export async function getUsers() {
-  const response = await fetch(`${BASE_URL}`);
+  const response = await fetch(`${BASE_URL}/api/users/`);
   return response.json();
 }
 
 export async function getUserByEmail(email) {
   const response = await fetch(`${BASE_URL}/api/users/${email}`, {});
+  return response.json();
+}
+
+export async function getUserByUserName(userName) {
+  const response = await fetch(`${BASE_URL}/api/users/user/${userName}`, {});
   return response.json();
 }
 
@@ -18,10 +23,10 @@ export async function getUserBy(name, value) {
 export async function createUser(user) {
   const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'POST',
+    body: JSON.stringify(user),
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(user),
   });
   return response.text();
 }
