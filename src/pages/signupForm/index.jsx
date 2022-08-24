@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserByEmail, createUser } from '../../services/users';
+import {
+  getUserByEmail,
+  createUser,
+  getUserByUserName,
+} from '../../services/users';
 
 function SignupForm() {
   const [form, setForm] = useState({});
@@ -11,10 +15,16 @@ function SignupForm() {
     e.preventDefault();
     const newUser = async () => {
       const user = await getUserByEmail(form.email);
+      const user1 = await getUserByUserName(form.userName);
+      console.log('form', form.userName);
+      console.log('form', typeof form.userName);
+      console.log('DataBase', user.userName);
+      console.log('DataBase', typeof user.userName);
+      console.log('userName from FindUser', user1);
 
       if (user.email) {
         alert('This email is already registered');
-      } else if (form.userName === user.userName) {
+      } else if (user1.userName === form.userName) {
         alert('This user name is already used');
       } else {
         await createUser(form);

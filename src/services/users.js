@@ -1,7 +1,3 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
-
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export async function getUsers() {
@@ -11,6 +7,11 @@ export async function getUsers() {
 
 export async function getUserByEmail(email) {
   const response = await fetch(`${BASE_URL}/api/users/${email}`, {});
+  return response.json();
+}
+
+export async function getUserByUserName(userName) {
+  const response = await fetch(`${BASE_URL}/api/users/user/${userName}`, {});
   return response.json();
 }
 
