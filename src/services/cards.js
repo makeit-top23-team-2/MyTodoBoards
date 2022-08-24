@@ -17,7 +17,7 @@ export async function createCard(id, newCard) {
 }
   
 export async function updateCard(id, newCard) {
-  const response = await fetch(`${BASE_URL}/api/cards/column/${id}`, {
+  const response = await fetch(`${BASE_URL}/api/cards/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
