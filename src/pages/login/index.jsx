@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserBy } from '../../services/users';
+import { useDispatch } from 'react-redux';
+import { addProfile } from '../../store/profileSlice';
+import { login } from '../../services/auth';
 
 function LogIn() {
   const navigate = useNavigate();
   const [form, setForm] = useState({});
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const fetchData = async () => {
+    const response = await login(form.email, form.password);
+
+    const { profile, token } = response;
+
+    if (profile) {
+      dispatch(addProfile());
+      localStorage.setItem('token', token);
+      localStorage.setItem('profile', JSON.stringify(profile));
+      navigate(`/manage-board/${profile.userName}`, { replace: true });
+    } else {
+      alert('invalid credentials');
+    }
+  };
+
+  const handleLogin = e => {
     e.preventDefault();
-    const fetchData = async () => {
-      const findUser = await getUserBy('email', form.email);
-      if (findUser[0]?.email === form?.email && findUser[0]?.password === form?.password) {
-        navigate(`/manage_board/${findUser[0].id}`, { replace: true });
-      }else{
-        alert('invalid credentials');
-      }
-    };
     fetchData();
   };
 
