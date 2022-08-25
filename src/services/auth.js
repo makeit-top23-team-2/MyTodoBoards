@@ -3,7 +3,10 @@ const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 export async function login(email, password) {
   const response = await fetch(`${BASE_URL}/auth/local/login`, {
     method: 'POST',
-    body: JSON.stringify({email, password}),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
   });
   return response.json();
 }
