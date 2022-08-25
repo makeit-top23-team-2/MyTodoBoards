@@ -14,6 +14,9 @@ export async function login(email, password) {
 export async function forgotPassword(email) {
   const response = await fetch(`${BASE_URL}/auth/forgot-password`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: {
       email,
     },
@@ -24,6 +27,9 @@ export async function forgotPassword(email) {
 export async function changePassword(token, email) {
   const response = await fetch(`${BASE_URL}/auth/change-password/${token}`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: {
       email,
     },
@@ -33,6 +39,9 @@ export async function changePassword(token, email) {
 export async function verifyAccount(token, email) {
   const response = await fetch(`${BASE_URL}/auth/verify-account/${token}`, {
     method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: {
       email,
     },

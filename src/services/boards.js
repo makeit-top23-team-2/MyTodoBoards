@@ -27,6 +27,7 @@ export async function updateBoard(id, updateBoardData, token) {
     method: 'PATCH',
     body: JSON.stringify(updateBoardData),
     headers: {
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   });
@@ -37,6 +38,7 @@ export async function deleteBoard(id, token) {
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'DELETE',
     headers: {
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   });
