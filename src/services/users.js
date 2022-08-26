@@ -6,7 +6,7 @@ export async function getUsers() {
 }
 
 export async function getUserByEmail(email) {
-  const response = await fetch(`${BASE_URL}/api/users/${email}`, {});
+  const response = await fetch(`${BASE_URL}/api/users/email/${email}`, {});
   return response.json();
 }
 
@@ -15,8 +15,15 @@ export async function getUserByUserName(userName) {
   return response.json();
 }
 
-export async function getUserBy(name, value) {
-  const response = await fetch(`${BASE_URL}/api/users${name}_like=${value}`);
+export async function getUserByUserName1(userName) {
+  const token = localStorage.getItem('token');
+  const options = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await fetch(
+    `${BASE_URL}/api/users/user/${userName}`,
+    options
+  );
   return response.json();
 }
 

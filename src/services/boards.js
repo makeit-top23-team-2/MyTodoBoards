@@ -10,6 +10,11 @@ export async function getBoardById(id) {
   return response.json();
 }
 
+export async function getAllUserBoards(ownerId) {
+  const response = await fetch(`${BASE_URL}/api/boards/user/${ownerId}`, {});
+  return response.json();
+}
+
 export async function createBoard(BoardData, token) {
   const response = await fetch(`${BASE_URL}/api/boards`, {
     method: 'POST',
