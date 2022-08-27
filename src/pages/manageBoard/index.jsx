@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import CreateBoard from '../../components/createBoard';
 import { getAllUserBoards } from '../../services/boards';
-import { addBoard } from '../../store/boardSlice';
+import { setBoards } from '../../store/boardsSlice';
 
 function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const boards = useSelector(state => state.board.value);
+  const boards = useSelector(state => state.boards.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       const Boards = await getAllUserBoards();
 
-      dispatch(addBoard(Boards));
+      dispatch(setBoards(Boards));
     };
     fetchData();
   }, []);
@@ -52,8 +52,8 @@ function ManageBoard() {
             {boards.map
               ? boards.map(board => (
                   <li className='container__article__li__item' key={board.key}>
-                    <NavLink
-                      to={`/board/${board.title}}`}
+                    <Link
+                      to={`/board/${board.title}/${board.key}`}
                       className='container__article__a__item'
                     >
                       <p className='container__article__p__item'>
@@ -61,7 +61,7 @@ function ManageBoard() {
                           {board.title}
                         </span>
                       </p>
-                    </NavLink>
+                    </Link>
                   </li>
                 ))
               : null}

@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import profileReducer from './profileSlice';
-import boardReducer from './boardSlice';
+import boardsReducer from './boardsSlice';
+import columnsReducer from './columnsSlice';
+import singleBoardReducer from './singleBoardSlice';
 
 export default configureStore({
   reducer: {
     profile: profileReducer,
-    board: boardReducer,
+    boards: boardsReducer,
+    singleBoard: singleBoardReducer,
+    columns: columnsReducer,
   },
 });

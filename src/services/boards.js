@@ -11,6 +11,11 @@ export async function getBoardById(id) {
   return response.json();
 }
 
+/* export async function getBoardByKey(key) {
+  const response = await fetch(`${BASE_URL}/api/boards/${key}`, {});
+  return response.json();
+} */
+
 export async function getAllUserBoards() {
   const options = {
     method: 'GET',
@@ -29,6 +34,7 @@ export async function createBoard(BoardData) {
       authorization: `Bearer ${token}`,
     },
   });
+  console.log('🚀 ~ file: boards.js ~ line 31 ~ createBoard ~ token', token);
   return response.text();
 }
 

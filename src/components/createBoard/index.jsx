@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
+import { createBoard } from '../../services/boards';
 import BackgroundBoard from '../backgroundBoard';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
+  const navigate = useNavigate();
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -16,6 +19,9 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
   const handleForm = e => {
     e.preventDefault();
+    console.log('🚀 ~ file: index.jsx ~ line 23 ~ handleForm ~ task', task);
+    createBoard(task);
+    navigate(`/manage-board/${task}`, { replace: true });
     setTask('');
   };
 

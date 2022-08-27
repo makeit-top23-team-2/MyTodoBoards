@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { verifyAccount } from '../../services/auth';
-import { addProfile } from '../../store/profileSlice';
+import { setProfile } from '../../store/profileSlice';
 
 function ActivateAccount() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function ActivateAccount() {
       const { jwtoken, profile, message } = response;
       localStorage.setItem('token', jwtoken);
       localStorage.setItem('profile', JSON.stringify(profile));
-      dispatch(addProfile(profile));
+      dispatch(setProfile(profile));
       alert(message);
       navigate(`/manage-board/${user.userName}`, { replace: true });
     }

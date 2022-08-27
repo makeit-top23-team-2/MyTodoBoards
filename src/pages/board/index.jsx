@@ -1,12 +1,35 @@
-import React, { useState } from 'react';
+/* eslint-disable react/jsx-no-bind */
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ReactSortable } from 'react-sortablejs';
+import { useParams } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
+import { getBoardById } from '../../services/boards';
+import { setSingleBoard } from '../../store/singleBoardSlice';
+import { setColumns } from '../../store/columnsSlice';
 
 function MainBoard() {
-  const [columns, setColumns] = useState([]);
+  // const [columns, setColumns] = useState([]);
   const [Task, setTask] = useState({});
+  const dispatch = useDispatch();
+  const singleBoard = useSelector(state => state.singleBoard.value);
+  const columns = useSelector(state => state.columns.value);
+
+  const { id } = useParams();
+  let list = [];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const SingleBoard = await getBoardById(id);
+      const { Columns } = SingleBoard;
+      dispatch(setSingleBoard(SingleBoard));
+      dispatch(setColumns(Columns));
+      list = Columns;
+    };
+    fetchData();
+  }, []);
 
   const handleSubmit = event => {
     if (event.code === 'Enter' && event.target.value !== '') {
@@ -29,20 +52,24 @@ function MainBoard() {
     setTask(Taker);
   };
 
+  function setList(List) {
+    dispatch(setColumns(List));
+  }
+
   return (
     <div>
       <NavBar />
       <div className='mainBoard'>
         <header className='headerBoard'>
-          <input className='nameBoard' type='text' placeholder=' Tittle' />
+          <input
+            className='nameBoard'
+            type='text'
+            placeholder=' Write a Tittle'
+            defaultValue={singleBoard.title}
+          />
           <a href='/'>
             {' '}
             <img className='iconsBoard' src='..\img\star-regular.png' alt='' />
-          </a>
-          <a href='/'>Workspaces name</a>
-          <a href='/'>
-            <img className='iconsBoard' src='..\img\users-solid.png' alt='' />{' '}
-            Workspace visible
           </a>
           <a href='/'>
             <img
@@ -51,18 +78,6 @@ function MainBoard() {
               alt=''
             />{' '}
             Share
-          </a>
-          <a href='/'>
-            <img className='iconsBoard' src='..\img\filter-solid.png' alt='' />{' '}
-            Filter
-          </a>
-          <a href='/'>
-            <img
-              className='iconsBoard'
-              src='..\img\ellipsis-h-solid.png'
-              alt=''
-            />{' '}
-            Show menu
           </a>
         </header>
       </div>
@@ -78,8 +93,8 @@ function MainBoard() {
             />
             <div>
               <ReactSortable
-                list={columns}
-                setList={setColumns}
+                list={list}
+                setList={setList}
                 group='group'
                 animation={150}
                 className='list__Columns__Board'
@@ -90,11 +105,17 @@ function MainBoard() {
                 tag='ul'
                 handle='.columns__handler'
               >
-                {columns.map(column => (
-                  <li key={column.id} className='columns'>
-                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
-                  </li>
-                ))}
+                {singleBoard.columns
+                  ? singleBoard.columns.map(column => (
+                      <li key={column.id} className='columns'>
+                        <ToDo
+                          column={column}
+                          taskTaker={taskTaker}
+                          Task={Task}
+                        />
+                      </li>
+                    ))
+                  : null}
               </ReactSortable>
             </div>
           </div>

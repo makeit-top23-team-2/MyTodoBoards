@@ -6,11 +6,11 @@ export const profileSlice = createSlice({
     value: JSON.parse(localStorage.getItem('profile')),
   },
   reducers: {
-    addProfile: (state, action) => {
+    setProfile: (state, action) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { addProfile } = profileSlice.actions;
+export const { setProfile } = profileSlice.actions;
 export default profileSlice.reducer;

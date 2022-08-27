@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addProfile } from '../../store/profileSlice';
+import { setProfile } from '../../store/profileSlice';
 import { login } from '../../services/auth';
 
 function LogIn() {
@@ -15,7 +15,7 @@ function LogIn() {
     const { profile, jwtoken } = response;
 
     if (profile) {
-      dispatch(addProfile());
+      dispatch(setProfile());
       localStorage.setItem('token', jwtoken);
       localStorage.setItem('profile', JSON.stringify(profile));
       navigate(`/manage-board/${profile.userName}`, { replace: true });
