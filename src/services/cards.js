@@ -1,11 +1,12 @@
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const token = localStorage.getItem('token');
 
 export async function getCards(id) {
   const response = await fetch(`${BASE_URL}/api/cards/column/${id}`);
   return response.json();
 }
 
-export async function createCard(id, newCard, token) {
+export async function createCard(id, newCard) {
   const response = await fetch(`${BASE_URL}/api/cards/column/${id}`, {
     method: 'POST',
     headers: {
@@ -17,7 +18,7 @@ export async function createCard(id, newCard, token) {
   return response.json();
 }
 
-export async function updateCard(id, newCard, token) {
+export async function updateCard(id, newCard) {
   const response = await fetch(`${BASE_URL}/api/cards/${id}`, {
     method: 'PATCH',
     headers: {
@@ -29,7 +30,7 @@ export async function updateCard(id, newCard, token) {
   return response.json();
 }
 
-export async function deleteCard(id, token) {
+export async function deleteCard(id) {
   const response = await fetch(`${BASE_URL}/api/cards/${id}`, {
     method: 'DELETE',
     headers: {

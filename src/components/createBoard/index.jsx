@@ -5,7 +5,6 @@ import BackgroundBoard from '../backgroundBoard';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
-  console.log('🚀 ~ file: index.jsx ~ line 8 ~ CreateBoard ~ task', task);
 
   const handleCloseModal = () => {
     setIsModalOpened(false);

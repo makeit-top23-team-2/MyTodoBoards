@@ -24,7 +24,7 @@ export async function forgotPassword(email) {
   return response.json();
 }
 
-export async function changePassword(token, email) {
+export async function changePassword(token, password) {
   const response = await fetch(
     `${BASE_URL}/auth/local/change-password/${token}`,
     {
@@ -33,7 +33,7 @@ export async function changePassword(token, email) {
         'Content-Type': 'application/json',
       },
       body: {
-        email,
+        password,
       },
     }
   );

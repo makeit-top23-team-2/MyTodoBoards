@@ -4,18 +4,19 @@ import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import CreateBoard from '../../components/createBoard';
-import { getUserByUserName } from '../../services/users';
-import { addProfile } from '../../store/profileSlice';
+import { getAllUserBoards } from '../../services/boards';
+import { addBoard } from '../../store/boardSlice';
 
 function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
-  const profile = useSelector(state => state.profile.value);
+  const boards = useSelector(state => state.board.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
-      const user = await getUserByUserName(profile.userName);
-      dispatch(addProfile(user));
+      const Boards = await getAllUserBoards();
+
+      dispatch(addBoard(Boards));
     };
     fetchData();
   }, []);
@@ -48,13 +49,22 @@ function ManageBoard() {
                 </p>
               </button>
             </li>
-            <li className='container__article__li__item'>
-              <NavLink to='/board' className='container__article__a__item'>
-                <p className='container__article__p__item'>
-                  <span className='container__article__span'>Homework</span>
-                </p>
-              </NavLink>
-            </li>
+            {boards.map
+              ? boards.map(board => (
+                  <li className='container__article__li__item' key={board.key}>
+                    <NavLink
+                      to={`/board/${board.title}}`}
+                      className='container__article__a__item'
+                    >
+                      <p className='container__article__p__item'>
+                        <span className='container__article__span'>
+                          {board.title}
+                        </span>
+                      </p>
+                    </NavLink>
+                  </li>
+                ))
+              : null}
           </ul>
         </article>
       </main>
