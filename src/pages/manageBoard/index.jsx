@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import CreateBoard from '../../components/createBoard';
+import { getAllUserBoards } from '../../services/boards';
+import { setBoards } from '../../store/boardsSlice';
 
 function ManageBoard() {
-  const [isModalOpened, setIsModalOpened] = useState(false); 
+  const [isModalOpened, setIsModalOpened] = useState(false);
+  const boards = useSelector(state => state.boards.value);
+  const dispatch = useDispatch();
+
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const Boards = await getAllUserBoards(token);
+
+      dispatch(setBoards(Boards));
+    };
+    fetchData();
+  }, []);
 
   const handleOpenModal = () => {
     setIsModalOpened(true);
@@ -19,18 +35,11 @@ function ManageBoard() {
           <span className='container__span'>
             <i className='fa-solid fa-user' />
           </span>
-            <p className='container__p'>Your Boards</p>                  
+          <p className='container__p'>Your Boards</p>
         </header>
 
         <article className='container__article'>
           <ul className='container__article__ul'>
-            <li className='container__article__li__item'>
-              <NavLink to='/board' className='container__article__a__item'>
-                <p className='container__article__p__item'>
-                  <span className='container__article__span'>Homework</span>
-                </p>
-              </NavLink>
-            </li>   
             <li className='container__article__li'>
               <button
                 type='button'
@@ -42,11 +51,30 @@ function ManageBoard() {
                 </p>
               </button>
             </li>
+            {boards.length
+              ? boards.map(board => (
+                  <li className='container__article__li__item' key={board._id}>
+                    <Link
+                      to={`/board/${board.title}/${board._id}`}
+                      className='container__article__a__item'
+                    >
+                      <p className='container__article__p__item'>
+                        <span className='container__article__span'>
+                          {board.title}
+                        </span>
+                      </p>
+                    </Link>
+                  </li>
+                ))
+              : null}
           </ul>
         </article>
       </main>
 
-      <CreateBoard isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened}/>
+      <CreateBoard
+        isModalOpened={isModalOpened}
+        setIsModalOpened={setIsModalOpened}
+      />
       <Footer />
     </div>
   );

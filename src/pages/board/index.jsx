@@ -1,23 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ReactSortable } from 'react-sortablejs';
+import { useParams } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
+import { getBoardById, updateBoard } from '../../services/boards';
+import { setSingleBoard } from '../../store/singleBoardSlice';
+import { setColumns } from '../../store/columnsSlice';
+import { createColumnByBoardId } from '../../services/columns';
 
 function MainBoard() {
-  const [columns, setColumns] = useState([]);
+  const [columns, setColumns1] = useState([]);
   const [Task, setTask] = useState({});
+  const dispatch = useDispatch();
+  const singleBoard = useSelector(state => state.singleBoard.value);
+  const { id } = useParams();
+  const token = localStorage.getItem('token');
 
-  const handleSubmit = event => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const board = await getBoardById(id);
+      const boardColumns = board.columns;
+      dispatch(setSingleBoard(board));
+      dispatch(setColumns(boardColumns));
+      setColumns1(boardColumns.map(column => ({ ...column, id: column._id })));
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const boardUpdate = async () => {
+      await updateBoard(id, { columns }, token);
+      const columnsOrdered = columns.map(column => ({
+        ...column,
+        chosen: false,
+      }));
+      dispatch(setColumns(columnsOrdered));
+      dispatch(setSingleBoard(singleBoard));
+    };
+    if (columns.length) {
+      boardUpdate();
+    }
+  }, [columns]);
+
+  const handleSubmit = async event => {
     if (event.code === 'Enter' && event.target.value !== '') {
       if (event.target.value.length < 20) {
-        const newColumn = {
-          name: event.target.value,
-          id: Date.now(),
-          tasks: [],
-          inputId: Date.now() + 1,
-        };
-        setColumns([...columns, newColumn]);
+        const columnTitle = event.target.value;
+        const newColumn = await createColumnByBoardId(id, {
+          title: columnTitle,
+        });
+        newColumn.id = newColumn._id;
+        setColumns1([...columns, newColumn]);
         event.target.value = '';
       } else {
         alert('The column name is too long');
@@ -34,16 +69,17 @@ function MainBoard() {
       <NavBar />
       <div className='mainBoard'>
         <header className='headerBoard'>
-          <input className='nameBoard' type='text' placeholder=' Tittle' />
-          <a href='/'>
+          <input
+            className='nameBoard'
+            type='text'
+            placeholder=' Write a title for this board'
+            defaultValue={singleBoard.title}
+          />
+          {/*           <a href='/'>
             {' '}
             <img className='iconsBoard' src='..\img\star-regular.png' alt='' />
-          </a>
-          <a href='/'>Workspaces name</a>
-          <a href='/'>
-            <img className='iconsBoard' src='..\img\users-solid.png' alt='' />{' '}
-            Workspace visible
-          </a>
+          </a> */}
+
           <a href='/'>
             <img
               className='iconsBoard'
@@ -51,18 +87,6 @@ function MainBoard() {
               alt=''
             />{' '}
             Share
-          </a>
-          <a href='/'>
-            <img className='iconsBoard' src='..\img\filter-solid.png' alt='' />{' '}
-            Filter
-          </a>
-          <a href='/'>
-            <img
-              className='iconsBoard'
-              src='..\img\ellipsis-h-solid.png'
-              alt=''
-            />{' '}
-            Show menu
           </a>
         </header>
       </div>
@@ -79,7 +103,7 @@ function MainBoard() {
             <div>
               <ReactSortable
                 list={columns}
-                setList={setColumns}
+                setList={setColumns1}
                 group='group'
                 animation={150}
                 className='list__Columns__Board'
@@ -90,7 +114,7 @@ function MainBoard() {
                 tag='ul'
                 handle='.columns__handler'
               >
-                {columns.map(column => (
+                {columns?.map(column => (
                   <li key={column.id} className='columns'>
                     <ToDo column={column} taskTaker={taskTaker} Task={Task} />
                   </li>

@@ -25,14 +25,17 @@ function App() {
       <Routes>
         <Route path='/signUp' element={<SignUp />} />
         <Route path='/logIn' element={<LogIn />} />
-        <Route path='/board' element={<MainBoard />} />
+        <Route path='/board/:title/:id' element={<MainBoard />} />
         <Route path='/' element={<Home />} />
         <Route path='/manage-board/:userName' element={<ManageBoard />} />
         <Route path='/activate-account/:token' element={<ActivateAccount />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/profile-settings' element={<ProfileSettings />} />
+        <Route path='/profile/:userName' element={<Profile />} />
+        <Route
+          path='/profile-settings/:userName'
+          element={<ProfileSettings />}
+        />
         <Route path='/signUp-form' element={<SignupForm />} />
       </Routes>
     </BrowserRouter>

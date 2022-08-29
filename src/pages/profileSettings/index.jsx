@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
-import { profile } from '../profile/index';
 
-const { name, lastName, img } = profile;
 function ProfileSettings() {
+  const prof = localStorage.getItem('profile');
+  const profile = JSON.parse(prof);
+
   return (
     <div>
       <NavBar />
@@ -12,20 +13,20 @@ function ProfileSettings() {
         <div className='profile__section1__photo'>
           <img
             className='profile__section1__photo__img'
-            src={img}
+            src={profile.avatar}
             alt=''
           />
         </div>
         <div className='profile__section1__name'>
           <h1 className='profile__section1__name__title'>
-            {name} {lastName}
+            {profile.name} {profile.lastName}
           </h1>
         </div>
       </section>
 
       <section className='profile__section__buttons'>
         <NavLink
-          to='/profile'
+          to={`/profile/${profile.userName}`}
           className='profile__section__buttons__profileInSettings'
         >
           Profile
@@ -47,24 +48,21 @@ function ProfileSettings() {
           />
         </div>
         <div className='profile__section2__manageAcount'>
-          <h1>Manage your acount</h1>
+          <h1>Manage your Account</h1>
         </div>
         <section className='profile__settings'>
           <div className='profile__settings__detail'>
-            <NavLink to='/' className='profile__section2__about__changeEmail'>
-              <h4>Change email</h4>
-            </NavLink>
             <NavLink
               to='/'
               className='profile__section2__about__changePassword'
             >
-              <h4>Change password</h4>
-            </NavLink>
-            <NavLink to='/' className='profile__section2__about__deleteAcount'>
-              <h4>Delete acount</h4>
+              <h4>Change Password</h4>
             </NavLink>
             <NavLink to='/' className='profile__section2__about__profilePhoto'>
-              <h4>Change profile photo</h4>
+              <h4>Change Profile Photo</h4>
+            </NavLink>
+            <NavLink to='/' className='profile__section2__about__deleteAcount'>
+              <h4>Delete Account</h4>
             </NavLink>
           </div>
         </section>

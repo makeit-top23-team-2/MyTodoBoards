@@ -12,7 +12,7 @@ export async function login(email, password) {
 }
 
 export async function forgotPassword(email) {
-  const response = await fetch(`${BASE_URL}/auth/forgot-password`, {
+  const response = await fetch(`${BASE_URL}/auth/local/forgot-password`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -24,27 +24,31 @@ export async function forgotPassword(email) {
   return response.json();
 }
 
-export async function changePassword(token, email) {
-  const response = await fetch(`${BASE_URL}/auth/change-password/${token}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: {
-      email,
-    },
-  });
+export async function changePassword(token, password) {
+  const response = await fetch(
+    `${BASE_URL}/auth/local/change-password/${token}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: {
+        password,
+      },
+    }
+  );
   return response.json();
 }
-export async function verifyAccount(token, email) {
-  const response = await fetch(`${BASE_URL}/auth/verify-account/${token}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: {
-      email,
-    },
-  });
+export async function verifyAccount(token) {
+  console.log('🚀 ~ file: auth.js ~ line 43 ~ verifyAccount ~ token', token);
+  const response = await fetch(
+    `${BASE_URL}/auth/local/verify-account/${token}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
   return response.json();
 }

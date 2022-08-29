@@ -1,35 +1,47 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
+import { createBoard } from '../../services/boards';
 import BackgroundBoard from '../backgroundBoard';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
-  
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
   const handleCloseModal = () => {
     setIsModalOpened(false);
-  }
-  
+  };
+
   const handleInput = e => {
     setTask(e.target.value);
   };
 
-  const handleForm = e => {
+  const handleForm = async e => {
     e.preventDefault();
+    const board = await createBoard({ title: task }, token);
+    console.log('🚀 ~ file: index.jsx ~ line 25 ~ handleForm ~ board', board);
     setTask('');
+
+    navigate(`/board/${board.title}/${board._id}`);
+
+    console.log(
+      '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.title',
+      board.title
+    );
   };
 
   return createPortal(
     <div>
-    
       {isModalOpened && (
-        <div>  
+        <div>
           <main className='board'>
             <header className='board__header'>
               <div className='board__header__div'>Create Board</div>
               <button
                 type='button'
-                className='board__header__button'                
+                className='board__header__button'
                 onClick={handleCloseModal}
               >
                 <i className='fa-solid fa-xmark' />
@@ -71,18 +83,18 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                     👋 Board title is required
                   </span>
                   <button
-                    type='button'
+                    type='submit'
                     className='board__section__button'
                     disabled={task.length > 3 ? '' : 'disabled'}
                   >
                     Create
                   </button>
                 </div>
-              </form>              
+              </form>
             </section>
           </main>
         </div>
-        )}    
+      )}
     </div>,
     document.getElementById('modal')
   );
@@ -90,7 +102,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
 CreateBoard.propTypes = {
   isModalOpened: PropTypes.bool,
-  setIsModalOpened:  PropTypes.func,
+  setIsModalOpened: PropTypes.func,
 };
 CreateBoard.defaultProps = {
   isModalOpened: false,

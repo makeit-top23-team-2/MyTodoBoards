@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addProfile } from '../../store/profileSlice';
+import { setProfile } from '../../store/profileSlice';
 import { login } from '../../services/auth';
 
 function LogIn() {
@@ -12,13 +12,13 @@ function LogIn() {
   const fetchData = async () => {
     const response = await login(form.email, form.password);
 
-    const { profile, token } = response;
+    const { profile, jwtoken } = response;
 
     if (profile) {
-      dispatch(addProfile());
-      localStorage.setItem('token', token);
+      dispatch(setProfile(profile));
+      localStorage.setItem('token', jwtoken);
       localStorage.setItem('profile', JSON.stringify(profile));
-      navigate(`/manage-board/${profile.userName}`, { replace: true });
+      navigate(`/manage-board/${profile.userName}`);
     } else {
       alert('invalid credentials');
     }
@@ -52,14 +52,14 @@ function LogIn() {
           className='login__email '
           type='email'
           name='email'
-          placeholder=' Enter email'
+          placeholder=' Enter email *'
           onChange={handleChange}
         />
         <input
           className='login__password '
           type='password'
           name='password'
-          placeholder=' Enter password'
+          placeholder=' Enter password *'
           onChange={handleChange}
         />
         <button type='submit' className='login__button'>
