@@ -15,6 +15,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/profile';
 import ProfileSettings from './pages/profileSettings';
 import SignupForm from './pages/signupForm';
+import ModalCard from './components/modalCard';
 /*
 components
 */
@@ -34,6 +35,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile-settings' element={<ProfileSettings />} />
         <Route path='/signUp-form' element={<SignupForm />} />
+        <Route path='/modal-card' element={<ModalCard />} />
       </Routes>
     </BrowserRouter>
   );
