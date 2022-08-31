@@ -6,7 +6,7 @@ export const handlerChange = (e, setTexto) => {
 
 export const handlerSubmit = async (
   e,
-  Texto,
+  texto,
   column,
   tasks,
   setTasks,
@@ -14,7 +14,7 @@ export const handlerSubmit = async (
 ) => {
   e.preventDefault();
   const object = {
-    title: Texto,
+    title: texto,
     checked: false,
     columnId: column.id,
     column: column.id,

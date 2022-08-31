@@ -28,14 +28,14 @@ export async function createColumnByBoardId(id, column) {
   return response.json();
 }
 
-export async function updateColumn(id, column) {
+export async function updateColumn(id, updateColumnData) {
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(column),
+    body: JSON.stringify(updateColumnData),
   });
   return response.json();
 }

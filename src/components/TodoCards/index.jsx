@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 import { useSelector } from 'react-redux';
 
 import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
+import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
 
-function ToDo({ column, taskTaker, Task }) {
+function ToDo({ column }) {
   const [texto, setTexto] = useState('');
-  const [tasks, setTasks] = useState([]);
   const board = useSelector(state => state.singleBoard.value);
-  console.log('🚀 ~ file: index.jsx ~ line 13 ~ ToDo ~ board', board);
-  // const { cards } = board.columns;
+  const { id } = column;
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const singleColumn = await getColumnById(id);
+      const { cards } = singleColumn;
+      if (cards) {
+        setTasks(cards);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const columnUpdate = async () => {
+      await updateColumn(id, { cards: tasks });
+    };
+    if (tasks.length) {
+      columnUpdate();
+    }
+    console.log(column.title, tasks);
+  }, [tasks]);
 
   return (
     <div className='ToDo__column'>
@@ -62,14 +84,11 @@ function ToDo({ column, taskTaker, Task }) {
           tag='ul'
           filter='.non-draggable'
         >
-          {tasks.map(card => (
+          {tasks?.map(card => (
             <Card
               key={card._id}
               card={card}
-              taskTaker={taskTaker}
-              Task={Task}
-              column={column}
-              Tasks={tasks}
+              tasks={tasks}
               setTasks={setTasks}
             />
           ))}
@@ -92,13 +111,9 @@ function ToDo({ column, taskTaker, Task }) {
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
-  taskTaker: PropTypes.func,
-  Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
   column: {},
-  Task: {},
-  taskTaker: () => null,
 };
 
 export default ToDo;
