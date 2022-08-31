@@ -52,20 +52,17 @@ function ProfileSettings() {
         </div>
         <section className='profile__settings'>
           <div className='profile__settings__detail'>
-            <NavLink to='/' className='profile__section2__about__changeEmail'>
-              <h4>Change email</h4>
-            </NavLink>
             <NavLink
               to='/'
               className='profile__section2__about__changePassword'
             >
               <h4>Change Password</h4>
             </NavLink>
-            <NavLink to='/' className='profile__section2__about__deleteAcount'>
-              <h4>Delete Account</h4>
-            </NavLink>
             <NavLink to='/' className='profile__section2__about__profilePhoto'>
               <h4>Change Profile Photo</h4>
+            </NavLink>
+            <NavLink to='/' className='profile__section2__about__deleteAcount'>
+              <h4>Delete Account</h4>
             </NavLink>
           </div>
         </section>
