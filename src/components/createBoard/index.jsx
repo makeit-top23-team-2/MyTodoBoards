@@ -1,5 +1,3 @@
-/* eslint-disable*/
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
@@ -25,11 +23,8 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
     console.log('🚀 ~ file: index.jsx ~ line 25 ~ handleForm ~ board', board);
     setTask('');
 
-    navigate(`/board/${encodeURIComponent(board.title)}/${board.key}`);
-    console.log(
-      '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.key',
-      board._id
-    );
+    navigate(`/board/${board.title}/${board._id}`);
+
     console.log(
       '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.title',
       board.title
