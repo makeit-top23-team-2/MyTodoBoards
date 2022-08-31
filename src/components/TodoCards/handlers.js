@@ -8,7 +8,7 @@ export const handlerSubmit = async (
   e,
   Texto,
   column,
-  Tasks,
+  tasks,
   setTasks,
   board
 ) => {
@@ -27,14 +27,14 @@ export const handlerSubmit = async (
       '🚀 ~ file: handlers.js ~ line 16 ~ handlerSubmit ~ card',
       card
     );
-    setTasks([...Tasks, card]);
+    setTasks([...tasks, card]);
     document.getElementById(column.inputId).value = '';
   } else {
     alert('Please, introduce a card.');
   }
 };
-export const handlerChangeCheck = (id, Tasks, setTasks) => {
-  const newTasks = Tasks.map(task => {
+export const handlerChangeCheck = (id, tasks, setTasks) => {
+  const newTasks = tasks.map(task => {
     if (task.id === id) {
       task.checked = !task.checked;
     }
@@ -42,7 +42,7 @@ export const handlerChangeCheck = (id, Tasks, setTasks) => {
   });
   setTasks(newTasks);
 };
-export const handlerDelete = (Tasks, setTasks) => {
-  const newTasks = Tasks.filter(task => task.checked === false);
+export const handlerDelete = (tasks, setTasks) => {
+  const newTasks = tasks.filter(task => task.checked === false);
   setTasks(newTasks);
 };

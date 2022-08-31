@@ -7,9 +7,11 @@ import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
 import Card from './Card';
 
 function ToDo({ column, taskTaker, Task }) {
-  const [Texto, setTexto] = useState('');
-  const [Tasks, setTasks] = useState([]);
+  const [texto, setTexto] = useState('');
+  const [tasks, setTasks] = useState([]);
   const board = useSelector(state => state.singleBoard.value);
+  console.log('🚀 ~ file: index.jsx ~ line 13 ~ ToDo ~ board', board);
+  // const { cards } = board.columns;
 
   return (
     <div className='ToDo__column'>
@@ -31,7 +33,7 @@ function ToDo({ column, taskTaker, Task }) {
       <div className='ToDo__submit'>
         <form
           onSubmit={e =>
-            handlerSubmit(e, Texto, column, Tasks, setTasks, board)
+            handlerSubmit(e, texto, column, tasks, setTasks, board)
           }
         >
           <input
@@ -48,7 +50,7 @@ function ToDo({ column, taskTaker, Task }) {
         </form>
         <ReactSortable
           id={column.id}
-          list={Tasks}
+          list={tasks}
           setList={setTasks}
           group='groupName'
           animation={150}
@@ -60,14 +62,14 @@ function ToDo({ column, taskTaker, Task }) {
           tag='ul'
           filter='.non-draggable'
         >
-          {Tasks.map(card => (
+          {tasks.map(card => (
             <Card
               key={card._id}
               card={card}
               taskTaker={taskTaker}
               Task={Task}
               column={column}
-              Tasks={Tasks}
+              Tasks={tasks}
               setTasks={setTasks}
             />
           ))}
@@ -77,7 +79,7 @@ function ToDo({ column, taskTaker, Task }) {
         <span className='ToDo__delete'>
           <button
             type='button'
-            onClick={() => handlerDelete(Tasks, setTasks)}
+            onClick={() => handlerDelete(tasks, setTasks)}
             className='ToDo__DeleteButton'
           >
             Press to delete selected

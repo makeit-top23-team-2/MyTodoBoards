@@ -15,10 +15,7 @@ function MainBoard() {
   const [Task, setTask] = useState({});
   const dispatch = useDispatch();
   const singleBoard = useSelector(state => state.singleBoard.value);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 18 ~ MainBoard ~ singleBoard',
-    singleBoard
-  );
+
   const { id } = useParams();
   const token = localStorage.getItem('token');
 
