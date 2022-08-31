@@ -1,17 +1,33 @@
+import { createCard } from '../../services/cards';
+
 export const handlerChange = (e, setTexto) => {
   setTexto(e.target.value);
 };
 
-export const handlerSubmit = (e, Texto, column, Tasks, setTasks) => {
+export const handlerSubmit = async (
+  e,
+  Texto,
+  column,
+  Tasks,
+  setTasks,
+  board
+) => {
   e.preventDefault();
   const object = {
     title: Texto,
     checked: false,
-    id: Date.now(),
     columnId: column.id,
+    column: column.id,
+    board: board._id,
   };
+  console.log('🚀 ~ file: handlers.js ~ line 23 ~ object', object);
   if (document.getElementById(column.inputId).value !== '') {
-    setTasks([...Tasks, object]);
+    const card = await createCard(column.id, object);
+    console.log(
+      '🚀 ~ file: handlers.js ~ line 16 ~ handlerSubmit ~ card',
+      card
+    );
+    setTasks([...Tasks, card]);
     document.getElementById(column.inputId).value = '';
   } else {
     alert('Please, introduce a card.');

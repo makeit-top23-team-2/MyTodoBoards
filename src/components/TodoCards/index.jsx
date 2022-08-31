@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
+import { useSelector } from 'react-redux';
 
 import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
 import Card from './Card';
@@ -8,6 +9,7 @@ import Card from './Card';
 function ToDo({ column, taskTaker, Task }) {
   const [Texto, setTexto] = useState('');
   const [Tasks, setTasks] = useState([]);
+  const board = useSelector(state => state.singleBoard.value);
 
   return (
     <div className='ToDo__column'>
@@ -27,7 +29,11 @@ function ToDo({ column, taskTaker, Task }) {
         />
       </section>
       <div className='ToDo__submit'>
-        <form onSubmit={e => handlerSubmit(e, Texto, column, Tasks, setTasks)}>
+        <form
+          onSubmit={e =>
+            handlerSubmit(e, Texto, column, Tasks, setTasks, board)
+          }
+        >
           <input
             className='ToDo__input__text'
             type='text'
@@ -56,7 +62,7 @@ function ToDo({ column, taskTaker, Task }) {
         >
           {Tasks.map(card => (
             <Card
-              key={card.id}
+              key={card._id}
               card={card}
               taskTaker={taskTaker}
               Task={Task}
