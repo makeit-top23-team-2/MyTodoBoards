@@ -1,5 +1,4 @@
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-const token = localStorage.getItem('token');
 
 export async function getBoards() {
   const response = await fetch(`${BASE_URL}/api/boards`);
@@ -11,11 +10,6 @@ export async function getBoardById(id) {
   return response.json();
 }
 
-/* export async function getBoardByKey(key) {
-  const response = await fetch(`${BASE_URL}/api/boards/${key}`, {});
-  return response.json();
-} */
-
 export async function getAllUserBoards(tokenLogin) {
   const options = {
     method: 'GET',
@@ -25,7 +19,7 @@ export async function getAllUserBoards(tokenLogin) {
   return response.json();
 }
 
-export async function createBoard(BoardData) {
+export async function createBoard(BoardData, token) {
   const response = await fetch(`${BASE_URL}/api/boards`, {
     method: 'POST',
     body: JSON.stringify(BoardData),
@@ -37,7 +31,7 @@ export async function createBoard(BoardData) {
   return response.json();
 }
 
-export async function updateBoard(id, updateBoardData) {
+export async function updateBoard(id, updateBoardData, token) {
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(updateBoardData),
@@ -49,7 +43,7 @@ export async function updateBoard(id, updateBoardData) {
   return response.json();
 }
 
-export async function deleteBoard(id) {
+export async function deleteBoard(id, token) {
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'DELETE',
     headers: {

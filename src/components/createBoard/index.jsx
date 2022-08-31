@@ -8,6 +8,7 @@ import BackgroundBoard from '../backgroundBoard';
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -19,7 +20,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
   const handleForm = async e => {
     e.preventDefault();
-    const board = await createBoard({ title: task });
+    const board = await createBoard({ title: task }, token);
     console.log('🚀 ~ file: index.jsx ~ line 25 ~ handleForm ~ board', board);
     setTask('');
 
