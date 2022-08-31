@@ -13,6 +13,12 @@ function NavBar() {
     navigate('/', { replace: true });
   };
 
+  const isLogged = JSON.parse(localStorage.getItem('profile'));
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
   return (
     <nav className='navBar'>
       <Link to='/' className='navBar__home'>
@@ -49,6 +55,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
+
               <button
                 type='submit'
                 className='navBar__logout'
