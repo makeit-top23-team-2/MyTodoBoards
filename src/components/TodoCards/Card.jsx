@@ -4,13 +4,13 @@ import ModalCard from '../modalCard';
 // import { handlerChangeCheck } from './handlers';
 
 // function Card({ card, Tasks, setTasks }) {
-function Card({card}) {
-  const [isModalOpened, setIsModalOpened] = useState(false); 
+function Card({ card }) {
+  const [isModalOpened, setIsModalOpened] = useState(false);
 
-  const handleOpenModal = () => {   
+  const handleOpenModal = () => {
     setIsModalOpened(true);
-  };  
-  
+  };
+
   return (
     <>
       <li id={card.id} className='ToDo__cardlist__item'>
@@ -26,7 +26,10 @@ function Card({card}) {
         {card.title}
       </li>
       {/* <button type='button' onClick={handleOpenModal}>Open</button> */}
-      <ModalCard isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened}/>
+      <ModalCard
+        isModalOpened={isModalOpened}
+        setIsModalOpened={setIsModalOpened}
+      />
     </>
   );
 }
