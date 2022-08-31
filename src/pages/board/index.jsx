@@ -17,7 +17,6 @@ function MainBoard() {
   const singleBoard = useSelector(state => state.singleBoard.value);
 
   const { id } = useParams();
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +31,7 @@ function MainBoard() {
 
   useEffect(() => {
     const boardUpdate = async () => {
-      await updateBoard(id, { columns }, token);
+      await updateBoard(id, { columns });
       const columnsOrdered = columns.map(column => ({
         ...column,
         chosen: false,

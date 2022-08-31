@@ -20,6 +20,7 @@ button {
   margin-left: 10px;
 }
 .ToDo__listTitle {
+  font-weight: bolder;
   margin-left: 20px;
 }
 .ToDo__listTitle__input {
@@ -55,7 +56,7 @@ button {
   font: inherit;
   display: inline;
   margin-top: 10px;
-  margin-right: 100px;
+  margin-right: auto;
   text-decoration: none;
   justify-content: center;
 }
@@ -69,10 +70,21 @@ button {
   margin-right: 10px;
   padding: 0;
   list-style: none;
-  text-align: left;
   height: auto;
 }
+.ToDo__submit__form{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0;
+  height: auto;
+  justify-content: space-between;
+}
 .ToDo__cardlist__item {
+  display: flex;
+  justify-content: space-between;
   border-radius: 3px;
   background-color: white;
   margin-top: 5px;
@@ -88,6 +100,11 @@ button {
   23.8px 21.7px 29.7px -6px rgba(0, 0, 0, 0.129),
   57px 52px 71px -6px rgba(0, 0, 0, 0.18)
 ;
+}
+.ToDo__cardlist__cardTitle{
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 .sortable-chosen{
   border-radius: 3px;
@@ -130,10 +147,19 @@ button {
 }
 
 .ToDo__input__text {
+  width: 200px;
   margin-right: 5px;
   border: 0;
   border-radius: 3px;
   background-color: #f4f5f7;
+  box-shadow:
+  1.6px 1.4px 2px -6px rgba(0, 0, 0, 0.051),
+  3.8px 3.5px 4.7px -6px rgba(0, 0, 0, 0.073),
+  7.1px 6.5px 8.9px -6px rgba(0, 0, 0, 0.09),
+  12.7px 11.6px 15.9px -6px rgba(0, 0, 0, 0.107),
+  23.8px 21.7px 29.7px -6px rgba(0, 0, 0, 0.129),
+  57px 52px 71px -6px rgba(0, 0, 0, 0.18)
+;
 }
 
 .ToDo__input__text:hover {
@@ -154,6 +180,15 @@ width: 20px;
 cursor:-webkit-grab;
 }
 
-.ToDo__AddButton, .ToDo__DeleteButton, .ToDo__Checkbox {
+.ToDo__AddButton {
   cursor: pointer;
+}
+
+.ToDo__Checkbox {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  height: auto;
+  margin-right: 5px;
+
 }

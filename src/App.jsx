@@ -1,9 +1,7 @@
 import React from 'react';
 import './styles/styles.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-/*
-Pages
-*/
+
 import LogIn from './pages/login';
 import SignUp from './pages/signup';
 import MainBoard from './pages/board';
@@ -15,10 +13,6 @@ import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/profile';
 import ProfileSettings from './pages/profileSettings';
 import SignupForm from './pages/signupForm';
-import ModalCard from './components/modalCard';
-/*
-components
-*/
 
 function App() {
   return (
@@ -38,7 +32,6 @@ function App() {
           element={<ProfileSettings />}
         />
         <Route path='/signUp-form' element={<SignupForm />} />
-        <Route path='/modal-card' element={<ModalCard />} />
       </Routes>
     </BrowserRouter>
   );
