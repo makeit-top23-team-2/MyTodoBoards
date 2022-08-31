@@ -1,13 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
+import { useSelector } from 'react-redux';
 
 import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
+import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
 
-function ToDo({ column, taskTaker, Task }) {
-  const [Texto, setTexto] = useState('');
-  const [Tasks, setTasks] = useState([]);
+function ToDo({ column }) {
+  const [texto, setTexto] = useState('');
+  const board = useSelector(state => state.singleBoard.value);
+  const { id } = column;
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const singleColumn = await getColumnById(id);
+      const { cards } = singleColumn;
+      if (cards) {
+        setTasks(cards);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const columnUpdate = async () => {
+      await updateColumn(id, { cards: tasks });
+    };
+    if (tasks.length) {
+      columnUpdate();
+    }
+    console.log(column.title, tasks);
+  }, [tasks]);
 
   return (
     <div className='ToDo__column'>
@@ -27,7 +53,11 @@ function ToDo({ column, taskTaker, Task }) {
         />
       </section>
       <div className='ToDo__submit'>
-        <form onSubmit={e => handlerSubmit(e, Texto, column, Tasks, setTasks)}>
+        <form
+          onSubmit={e =>
+            handlerSubmit(e, texto, column, tasks, setTasks, board)
+          }
+        >
           <input
             className='ToDo__input__text'
             type='text'
@@ -42,7 +72,7 @@ function ToDo({ column, taskTaker, Task }) {
         </form>
         <ReactSortable
           id={column.id}
-          list={Tasks}
+          list={tasks}
           setList={setTasks}
           group='groupName'
           animation={150}
@@ -54,14 +84,11 @@ function ToDo({ column, taskTaker, Task }) {
           tag='ul'
           filter='.non-draggable'
         >
-          {Tasks.map(card => (
+          {tasks?.map(card => (
             <Card
-              key={card.id}
+              key={card._id}
               card={card}
-              taskTaker={taskTaker}
-              Task={Task}
-              column={column}
-              Tasks={Tasks}
+              tasks={tasks}
               setTasks={setTasks}
             />
           ))}
@@ -71,7 +98,7 @@ function ToDo({ column, taskTaker, Task }) {
         <span className='ToDo__delete'>
           <button
             type='button'
-            onClick={() => handlerDelete(Tasks, setTasks)}
+            onClick={() => handlerDelete(tasks, setTasks)}
             className='ToDo__DeleteButton'
           >
             Press to delete selected
@@ -84,13 +111,9 @@ function ToDo({ column, taskTaker, Task }) {
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
-  taskTaker: PropTypes.func,
-  Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
   column: {},
-  Task: {},
-  taskTaker: () => null,
 };
 
 export default ToDo;

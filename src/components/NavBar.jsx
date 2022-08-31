@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import BurgerButton from './BurgerButton';
 
 function NavBar() {
-  // const [isLogged /* setIsLogged */] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
-  const isLogged = JSON.parse(localStorage.getItem('profile'));
+  const user = JSON.parse(localStorage.getItem('profile'));
 
   const handleLogout = () => {
     localStorage.clear();
+    navigate('/', { replace: true });
   };
 
   return (
@@ -29,12 +30,12 @@ function NavBar() {
             Home
           </NavLink>
         </li>
-        {isLogged ? (
+        {user ? (
           <>
             <li>
               <NavLink
                 className='navBar__navLink'
-                to={`/manage-board/${isLogged.userName}`}
+                to={`/manage-board/${user.userName}`}
               >
                 Manage-Boards
               </NavLink>
@@ -42,15 +43,19 @@ function NavBar() {
             <li>
               <NavLink
                 className='navBar__navLink'
-                to={`/profile/${isLogged.userName}`}
+                to={`/profile/${user.userName}`}
               >
-                {isLogged.userName}
+                {user.userName}
               </NavLink>
             </li>
             <li>
-              <NavLink to='/' onClick={handleLogout}>
+              <button
+                type='submit'
+                className='navBar__logout'
+                onClick={handleLogout}
+              >
                 LogOut
-              </NavLink>
+              </button>
             </li>
           </>
         ) : (
