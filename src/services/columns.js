@@ -1,4 +1,5 @@
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const token = localStorage.getItem('token');
 
 export async function getColumns() {
   const response = await fetch(`${BASE_URL}/api/columns`);
@@ -15,7 +16,7 @@ export async function getColumnByBoardId(id) {
   return response.json();
 }
 
-export async function createColumnByBoardId(id, column, token) {
+export async function createColumnByBoardId(id, column) {
   const response = await fetch(`${BASE_URL}/api/columns/board/${id}`, {
     method: 'POST',
     headers: {
@@ -27,7 +28,7 @@ export async function createColumnByBoardId(id, column, token) {
   return response.json();
 }
 
-export async function updateColumn(id, column, token) {
+export async function updateColumn(id, column) {
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'PATCH',
     headers: {
@@ -39,7 +40,7 @@ export async function updateColumn(id, column, token) {
   return response.json();
 }
 
-export async function deleteColumn(id, token) {
+export async function deleteColumn(id) {
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'DELETE',
     headers: {

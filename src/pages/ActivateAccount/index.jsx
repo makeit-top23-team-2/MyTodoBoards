@@ -1,12 +1,32 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { verifyAccount } from '../../services/auth';
+import { setProfile } from '../../store/profileSlice';
 
 function ActivateAccount() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const { token } = useParams();
+
+  const activatedAccount = async () => {
+    const response = await verifyAccount(token);
+    if (response.error) {
+      alert('Invalid token');
+      return;
+    }
+    const { jwtoken, profile, message } = response;
+    localStorage.setItem('token', jwtoken);
+    localStorage.setItem('profile', JSON.stringify(profile));
+    dispatch(setProfile(profile));
+    alert(message);
+
+    navigate(`/manage-board/${profile.userName}`);
+  };
 
   const handleClick = () => {
-    navigate(`/manageBoard/${id}`, { replace: true });
+    activatedAccount();
   };
 
   return (

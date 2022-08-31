@@ -23,7 +23,7 @@ function ToDo({ column, taskTaker, Task }) {
           type='text'
           className='ToDo__listTitle__input'
           placeholder='Write a title for this list...'
-          defaultValue={column.name}
+          defaultValue={column.title}
         />
       </section>
       <div className='ToDo__submit'>

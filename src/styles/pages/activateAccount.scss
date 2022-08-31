@@ -10,8 +10,8 @@
   flex-direction: column;
   width: 80%;
   height: 80%;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 400px;
+  max-height: 400px;
   border-radius: 20px;
   background-color: whitesmoke;
   align-items: center;
@@ -19,12 +19,17 @@
 }
 .ActivateAccount__button{
   display: inline;
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100px;
 }
 .ActivateAccount__image{
+  margin-left: 80px;
+  margin-right: auto;
   align-items: center;
   justify-content: center;
 }
 .ActivateAccount__logo{
   max-width: 80%;
+
 }
