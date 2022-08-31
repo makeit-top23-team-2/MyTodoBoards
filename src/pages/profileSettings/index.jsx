@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
 
-const prof = localStorage.getItem('profile');
-const profile = JSON.parse(prof);
-
 function ProfileSettings() {
+  const prof = localStorage.getItem('profile');
+  const profile = JSON.parse(prof);
+
   return (
     <div>
       <NavBar />
