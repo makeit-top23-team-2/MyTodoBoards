@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const columnsSlice = createSlice({
   name: 'columns',
   initialState: {
-    value: {},
+    value: [],
   },
   reducers: {
     setColumns: (state, action) => {

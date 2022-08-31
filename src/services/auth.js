@@ -40,6 +40,7 @@ export async function changePassword(token, password) {
   return response.json();
 }
 export async function verifyAccount(token) {
+  console.log('🚀 ~ file: auth.js ~ line 43 ~ verifyAccount ~ token', token);
   const response = await fetch(
     `${BASE_URL}/auth/local/verify-account/${token}`,
     {

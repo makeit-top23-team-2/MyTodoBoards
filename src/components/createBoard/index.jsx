@@ -1,3 +1,5 @@
+/* eslint-disable*/
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
@@ -17,12 +19,21 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
     setTask(e.target.value);
   };
 
-  const handleForm = e => {
+  const handleForm = async e => {
     e.preventDefault();
-    console.log('🚀 ~ file: index.jsx ~ line 23 ~ handleForm ~ task', task);
-    createBoard(task);
-    navigate(`/manage-board/${task}`, { replace: true });
+    const board = await createBoard({ title: task });
+    console.log('🚀 ~ file: index.jsx ~ line 25 ~ handleForm ~ board', board);
     setTask('');
+
+    navigate(`/board/${encodeURIComponent(board.title)}/${board.key}`);
+    console.log(
+      '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.key',
+      board._id
+    );
+    console.log(
+      '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.title',
+      board.title
+    );
   };
 
   return createPortal(

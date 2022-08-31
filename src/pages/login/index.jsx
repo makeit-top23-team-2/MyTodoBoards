@@ -15,10 +15,10 @@ function LogIn() {
     const { profile, jwtoken } = response;
 
     if (profile) {
-      dispatch(setProfile());
+      dispatch(setProfile(profile));
       localStorage.setItem('token', jwtoken);
       localStorage.setItem('profile', JSON.stringify(profile));
-      navigate(`/manage-board/${profile.userName}`, { replace: true });
+      navigate(`/manage-board/${profile.userName}`);
     } else {
       alert('invalid credentials');
     }

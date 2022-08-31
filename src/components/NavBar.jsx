@@ -3,8 +3,14 @@ import { NavLink, Link } from 'react-router-dom';
 import BurgerButton from './BurgerButton';
 
 function NavBar() {
-  const [isLogged, /* setIsLogged */ ] = useState(false);
+  // const [isLogged /* setIsLogged */] = useState(false);
   const [isActive, setIsActive] = useState(false);
+
+  const isLogged = JSON.parse(localStorage.getItem('profile'));
+
+  const handleLogout = () => {
+    localStorage.clear();
+  };
 
   return (
     <nav className='navBar'>
@@ -17,29 +23,47 @@ function NavBar() {
           />
         </picture>
       </Link>
-      <ul className={isActive?'navBar__links--active':'navBar__links'}>
+      <ul className={isActive ? 'navBar__links--active' : 'navBar__links'}>
         <li>
-          <NavLink className= 'navBar__navLink' to='/'>Home</NavLink>
+          <NavLink className='navBar__navLink' to='/'>
+            Home
+          </NavLink>
         </li>
         {isLogged ? (
           <>
             <li>
-              <NavLink className= 'navBar__navLink' to=''>ManageBoards</NavLink>
+              <NavLink
+                className='navBar__navLink'
+                to={`/manage-board/${isLogged.userName}`}
+              >
+                Manage-Boards
+              </NavLink>
             </li>
             <li>
-              <NavLink className= 'navBar__navLink' to=''>Profile</NavLink>
+              <NavLink
+                className='navBar__navLink'
+                to={`/profile/${isLogged.userName}`}
+              >
+                {isLogged.userName}
+              </NavLink>
             </li>
             <li>
-              <NavLink to=''>LogOut</NavLink>
+              <NavLink to='/' onClick={handleLogout}>
+                LogOut
+              </NavLink>
             </li>
           </>
         ) : (
           <>
             <li>
-              <NavLink className= 'navBar__navLink' to='/login'>Login</NavLink>
+              <NavLink className='navBar__navLink' to='/login'>
+                Login
+              </NavLink>
             </li>
             <li>
-              <NavLink className= 'navBar__navLink' to='/signup'>signUp</NavLink>
+              <NavLink className='navBar__navLink' to='/signup'>
+                signUp
+              </NavLink>
             </li>
           </>
         )}

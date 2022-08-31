@@ -31,8 +31,11 @@ function App() {
         <Route path='/activate-account/:token' element={<ActivateAccount />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/profile-settings' element={<ProfileSettings />} />
+        <Route path='/profile/:userName' element={<Profile />} />
+        <Route
+          path='/profile-settings/:userName'
+          element={<ProfileSettings />}
+        />
         <Route path='/signUp-form' element={<SignupForm />} />
       </Routes>
     </BrowserRouter>

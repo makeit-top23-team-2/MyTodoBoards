@@ -12,9 +12,11 @@ function ManageBoard() {
   const boards = useSelector(state => state.boards.value);
   const dispatch = useDispatch();
 
+  const token = localStorage.getItem('token');
+
   useEffect(() => {
     const fetchData = async () => {
-      const Boards = await getAllUserBoards();
+      const Boards = await getAllUserBoards(token);
 
       dispatch(setBoards(Boards));
     };
@@ -49,11 +51,11 @@ function ManageBoard() {
                 </p>
               </button>
             </li>
-            {boards.map
+            {boards.length
               ? boards.map(board => (
-                  <li className='container__article__li__item' key={board.key}>
+                  <li className='container__article__li__item' key={board._id}>
                     <Link
-                      to={`/board/${board.title}/${board.key}`}
+                      to={`/board/${board.title}/${board._id}`}
                       className='container__article__a__item'
                     >
                       <p className='container__article__p__item'>

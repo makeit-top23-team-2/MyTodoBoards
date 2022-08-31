@@ -7,7 +7,7 @@ export async function getBoards() {
 }
 
 export async function getBoardById(id) {
-  const response = await fetch(`${BASE_URL}/api/boards/${id}`, {});
+  const response = await fetch(`${BASE_URL}/api/boards/${id}`);
   return response.json();
 }
 
@@ -16,10 +16,10 @@ export async function getBoardById(id) {
   return response.json();
 } */
 
-export async function getAllUserBoards() {
+export async function getAllUserBoards(tokenLogin) {
   const options = {
     method: 'GET',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { Authorization: `Bearer ${tokenLogin}` },
   };
   const response = await fetch(`${BASE_URL}/api/boards/user/`, options);
   return response.json();
@@ -34,8 +34,7 @@ export async function createBoard(BoardData) {
       authorization: `Bearer ${token}`,
     },
   });
-  console.log('🚀 ~ file: boards.js ~ line 31 ~ createBoard ~ token', token);
-  return response.text();
+  return response.json();
 }
 
 export async function updateBoard(id, updateBoardData) {
