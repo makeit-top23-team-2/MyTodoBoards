@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import BurgerButton from './BurgerButton';
 
 function NavBar() {
   // const [isLogged /* setIsLogged */] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
 
   const isLogged = JSON.parse(localStorage.getItem('profile'));
 
   const handleLogout = () => {
     localStorage.clear();
+    navigate('/', { replace: true });
   };
 
   return (
@@ -48,9 +50,13 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/' onClick={handleLogout}>
+              <button
+                type='submit'
+                className='navBar__logout'
+                onClick={handleLogout}
+              >
                 LogOut
-              </NavLink>
+              </button>
             </li>
           </>
         ) : (
