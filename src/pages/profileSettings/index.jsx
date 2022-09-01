@@ -1,10 +1,33 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
+import { resetPassword } from '../../services/auth';
+import { deleteUser } from '../../services/users';
 
 function ProfileSettings() {
+  const navigate = useNavigate();
   const prof = localStorage.getItem('profile');
   const profile = JSON.parse(prof);
+
+  const passwordReset = async () => {
+    const { hash } = await resetPassword();
+    navigate(`/reset-password/${hash}`);
+  };
+
+  const deleteAccount = async () => {
+    await deleteUser();
+    localStorage.clear();
+    alert('Your account has been deleted.');
+    navigate('/', { new: true });
+  };
+
+  const handleChangePassword = () => {
+    passwordReset();
+  };
+
+  const handleDeleteAccount = () => {
+    deleteAccount();
+  };
 
   return (
     <div>
@@ -32,7 +55,7 @@ function ProfileSettings() {
           Profile
         </NavLink>
         <NavLink
-          to='/profile_settings'
+          to={`/profile-settings/${profile.userName}`}
           className='profile__section__buttons__settingsInSettings'
         >
           Settings
@@ -52,18 +75,23 @@ function ProfileSettings() {
         </div>
         <section className='profile__settings'>
           <div className='profile__settings__detail'>
-            <NavLink
-              to='/'
+            <button
+              type='button'
               className='profile__section2__about__changePassword'
+              onClick={handleChangePassword}
             >
               <h4>Change Password</h4>
-            </NavLink>
+            </button>
             <NavLink to='/' className='profile__section2__about__profilePhoto'>
               <h4>Change Profile Photo</h4>
             </NavLink>
-            <NavLink to='/' className='profile__section2__about__deleteAcount'>
+            <button
+              type='button'
+              className='profile__section2__about__deleteAcount'
+              onClick={handleDeleteAccount}
+            >
               <h4>Delete Account</h4>
-            </NavLink>
+            </button>
           </div>
         </section>
       </section>

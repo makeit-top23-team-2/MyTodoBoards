@@ -53,6 +53,7 @@ function LogIn() {
           type='email'
           name='email'
           placeholder=' Enter email *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <input
@@ -60,6 +61,7 @@ function LogIn() {
           type='password'
           name='password'
           placeholder=' Enter password *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <button type='submit' className='login__button'>

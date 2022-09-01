@@ -22,7 +22,16 @@ export async function forgotPassword(email) {
   return response.json();
 }
 
-export async function changePassword(resetToken, password) {
+export async function resetPassword() {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${BASE_URL}/auth/local/reset-password`, {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.json();
+}
+
+export async function changePassword(resetToken, newPassword) {
   const response = await fetch(
     `${BASE_URL}/auth/local/change-password/${resetToken}`,
     {
@@ -30,9 +39,7 @@ export async function changePassword(resetToken, password) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: {
-        password,
-      },
+      body: JSON.stringify({ newPassword }),
     }
   );
   return response.json();

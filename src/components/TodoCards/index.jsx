@@ -8,7 +8,6 @@ import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
 
 function ToDo({ column }) {
-  const token = localStorage.getItem('token');
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
@@ -28,12 +27,13 @@ function ToDo({ column }) {
 
   useEffect(() => {
     const columnUpdate = async () => {
-      await updateColumn(id, { cards: tasks }, token);
+      await updateColumn(id, { cards: tasks });
     };
-    if (tasks.length) {
+    setTimeout(() => {
       columnUpdate();
-    }
-    console.log(column.title, tasks);
+    }, 600);
+
+    console.log(column.title, tasks.length);
   }, [tasks]);
 
   return (
