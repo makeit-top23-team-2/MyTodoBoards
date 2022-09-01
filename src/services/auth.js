@@ -17,16 +17,14 @@ export async function forgotPassword(email) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: {
-      email,
-    },
+    body: JSON.stringify({ email }),
   });
   return response.json();
 }
 
-export async function changePassword(token, password) {
+export async function changePassword(resetToken, password) {
   const response = await fetch(
-    `${BASE_URL}/auth/local/change-password/${token}`,
+    `${BASE_URL}/auth/local/change-password/${resetToken}`,
     {
       method: 'POST',
       headers: {
@@ -39,10 +37,9 @@ export async function changePassword(token, password) {
   );
   return response.json();
 }
-export async function verifyAccount(token) {
-  console.log('🚀 ~ file: auth.js ~ line 43 ~ verifyAccount ~ token', token);
+export async function verifyAccount(verifyToken) {
   const response = await fetch(
-    `${BASE_URL}/auth/local/verify-account/${token}`,
+    `${BASE_URL}/auth/local/verify-account/${verifyToken}`,
     {
       method: 'PATCH',
       headers: {

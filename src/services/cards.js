@@ -1,5 +1,4 @@
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
-const token = localStorage.getItem('token');
 
 export async function getSingleCard(id) {
   const response = await fetch(`${BASE_URL}/api/cards/${id}`);
@@ -7,6 +6,7 @@ export async function getSingleCard(id) {
 }
 
 export async function createCard(columnId, cardData) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/cards/${columnId}`, {
     method: 'POST',
     headers: {
@@ -19,6 +19,7 @@ export async function createCard(columnId, cardData) {
 }
 
 export async function updateCard(id, newCard) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/cards/${id}`, {
     method: 'PATCH',
     headers: {
@@ -31,6 +32,7 @@ export async function updateCard(id, newCard) {
 }
 
 export async function deleteCard(id) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/cards/${id}`, {
     method: 'DELETE',
     headers: {

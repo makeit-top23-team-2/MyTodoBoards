@@ -1,7 +1,5 @@
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-const token = localStorage.getItem('token');
-
 export async function getUsers() {
   const response = await fetch(`${BASE_URL}/api/users/`);
   return response.json();
@@ -17,17 +15,6 @@ export async function getUserByUserName(userName) {
   return response.json();
 }
 
-/* export async function getUserByUserName1(userName) {
-  const options = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-  const response = await fetch(
-    `${BASE_URL}/api/users/user/${userName}`,
-    options
-  );
-  return response.json();
-} */
-
 export async function createUser(user) {
   const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'POST',
@@ -40,6 +27,7 @@ export async function createUser(user) {
 }
 
 export async function updateUser(user) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'PATCH',
     body: {
@@ -53,6 +41,7 @@ export async function updateUser(user) {
 }
 
 export async function deleteUser(id) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/users/${id}`, {
     method: 'DELETE',
     headers: {

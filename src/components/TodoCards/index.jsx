@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 import { useSelector } from 'react-redux';
-
-import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
+import { handlerChange, handlerSubmit } from './handlers';
 import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
 
@@ -54,6 +53,7 @@ function ToDo({ column }) {
       </section>
       <div className='ToDo__submit'>
         <form
+          className='ToDo__submit__form'
           onSubmit={e =>
             handlerSubmit(e, texto, column, tasks, setTasks, board)
           }
@@ -93,17 +93,7 @@ function ToDo({ column }) {
             />
           ))}
         </ReactSortable>
-
         <hr className='ToDo_hr' />
-        <span className='ToDo__delete'>
-          <button
-            type='button'
-            onClick={() => handlerDelete(tasks, setTasks)}
-            className='ToDo__DeleteButton'
-          >
-            Press to delete selected
-          </button>
-        </span>
       </div>
     </div>
   );

@@ -10,16 +10,18 @@ export async function getBoardById(id) {
   return response.json();
 }
 
-export async function getAllUserBoards(tokenLogin) {
+export async function getAllUserBoards() {
+  const token = localStorage.getItem('token');
   const options = {
     method: 'GET',
-    headers: { Authorization: `Bearer ${tokenLogin}` },
+    headers: { Authorization: `Bearer ${token}` },
   };
   const response = await fetch(`${BASE_URL}/api/boards/user/`, options);
   return response.json();
 }
 
-export async function createBoard(BoardData, token) {
+export async function createBoard(BoardData) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/boards`, {
     method: 'POST',
     body: JSON.stringify(BoardData),
@@ -31,7 +33,8 @@ export async function createBoard(BoardData, token) {
   return response.json();
 }
 
-export async function updateBoard(id, updateBoardData, token) {
+export async function updateBoard(id, updateBoardData) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(updateBoardData),
@@ -43,7 +46,8 @@ export async function updateBoard(id, updateBoardData, token) {
   return response.json();
 }
 
-export async function deleteBoard(id, token) {
+export async function deleteBoard(id) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'DELETE',
     headers: {
