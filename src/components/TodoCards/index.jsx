@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 import { useSelector } from 'react-redux';
-
 import { handlerChange, handlerSubmit } from './handlers';
 import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
 
 function ToDo({ column }) {
-  const token = localStorage.getItem('token');
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
@@ -28,7 +26,7 @@ function ToDo({ column }) {
 
   useEffect(() => {
     const columnUpdate = async () => {
-      await updateColumn(id, { cards: tasks }, token);
+      await updateColumn(id, { cards: tasks });
     };
     if (tasks.length) {
       columnUpdate();
@@ -95,7 +93,6 @@ function ToDo({ column }) {
             />
           ))}
         </ReactSortable>
-
         <hr className='ToDo_hr' />
       </div>
     </div>

@@ -33,6 +33,7 @@ export const handlerSubmit = async (
     alert('Please, introduce a card.');
   }
 };
+
 /* export const handlerChangeCheck = (id, tasks, setTasks) => {
   const newTasks = tasks.map(task => {
     if (task.id === id) {
