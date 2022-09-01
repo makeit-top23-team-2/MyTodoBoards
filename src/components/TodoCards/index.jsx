@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
 import { useSelector } from 'react-redux';
-
 import { handlerChange, handlerSubmit } from './handlers';
 import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
@@ -32,8 +31,6 @@ function ToDo({ column }) {
     setTimeout(() => {
       columnUpdate();
     }, 600);
-
-    console.log(column.title, tasks.length);
   }, [tasks]);
 
   return (
@@ -95,7 +92,6 @@ function ToDo({ column }) {
             />
           ))}
         </ReactSortable>
-
         <hr className='ToDo_hr' />
       </div>
     </div>
