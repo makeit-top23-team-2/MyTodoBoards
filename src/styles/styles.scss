@@ -9,6 +9,8 @@
 @import './components/BurgerButton';
 @import './components//modalCard.scss';
 @import './components/modalChecklist.scss';
+@import './components/modalChangeProfile.scss';
+
 
 //Pages
 @import './pages/home.scss';
@@ -22,4 +24,5 @@
 @import './pages/activateAccount.scss';
 @import './pages/forgotPassword.scss';
 @import './pages/profile.scss';
-@import './pages/profileSettings.scss'
+@import './pages/profileSettings.scss';
+@import './pages/passwordChange.scss'

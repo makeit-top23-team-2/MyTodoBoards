@@ -1,0 +1,42 @@
+.modal__header{
+  .title__change__photo{
+    text-align: center;
+  }
+  .input__change__profile{
+    padding: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .boton__save{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .section__imagen{
+    text-align: center;
+  }
+
+   .send__file{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 20px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+   }
+
+   
+
+}
+
+.photo {
+  border-radius: 50%;
+  display: inline-block;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  width: 150px;
+
+  img{
+    height: auto;
+    max-width: 100%;
+  }
+}

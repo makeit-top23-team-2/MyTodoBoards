@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 import { setProfile } from '../../store/profileSlice';
 import { login } from '../../services/auth';
 
@@ -12,15 +13,26 @@ function LogIn() {
   const fetchData = async () => {
     const response = await login(form.email, form.password);
 
-    const { profile, jwtoken } = response;
+    const { profile, jwtoken, message } = response;
 
     if (profile) {
       dispatch(setProfile(profile));
       localStorage.setItem('token', jwtoken);
       localStorage.setItem('profile', JSON.stringify(profile));
+      Swal.fire({
+        title: message,
+        text: `Let's star organizing your ToDos!`,
+        icon: 'success',
+        confirmButtonText: `Let's go!`,
+      });
       navigate(`/manage-board/${profile.userName}`);
     } else {
-      alert('invalid credentials');
+      Swal.fire({
+        title: message,
+        text: 'Please, check that the introduced credentials are correct.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
     }
   };
 
@@ -53,6 +65,7 @@ function LogIn() {
           type='email'
           name='email'
           placeholder=' Enter email *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <input
@@ -60,6 +73,7 @@ function LogIn() {
           type='password'
           name='password'
           placeholder=' Enter password *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <button type='submit' className='login__button'>

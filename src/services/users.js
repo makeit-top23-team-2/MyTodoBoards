@@ -26,23 +26,22 @@ export async function createUser(user) {
   return response.text();
 }
 
-export async function updateUser(user) {
+export async function updateUser(userUpdate) {
   const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'PATCH',
-    body: {
-      newUser: JSON.stringify(user),
-    },
+    body: JSON.stringify(userUpdate),
     headers: {
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   });
   return response.json();
 }
 
-export async function deleteUser(id) {
+export async function deleteUser() {
   const token = localStorage.getItem('token');
-  const response = await fetch(`${BASE_URL}/api/users/${id}`, {
+  const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,

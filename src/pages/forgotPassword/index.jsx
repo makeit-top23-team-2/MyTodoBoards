@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { forgotPassword } from '../../services/auth';
 
 function ForgotPassword() {
@@ -10,7 +11,13 @@ function ForgotPassword() {
   };
   const handleResetPassword = () => {
     forgotPassword(email);
-    alert('An email has been sent to reset your password');
+    Swal.fire({
+      title: 'An email has been sent to reset your password',
+      text: 'Please, check your email inbox.',
+      icon: 'success',
+      confirmButtonText: 'Got it!',
+    });
+
     navigate('/login');
   };
   return (
@@ -42,7 +49,7 @@ function ForgotPassword() {
                 className='forgot__section__button'
                 onClick={handleResetPassword}
               >
-                Reset Password Send Recovery Link
+                Send Recovery Link
               </button>
             </form>
             <hr className='forgot__section__hr' />
