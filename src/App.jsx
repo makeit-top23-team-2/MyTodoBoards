@@ -31,10 +31,6 @@ function App() {
           path='/reset-password/:resetToken'
           element={<PasswordChange />}
         />
-        <Route
-          path='/reset-password/:resetToken'
-          element={<PasswordChange />}
-        />
         <Route path='*' element={<NotFound />} />
         <Route path='/profile/:userName' element={<Profile />} />
         <Route
