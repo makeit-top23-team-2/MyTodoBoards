@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { resetPassword } from '../../services/auth';
 import { deleteUser } from '../../services/users';
+import ModalChangePhoto from '../../components/modalChangePhoto';
+
+// import ModalChangePhoto from '../../components/modalChangePhoto';
 
 function ProfileSettings() {
   const navigate = useNavigate();
-  const prof = localStorage.getItem('profile');
-  const profile = JSON.parse(prof);
+  const profile = useSelector(state => state.profile.value);
+  const [isModalOpened, setIsModalOpened] = useState(false);
 
   const passwordReset = async () => {
     const { hash } = await resetPassword();
@@ -33,6 +37,10 @@ function ProfileSettings() {
 
   const handleDeleteAccount = () => {
     deleteAccount();
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpened(true);
   };
 
   return (
@@ -88,12 +96,13 @@ function ProfileSettings() {
             >
               <h4>Change Password</h4>
             </button>
-            <NavLink
-              to='/change-photo-profile'
-              className='profile__section2__about__profilePhoto'
+            <button
+              type='button'
+              className='profile__section2__about__changePassword'
+              onClick={handleOpenModal}
             >
-              <h4>Change Profile Photo</h4>
-            </NavLink>
+              <h4>Change Profile Picture</h4>
+            </button>
             <button
               type='button'
               className='profile__section2__about__deleteAcount'
@@ -102,6 +111,10 @@ function ProfileSettings() {
               <h4>Delete Account</h4>
             </button>
           </div>
+          <ModalChangePhoto
+        isModalOpened={isModalOpened}
+        setIsModalOpened={setIsModalOpened}
+      />
         </section>
       </section>
     </div>
@@ -109,3 +122,11 @@ function ProfileSettings() {
 }
 
 export default ProfileSettings;
+
+/*
+<ModalChangePhoto 
+isModalOpened={isModalOpened}
+setIsModalOpened={setIsModalOpened}
+/>
+
+*/

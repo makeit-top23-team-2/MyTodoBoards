@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { updateUser, getUserByUserName } from '../../services/users';
 
 function Profile() {
   const navigate = useNavigate();
-  const profile = JSON.parse(localStorage.getItem('profile'));
+  const profile = useSelector(state => state.profile.value);
   const [form, setForm] = useState({});
 
   const userUpdate = async () => {
@@ -28,12 +29,17 @@ function Profile() {
         confirmButtonText: 'Got it!',
       });
     } else {
-      const response = await updateUser(form);
-      const res = JSON.parse(response);
-      const profileUpdate = res.profile;
-      if (res.details) {
+
+      const response = await updateUser({
+        userName: form.userName,
+        name: form.name,
+        lastName: form.lastName,
+      });
+      
+      const profileUpdate = response.profile;
+      if (response.details) { 
         Swal.fire({
-          title: res.details[0].message,
+          title: response.details[0].message,
           icon: 'warning',
           confirmButtonText: 'Got it!',
         });
