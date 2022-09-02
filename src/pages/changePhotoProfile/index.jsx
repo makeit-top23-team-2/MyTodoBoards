@@ -2,49 +2,41 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
-import { updateUser } from '../../services/users'; 
+import { updateUser } from '../../services/users';
 import { setProfile } from '../../store/profileSlice';
 
 
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 function ChangePhotoProfile() {
   const user = useSelector(state => state.profile.value);
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
-  const handleChange = (e) => {
+  const handleChange = e => {
     setFile(e.target.files[0]);
-  }
+  };
   const handleUploadProfilePhoto = async () => {
     const formData = new FormData();
     formData.append('file', file);
-
     const payload = {
       method: 'POST',
       body: formData,
     };
-    try{
-    const response = await fetch('http://localhost:8080/api/upload/profile', payload);
-    console.log("🚀 ~ file: index.jsx ~ line 26 ~ handleUploadProfilePhoto ~  response",  response)
+    try {
+      const response = await fetch(
+        `${BASE_URL}/api/upload/profile`,
+        payload
+      );
+      const imgURL = await response.json();
+      const newUser = { avatar: imgURL };
+      const { profile, message } = await updateUser(newUser);
 
-    
-    const imgURL = await response.json();
-    console.log("🚀 ~ file: index.jsx ~ line 30 ~ handleUploadProfilePhoto ~ imgURL", imgURL)
-  
-    
-    const newUser = {avatar:imgURL}
-    console.log("🚀 ~ file: index.jsx ~ line 35 ~ handleUploadProfilePhoto ~ newUser", newUser)
-    const  {profile, message} =  await updateUser(newUser)
-    
-    console.log("🚀 ~ file: index.jsx ~ line 38 ~ handleUploadProfilePhoto ~ res", profile)
-  
-     dispatch(setProfile(profile));
-    alert(message); 
-
-    } catch(err) {
+      dispatch(setProfile(profile));
+      alert(message);
+    } catch (err) {
       console.log(err);
     }
-
-  }
+  };
 
   return (
     <div>
@@ -87,11 +79,18 @@ function ChangePhotoProfile() {
         <div className='profile__section2__manage'>
           <h1>Change Photo Profile</h1>
         </div>
-        <input type="file" className='profile__section2__file' onChange={handleChange} 
-        accept = "image/*" />
-        
+        <input
+          type='file'
+          className='profile__section2__file'
+          onChange={handleChange}
+          accept='image/*'
+        />
 
-        <button type='button' onClick={handleUploadProfilePhoto} className='profile__section2__button'>
+        <button
+          type='button'
+          onClick={handleUploadProfilePhoto}
+          className='profile__section2__button'
+        >
           <b>Save</b>
         </button>
       </section>
