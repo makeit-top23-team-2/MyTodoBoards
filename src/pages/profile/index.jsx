@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import NavBar from '../../components/NavBar';
 import { updateUser, getUserByUserName } from '../../services/users';
 
 function Profile() {
   const navigate = useNavigate();
-  const profile = JSON.parse(localStorage.getItem('profile'));
+  const profile = useSelector(state => state.profile.value);
   const [form, setForm] = useState({});
 
   const userUpdate = async () => {

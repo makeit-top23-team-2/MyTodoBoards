@@ -82,7 +82,7 @@ function ProfileSettings() {
             >
               <h4>Change Password</h4>
             </button>
-            <NavLink to='/' className='profile__section2__about__profilePhoto'>
+            <NavLink to='/change-photo-profile' className='profile__section2__about__profilePhoto'>
               <h4>Change Profile Photo</h4>
             </NavLink>
             <button
