@@ -36,7 +36,7 @@ export async function updateUser(userUpdate) {
       authorization: `Bearer ${token}`,
     },
   });
-  return response.json();
+  return response.text();
 }
 
 export async function deleteUser() {

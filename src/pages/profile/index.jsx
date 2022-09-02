@@ -1,29 +1,50 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { updateUser, getUserByUserName } from '../../services/users';
 
 function Profile() {
   const navigate = useNavigate();
-  const profile = useSelector(state => state.profile.value);
+  const profile = JSON.parse(localStorage.getItem('profile'));
   const [form, setForm] = useState({});
 
   const userUpdate = async () => {
+    if (!form.userName) {
+      form.userName = profile.userName;
+    }
+    if (!form.name) {
+      form.name = profile.name;
+    }
+    if (!form.lastName) {
+      form.lastName = profile.lastName;
+    }
     const userByUserName = await getUserByUserName(form.userName);
-
-    if (userByUserName.userName) {
-      alert('This user name is already in use');
+    if (userByUserName.userName && userByUserName.email !== profile.email) {
+      Swal.fire({
+        title: 'This user name is already in use!',
+        text: 'Please enter a different Username.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
     } else {
       const response = await updateUser(form);
       const res = JSON.parse(response);
       const profileUpdate = res.profile;
       if (res.details) {
-        alert(res.details[0].message);
+        Swal.fire({
+          title: res.details[0].message,
+          icon: 'warning',
+          confirmButtonText: 'Got it!',
+        });
         return;
       }
       localStorage.setItem('profile', JSON.stringify(profileUpdate));
-      alert('Your profile has been updated successfully.');
+      Swal.fire({
+        title: 'Your profile has been updated successfully.',
+        icon: 'success',
+        confirmButtonText: 'Ok!',
+      });
       navigate(`/profile/${profileUpdate.userName}`);
     }
   };
@@ -85,6 +106,15 @@ function Profile() {
         <div className='profile__section2__about'>
           <h3>About</h3>
         </div>
+        <div className='profile__section2__about__email'>
+          <h4>Email</h4>
+          <input
+            type='text'
+            value={profile.email}
+            className='email__input'
+            disabled='disabled'
+          />
+        </div>
         <div className='profile__section2__about__userName'>
           <h4>Username</h4>
           <input
@@ -92,6 +122,7 @@ function Profile() {
             defaultValue={profile.userName}
             onChange={handleChange}
             name='userName'
+            className='input'
           />
         </div>
         <div className='profile__section2__about__name'>
@@ -101,6 +132,7 @@ function Profile() {
             defaultValue={profile.name}
             onChange={handleChange}
             name='name'
+            className='input'
           />
         </div>
         <div className='profile__section2__about__lastName'>
@@ -110,6 +142,7 @@ function Profile() {
             defaultValue={profile.lastName}
             onChange={handleChange}
             name='lastName'
+            className='input'
           />
         </div>
         <button type='submit' className='profile__section2__button'>
