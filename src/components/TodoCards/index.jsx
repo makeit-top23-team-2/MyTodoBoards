@@ -32,8 +32,6 @@ function ToDo({ column }) {
     setTimeout(() => {
       columnUpdate();
     }, 600);
-
-    console.log(column.title, tasks.length);
   }, [tasks]);
 
   return (

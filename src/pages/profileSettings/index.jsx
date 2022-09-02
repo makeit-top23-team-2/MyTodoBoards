@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { resetPassword } from '../../services/auth';
 import { deleteUser } from '../../services/users';
@@ -17,7 +18,12 @@ function ProfileSettings() {
   const deleteAccount = async () => {
     await deleteUser();
     localStorage.clear();
-    alert('Your account has been deleted.');
+    Swal.fire({
+      title: 'Your account has been deleted!',
+      text: 'We will miss you. Comeback soon!',
+      icon: 'success',
+      confirmButtonText: 'See ya!',
+    });
     navigate('/', { new: true });
   };
 

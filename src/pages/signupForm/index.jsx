@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import {
   getUserByEmail,
   createUser,
@@ -15,21 +16,44 @@ function SignupForm() {
     const userByUserName = await getUserByUserName(form.userName);
 
     if (user.email) {
-      alert('This email is already registered');
+      Swal.fire({
+        title: 'This email is already in use!',
+        text: 'Please enter a different email.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
     } else if (userByUserName.userName) {
-      alert('This user name is already in use');
+      Swal.fire({
+        title: 'This Username is already in use!',
+        text: 'Please enter a different Username.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
     } else if (form.password !== form.confirmPassword) {
-      alert('Password and confirm password must match');
+      Swal.fire({
+        title: 'Password and confirm password are different!',
+        text: 'Password and confirm password must match.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
     } else {
       const response = await createUser(form);
       const res = JSON.parse(response);
       if (res.details) {
-        alert(res.details[0].message);
+        Swal.fire({
+          title: res.details[0].message,
+          icon: 'warning',
+          confirmButtonText: 'Got it!',
+        });
         return;
       }
-      alert(
-        'Your account has been created. Please check your email inbox to activate your account.'
-      );
+      Swal.fire({
+        title: 'Your account has been created!',
+        text: 'Please check your email inbox to activate your account.',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
+      });
+
       navigate('/', { replace: true });
     }
   };
