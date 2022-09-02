@@ -29,6 +29,7 @@ function LogIn() {
     } else {
       Swal.fire({
         title: message,
+        text: 'Please, check that the introduced credentials are correct.',
         icon: 'warning',
         confirmButtonText: 'Ok',
       });
