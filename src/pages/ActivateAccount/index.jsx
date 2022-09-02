@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
 import { verifyAccount } from '../../services/auth';
 import { setProfile } from '../../store/profileSlice';
 
@@ -13,15 +14,23 @@ function ActivateAccount() {
   const activatedAccount = async () => {
     const response = await verifyAccount(token);
     if (response.error) {
-      alert('Invalid token');
+      Swal.fire({
+        title: 'Invalid token!',
+        text: 'Please, try again later.',
+        icon: 'error',
+        confirmButtonText: 'Got it!',
+      });
       return;
     }
     const { jwtoken, profile, message } = response;
     localStorage.setItem('token', jwtoken);
     localStorage.setItem('profile', JSON.stringify(profile));
     dispatch(setProfile(profile));
-    alert(message);
-
+    Swal.fire({
+      title: message,
+      icon: 'success',
+      confirmButtonText: `Let's beggin!`,
+    });
     navigate(`/manage-board/${profile.userName}`);
   };
 

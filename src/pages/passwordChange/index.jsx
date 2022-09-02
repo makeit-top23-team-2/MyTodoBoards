@@ -7,6 +7,7 @@ function PasswordChange() {
   const { resetToken } = useParams();
   const navigate = useNavigate();
   const [form, setForm] = useState({});
+
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   const resetPassword = async () => {
@@ -24,7 +25,7 @@ function PasswordChange() {
         icon: 'success',
         confirmButtonText: 'Got it!',
       });
-      if (profile.userName) {
+      if (profile) {
         navigate(`/profile-settings/${profile.userName}`);
       } else {
         navigate(`/logIn`);
