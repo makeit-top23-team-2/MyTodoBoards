@@ -20,10 +20,10 @@ function Profile() {
         name: form.name,
         lastName: form.lastName,
       });
-      const res = response;
-      const profileUpdate = res.profile;
-      if (res.details) {
-        alert(res.details[0].message);
+      
+      const profileUpdate = response.profile;
+      if (response.details) {
+        alert(response.details[0].message);
         return;
       }
       localStorage.setItem('profile', JSON.stringify(profileUpdate));
