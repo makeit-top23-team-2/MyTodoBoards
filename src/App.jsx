@@ -14,6 +14,7 @@ import Profile from './pages/profile';
 import ProfileSettings from './pages/profileSettings';
 import SignupForm from './pages/signupForm';
 import PasswordChange from './pages/passwordChange';
+import ChangePhotoProfile from './pages/changePhotoProfile';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           element={<ProfileSettings />}
         />
         <Route path='/signUp-form' element={<SignupForm />} />
+        <Route path='/change-photo-profile' element={<ChangePhotoProfile />} />
       </Routes>
     </BrowserRouter>
   );
