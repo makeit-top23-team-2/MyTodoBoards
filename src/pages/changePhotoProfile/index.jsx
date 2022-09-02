@@ -85,7 +85,7 @@ function ChangePhotoProfile() {
           />
         </div>
         <div className='profile__section2__manage'>
-          <h1>Change Photo Profile</h1>
+          <h1>Change Photo Image</h1>
         </div>
         <input type="file" className='profile__section2__file' onChange={handleChange} 
         accept = "image/*" />
