@@ -15,8 +15,12 @@ function Profile() {
     if (userByUserName.userName) {
       alert('This user name is already in use');
     } else {
-      const response = await updateUser(form);
-      const res = JSON.parse(response);
+      const response = await updateUser({
+        userName: form.userName,
+        name: form.name,
+        lastName: form.lastName,
+      });
+      const res = response;
       const profileUpdate = res.profile;
       if (res.details) {
         alert(res.details[0].message);
