@@ -5,10 +5,10 @@ import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { updateUser } from '../../services/users';
 import { setProfile } from '../../store/profileSlice';
+import { uploadProfilePhoto } from '../../services/upload';
 
 
 function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
-  const BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [disable, setDisable] = useState('');
   const [buttonText, setButtonText] = useState('Send');
   const [styleButton, setStyleButton] = useState('boton__save__photo');
@@ -22,18 +22,8 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
     setButtonText('Loading...');
     setDisable('disable');
     setStyleButton('boton__save__photo__disable');
-    const formData = new FormData();
-    formData.append('file', file);
-    const payload = {
-      method: 'POST',
-      body: formData,
-    };
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/upload/profile`,
-        payload
-      );
-      const imgURL = await response.json();
+      const imgURL = await uploadProfilePhoto(file);
       const newUser = { avatar: imgURL };
       const { profile, message } = await updateUser(newUser);
 
