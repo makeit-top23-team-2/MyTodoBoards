@@ -21,6 +21,7 @@ export const handlerSubmit = async (
     column: column.id,
     board: board._id,
   };
+
   if (document.getElementById(column.inputId).value !== '') {
     const card = await createCard(column.id, object);
     setTasks([...tasks, card]);
@@ -34,6 +35,7 @@ export const handlerSubmit = async (
     });
   }
 };
+
 /* export const handlerChangeCheck = (id, tasks, setTasks) => {
   const newTasks = tasks.map(task => {
     if (task.id === id) {

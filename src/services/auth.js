@@ -44,6 +44,7 @@ export async function changePassword(resetToken, newPassword) {
   );
   return response.json();
 }
+
 export async function verifyAccount(verifyToken) {
   const response = await fetch(
     `${BASE_URL}/auth/local/verify-account/${verifyToken}`,

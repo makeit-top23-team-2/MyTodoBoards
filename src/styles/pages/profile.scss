@@ -12,9 +12,7 @@
   justify-content: center;
   padding-bottom: 30px;
   width: 100%;
-
 }
-
 
 .profile__section1__photo {
   border-radius: 50%;
@@ -81,6 +79,7 @@
     padding: 8px 12px;
     width: 70%;
   }
+
   .input:hover{
     background-color: #f0f1f5;
   }
@@ -149,17 +148,16 @@
   text-decoration: none;
   white-space: normal;
   width: 70%;
-
 }
 .profile__section2__button:hover{
   background-color: #026AA7;
 }
 
 .profile__section__buttons{
- background-color: #F4F5F7;
- border-bottom: rgb(211, 204, 204) 1px solid;
- height: 30px;
- text-align: center;
+  background-color: #F4F5F7;
+  border-bottom: rgb(211, 204, 204) 1px solid;
+  height: 30px;
+  text-align: center;
 }
 .profile__section__buttons__profile {
   background-color: white;
@@ -191,7 +189,7 @@
 }
 .profile__section__buttons__settings:hover{
   background-color: #b2b5b8;
- }
+}
 
 @media (min-width: 768px) {
   .profile__section1{
@@ -203,7 +201,6 @@
     justify-content: center;
     padding-bottom: 30px;
     width: 100%;
-
   }
 
   .profile__section1__photo {
@@ -245,9 +242,7 @@
       padding: 8px;
       text-align: left;
     }
-
   }
-
 
   .profile__section2 img{
     margin: 18px 0.025px 42px;
@@ -324,10 +319,10 @@
   }
 
   .profile__section__buttons{
-   background-color: #F4F5F7;
-   border-bottom: rgb(211, 204, 204) 1px solid;
-   height: 30px;
-   text-align: center;
+    background-color: #F4F5F7;
+    border-bottom: rgb(211, 204, 204) 1px solid;
+    height: 30px;
+    text-align: center;
   }
   .profile__section__buttons__profile {
     background-color: white;
