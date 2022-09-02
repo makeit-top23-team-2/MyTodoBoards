@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
@@ -9,6 +10,8 @@ import { setProfile } from '../../store/profileSlice';
 function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
   const BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [disable, setDisable] = useState('');
+  const [buttonText, setButtonText] = useState('Send');
+  const [styleButton, setStyleButton] = useState('boton__save__photo');
   const user = useSelector(state => state.profile.value);
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
@@ -16,7 +19,9 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
     setFile(e.target.files[0]);
   };
   const handleUploadProfilePhoto = async () => {
+    setButtonText('Loading...');
     setDisable('disable');
+    setStyleButton('boton__save__photo__disable');
     const formData = new FormData();
     formData.append('file', file);
     const payload = {
@@ -33,10 +38,17 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
       const { profile, message } = await updateUser(newUser);
 
       dispatch(setProfile(profile));
-      alert(message);
+      if(message){
+        Swal.fire({
+          title: 'Your image has been up!',
+          icon: 'success',
+          confirmButtonText: 'Got it!',
+        });
+      }
       setIsModalOpened(false)
       setDisable('');
-
+      setStyleButton('boton__save__photo');
+      setButtonText('Send')
     } catch (err) {
       console.log(err);
     }
@@ -57,7 +69,7 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
               >
                 <i className='fa-solid fa-xmark' />
               </button>
-              <p className='title__change__photo'>Select your profile photo</p>
+              <p className='title__change__photo'>Select your profile image</p>
               <div className='input__change__profile'>
                 <input
                   type='file'
@@ -71,14 +83,14 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
                   <img className='photo__img' src={user.avatar} alt='' />
                 </div>
               </section>
-              <div className='boton__save__photo'>
+              <div className='boton__save__photo__container'>
                 <button
                   type='button'
                   onClick={handleUploadProfilePhoto}
                   disabled={disable}
-                  className='profile__section2__button'
+                  className={styleButton}
                 >
-                  <b>Save</b>
+                  <b>{buttonText}</b>
                 </button>
               </div>
             </header>
