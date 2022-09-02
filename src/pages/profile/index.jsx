@@ -39,7 +39,7 @@ function Profile() {
       const profileUpdate = response.profile;
       if (response.details) { 
         Swal.fire({
-          title: res.details[0].message,
+          title: response.details[0].message,
           icon: 'warning',
           confirmButtonText: 'Got it!',
         });
