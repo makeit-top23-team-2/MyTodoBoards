@@ -12,14 +12,13 @@ function SignupForm() {
 
   const newUser = async () => {
     const user = await getUserByEmail(form.email);
-    const user1 = await getUserByUserName(form.userName);
+    const userByUserName = await getUserByUserName(form.userName);
 
-    console.log('🚀 ~ file: index.jsx ~ line 18 ~ newUser ~ user.email', user);
     if (user.email) {
       alert('This email is already registered');
-    } else if (user1.userName) {
-      alert('This user name is already used');
-    } else if (form.password !== form.comfirmPassword) {
+    } else if (userByUserName.userName) {
+      alert('This user name is already in use');
+    } else if (form.password !== form.confirmPassword) {
       alert('Password and confirm password must match');
     } else {
       const response = await createUser(form);
@@ -101,7 +100,7 @@ function SignupForm() {
         <input
           className='signupForm__password'
           type='password'
-          name='comfirmPassword'
+          name='confirmPassword'
           placeholder=' Confirm your password *'
           required
           onChange={handleChange}

@@ -42,7 +42,7 @@ function ForgotPassword() {
                 className='forgot__section__button'
                 onClick={handleResetPassword}
               >
-                Reset Password Send Recovery Link
+                Send Recovery Link
               </button>
             </form>
             <hr className='forgot__section__hr' />

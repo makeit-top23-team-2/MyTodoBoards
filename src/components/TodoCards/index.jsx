@@ -28,10 +28,9 @@ function ToDo({ column }) {
     const columnUpdate = async () => {
       await updateColumn(id, { cards: tasks });
     };
-    if (tasks.length) {
+    setTimeout(() => {
       columnUpdate();
-    }
-    console.log(column.title, tasks);
+    }, 600);
   }, [tasks]);
 
   return (
