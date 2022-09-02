@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactSortable } from 'react-sortablejs';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
@@ -45,7 +46,10 @@ function MainBoard() {
   }, [columns]);
 
   const handleSubmit = async event => {
-    if (event.code === 'Enter' && event.target.value !== '') {
+    if (
+      (event.code === 'NumpadEnter' || event.code === 'Enter') &&
+      event.target.value !== ''
+    ) {
       if (event.target.value.length < 20) {
         const columnTitle = event.target.value;
         const newColumn = await createColumnByBoardId(id, {
@@ -55,7 +59,13 @@ function MainBoard() {
         setColumns1([...columns, newColumn]);
         event.target.value = '';
       } else {
-        alert('The column name is too long');
+        event.preventDefault();
+        Swal.fire({
+          title: 'The column title is too long!',
+          text: 'Introduce a title less than 19 characters long.',
+          icon: 'warning',
+          confirmButtonText: 'Got it!',
+        });
       }
     }
   };

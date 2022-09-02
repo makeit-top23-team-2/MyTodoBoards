@@ -18,7 +18,6 @@ export async function forgotPassword(email) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email }),
-
   });
   return response.json();
 }

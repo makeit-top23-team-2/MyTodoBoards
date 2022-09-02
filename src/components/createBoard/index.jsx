@@ -21,15 +21,8 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const handleForm = async e => {
     e.preventDefault();
     const board = await createBoard({ title: task }, token);
-    console.log('🚀 ~ file: index.jsx ~ line 25 ~ handleForm ~ board', board);
     setTask('');
-
     navigate(`/board/${board.title}/${board._id}`);
-
-    console.log(
-      '🚀 ~ file: index.jsx ~ line 26 ~ handleForm ~ board.title',
-      board.title
-    );
   };
 
   return createPortal(

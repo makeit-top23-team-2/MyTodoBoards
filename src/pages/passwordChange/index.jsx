@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { changePassword } from '../../services/auth';
 
 function PasswordChange() {
@@ -10,11 +11,20 @@ function PasswordChange() {
 
   const resetPassword = async () => {
     if (form.password !== form.confirmPassword) {
-      alert('Password and confirm password must match');
+      Swal.fire({
+        title: 'Password and confirm password must match!',
+        text: 'Please, check the introduced passwords.',
+        icon: 'error',
+        confirmButtonText: 'Got it!',
+      });
     } else {
       await changePassword(resetToken, form.password);
-      alert('Your password has been changed successfully');
-      if (profile.userName) {
+      Swal.fire({
+        title: 'Your password has been changed successfully',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
+      });
+      if (profile) {
         navigate(`/profile-settings/${profile.userName}`);
       } else {
         navigate(`/logIn`);
