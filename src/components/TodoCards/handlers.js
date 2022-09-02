@@ -20,13 +20,9 @@ export const handlerSubmit = async (
     column: column.id,
     board: board._id,
   };
-  console.log('🚀 ~ file: handlers.js ~ line 23 ~ object', object);
+  
   if (document.getElementById(column.inputId).value !== '') {
     const card = await createCard(column.id, object);
-    console.log(
-      '🚀 ~ file: handlers.js ~ line 16 ~ handlerSubmit ~ card',
-      card
-    );
     setTasks([...tasks, card]);
     document.getElementById(column.inputId).value = '';
   } else {
