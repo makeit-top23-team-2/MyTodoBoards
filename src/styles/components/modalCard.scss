@@ -16,7 +16,7 @@
     background-color: #f4f5f7;
     border-radius: 2px;    
     margin: 30px 0 80px;    
-    width: 600px;
+    width: 300px;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -24,7 +24,7 @@
   }
 
   &__header {  
-    margin: 12px 40px 8px 56px;
+    margin: 12px 40px 8px 20px;
     min-height: 32px;
     position: relative;
     display: block;
@@ -37,7 +37,6 @@
     background-color: var(--ds-surface-raised,#f4f5f7);
     color: var(--ds-icon,#42526e);
     height: 32px;
-    margin: 4px;
     overflow: hidden;
     padding: 4px;
     position: absolute;
@@ -47,7 +46,7 @@
     width: 32px;
     font-family: Helvetica Neue,sans-serif;   
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 300px;
 
     &:hover {
       background-color: var(--ds-background-neutral-hovered,#091e4240);
@@ -71,7 +70,7 @@
     min-height: 24px;
     padding: 4px 6px;
     resize: none;
-    width: 88%;
+    width: 80%;
     box-sizing: border-box;
     display: block;
     outline: none;
@@ -104,12 +103,11 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    width: 482px;
     margin: 0;
     min-height: 24px;
     padding: 0 8px 8px 16px;
     position: relative;
-    margin: 12px 40px 8px 48px;
+    margin: 12px 40px 8px 10px;
   }
 
   &__h3 {
@@ -127,7 +125,7 @@
     display: block;
     height: auto;
     resize: none;
-    width: 90%;
+    width: 100%;
     border: none;
     border-radius: 3px;
     box-sizing: border-box;
@@ -137,7 +135,7 @@
     padding: 8px 12px;
     transition-duration: 85ms;
     font-family: Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
 
     &:focus {
@@ -193,8 +191,7 @@
   }
 
   &__aside {
-    margin: 12px 40px 30px 70px;
-    width: 90%;
+    margin: 12px 40px 30px 20px;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -256,12 +253,11 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-    width: 482px;
     margin: 0;
     min-height: 24px;
     padding: 0 8px 8px 16px;
     position: relative;
-    margin: 12px 40px 8px 48px;
+    margin: 12px 40px 8px 10px;
 
     &__div {
       width: 100%;
@@ -320,7 +316,7 @@
       display: block;
       height: 37px;
       resize: none;
-      width: 90%;
+      width: 100%;
       border: none;
       border-radius: 3px;
       box-sizing: border-box;
@@ -330,7 +326,7 @@
       padding: 8px 12px;
       transition-duration: 85ms;
       font-family: Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 400;
     
       &:focus {
@@ -355,5 +351,68 @@
         color: white;
       }
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .modal__card {
+    background-color: #f4f5f7;
+    border-radius: 2px;    
+    margin: 30px 0 80px;    
+    width: 600px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    overflow: hidden;
+  }
+
+  .modal__header {  
+    margin: 12px 40px 8px 56px;
+    min-height: 32px;
+    position: relative;
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .modal__section {
+    margin-bottom: 24px;
+    position: relative;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 482px;
+    margin: 0;
+    min-height: 24px;
+    padding: 0 8px 8px 16px;
+    position: relative;
+    margin: 12px 40px 8px 48px;
+  }
+
+  .modal__article {
+    clear: both;
+    margin-bottom: 24px;
+    position: relative;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    width: 482px;
+    margin: 0;
+    min-height: 24px;
+    padding: 0 8px 8px 16px;
+    position: relative;
+    margin: 12px 40px 8px 48px;
+  }
+
+  .modal__aside {
+    margin: 12px 40px 30px 70px;
+    width: 90%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    top: 0;
   }
 }
