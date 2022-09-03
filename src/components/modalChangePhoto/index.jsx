@@ -7,7 +7,6 @@ import { updateUser } from '../../services/users';
 import { setProfile } from '../../store/profileSlice';
 import { uploadProfilePhoto } from '../../services/upload';
 
-
 function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
   const [disable, setDisable] = useState('');
   const [buttonText, setButtonText] = useState('Send');
@@ -24,21 +23,26 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
     setStyleButton('boton__save__photo__disable');
     try {
       const imgURL = await uploadProfilePhoto(file);
-      const newUser = { avatar: imgURL };
+      const newUser = {
+        avatar: imgURL,
+        userName: user.userName,
+        name: user.name,
+        lastName: user.lastName,
+      };
       const { profile, message } = await updateUser(newUser);
 
       dispatch(setProfile(profile));
-      if(message){
+      if (message) {
         Swal.fire({
           title: 'Your image has been up!',
           icon: 'success',
           confirmButtonText: 'Got it!',
         });
       }
-      setIsModalOpened(false)
+      setIsModalOpened(false);
       setDisable('');
       setStyleButton('boton__save__photo');
-      setButtonText('Send')
+      setButtonText('Send');
     } catch (err) {
       console.log(err);
     }
