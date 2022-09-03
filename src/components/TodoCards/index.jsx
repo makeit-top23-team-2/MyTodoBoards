@@ -30,7 +30,7 @@ function ToDo({ column }) {
     };
     setTimeout(() => {
       columnUpdate();
-    }, 600);
+    }, 10);
   }, [tasks]);
 
   return (
