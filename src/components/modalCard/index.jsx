@@ -9,9 +9,7 @@ import { updateCard, deleteCard } from '../../services/cards';
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [modalChecklist, setModalCheclist] = useState(false);
   const [task, setTask] = useState({});
-  console.log('🚀 ~ file: index.jsx ~ line 14 ~ ModalCard ~ task', task);
   const [tasks, setTasks] = useState([]);
-  console.log('🚀 ~ file: index.jsx ~ line 15 ~ ModalCard ~ tasks', tasks);
   const [form, setForm] = useState({});
   const navigate = useNavigate();
 
@@ -19,13 +17,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     if (card.checklist.length) {
       setTasks(card.checklist);
     }
-    console.log(
-      '🚀 ~ file: index.jsx ~ line 21 ~ useEffect ~ card.checklist',
-      card.checklist
-    );
   }, []);
-
-  // const tasks = useSelector(state => state.tasks);
 
   const handleCloseModal = () => {
     setIsModalOpened(false);

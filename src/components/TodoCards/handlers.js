@@ -35,17 +35,3 @@ export const handlerSubmit = async (
     });
   }
 };
-
-/* export const handlerChangeCheck = (id, tasks, setTasks) => {
-  const newTasks = tasks.map(task => {
-    if (task.id === id) {
-      task.checked = !task.checked;
-    }
-    return task;
-  });
-  setTasks(newTasks);
-};
-export const handlerDelete = (tasks, setTasks) => {
-  const newTasks = tasks.filter(task => task.checked === false);
-  setTasks(newTasks);
-}; */
