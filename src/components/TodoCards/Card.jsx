@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ModalCard from '../modalCard';
 
-function Card({ card }) {
+function Card({ card, column }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const handleOpenModal = () => {
@@ -24,6 +24,8 @@ function Card({ card }) {
       <ModalCard
         isModalOpened={isModalOpened}
         setIsModalOpened={setIsModalOpened}
+        card={card}
+        column={column}
       />
     </>
   );
@@ -33,8 +35,10 @@ export default Card;
 
 Card.propTypes = {
   card: PropTypes.shape(),
+  column: PropTypes.shape(),
 };
 
 Card.defaultProps = {
   card: {},
+  column: {},
 };

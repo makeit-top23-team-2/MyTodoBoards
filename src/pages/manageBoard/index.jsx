@@ -55,7 +55,7 @@ function ManageBoard() {
               ? boards.map(board => (
                   <li className='container__article__li__item' key={board._id}>
                     <Link
-                      to={`/board/${board.title}/${board._id}`}
+                      to={`/board/${board._id}`}
                       className='container__article__a__item'
                     >
                       <p className='container__article__p__item'>

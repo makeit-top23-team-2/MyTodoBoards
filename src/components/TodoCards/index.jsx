@@ -85,6 +85,7 @@ function ToDo({ column }) {
         >
           {tasks?.map(card => (
             <Card
+              column={column}
               key={card._id}
               card={card}
               tasks={tasks}
