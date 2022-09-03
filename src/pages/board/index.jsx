@@ -12,8 +12,8 @@ import { setColumns } from '../../store/columnsSlice';
 import { createColumnByBoardId } from '../../services/columns';
 
 function MainBoard() {
+  const [titleBoard, setTitleBoard] = useState('');
   const [columns, setColumns1] = useState([]);
-  const [Task, setTask] = useState({});
   const dispatch = useDispatch();
   const singleBoard = useSelector(state => state.singleBoard.value);
 
@@ -22,6 +22,7 @@ function MainBoard() {
   useEffect(() => {
     const fetchData = async () => {
       const board = await getBoardById(id);
+      setTitleBoard(board.title);
       const boardColumns = board.columns;
       dispatch(setSingleBoard(board));
       dispatch(setColumns(boardColumns));
@@ -70,10 +71,6 @@ function MainBoard() {
     }
   };
 
-  const taskTaker = Taker => {
-    setTask(Taker);
-  };
-
   return (
     <div>
       <NavBar />
@@ -83,7 +80,7 @@ function MainBoard() {
             className='nameBoard'
             type='text'
             placeholder=' Write a title for this board'
-            defaultValue={singleBoard.title}
+            defaultValue={titleBoard}
           />
           {/*           <a href='/'>
             {' '}
@@ -126,7 +123,7 @@ function MainBoard() {
               >
                 {columns?.map(column => (
                   <li key={column.id} className='columns'>
-                    <ToDo column={column} taskTaker={taskTaker} Task={Task} />
+                    <ToDo column={column} />
                   </li>
                 ))}
               </ReactSortable>

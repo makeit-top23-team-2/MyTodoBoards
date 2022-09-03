@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path='/signUp' element={<SignUp />} />
         <Route path='/logIn' element={<LogIn />} />
-        <Route path='/board/:title/:id' element={<MainBoard />} />
+        <Route path='/board/:id' element={<MainBoard />} />
         <Route path='/' element={<Home />} />
         <Route path='/manage-board/:userName' element={<ManageBoard />} />
         <Route path='/activate-account/:token' element={<ActivateAccount />} />

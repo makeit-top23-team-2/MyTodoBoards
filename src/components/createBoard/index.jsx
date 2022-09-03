@@ -22,7 +22,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
     e.preventDefault();
     const board = await createBoard({ title: task }, token);
     setTask('');
-    navigate(`/board/${board.title}/${board._id}`);
+    navigate(`/board/${board._id}`);
   };
 
   return createPortal(
