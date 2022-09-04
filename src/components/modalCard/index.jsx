@@ -11,7 +11,8 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState({});
-  const navigate = useNavigate();
+  const [style, setStyle] = useState(0);
+  const navigate = useNavigate({});
 
   useEffect(() => {
     if (card.checklist.length) {
@@ -73,14 +74,24 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     cardDelete();
   };  
 
-  const handleComplete = (id) => {
+  const handleComplete = (id) => {     
     setTasks(tasks.map((item) => 
-      item.id === id
-      ? {...item, completed: !item.completed}
-      : {...item}
+    item.id === id   
+    ? {...item, completed: !item.completed}
+    : {...item}
     ))      
-  };  
-    
+  }    
+
+  const updateList = tasks.filter(item => item.completed);
+  const total = Math.round((updateList.length / tasks.length) * 100);  
+
+  setTimeout(() => {
+		const newStyle = {
+			opacity: 1,
+			width: `${total}%`
+		}		
+		setStyle(newStyle);
+	}, 30);
 
   return createPortal(
     <div>
@@ -128,6 +139,14 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 <i className="fa-regular fa-square-check"/>
                 <h3 className='modal__section__h3'>Checklist</h3>
               </div>
+                
+              <div className='modal__section__percen'>                  
+                {total >= 0 ? `${total}%` : `0%`}
+                <div className='modal__section__progress'>
+                  <div className="modal__section__progress__done" style={style} /> 
+                </div>
+              </div>
+              
               <div className='modal__section__list'>
                 {tasks?.map &&
                   tasks.map(item => (
