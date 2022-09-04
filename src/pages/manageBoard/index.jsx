@@ -10,7 +10,6 @@ import { setBoards } from '../../store/boardsSlice';
 function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const boards = useSelector(state => state.boards.value);
-  const singleBoard = useSelector(state => state.singleBoard.value)
   const dispatch = useDispatch();
 
   const token = localStorage.getItem('token');
