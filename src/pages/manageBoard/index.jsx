@@ -10,6 +10,7 @@ import { setBoards } from '../../store/boardsSlice';
 function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const boards = useSelector(state => state.boards.value);
+  const singleBoard = useSelector(state => state.singleBoard.value)
   const dispatch = useDispatch();
 
   const token = localStorage.getItem('token');
@@ -57,6 +58,9 @@ function ManageBoard() {
                     <Link
                       to={`/board/${board._id}`}
                       className='container__article__a__item'
+                      style={{
+                        background: `url("${singleBoard.color}")`
+                      }}
                     >
                       <p className='container__article__p__item'>
                         <span className='container__article__span'>
