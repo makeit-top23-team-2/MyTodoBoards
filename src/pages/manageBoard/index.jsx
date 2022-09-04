@@ -59,7 +59,7 @@ function ManageBoard() {
                       to={`/board/${board._id}`}
                       className='container__article__a__item'
                       style={{
-                        background: `url("${singleBoard.color}")`
+                        background: `url("${board.color}")`
                       }}
                     >
                       <p className='container__article__p__item'>
