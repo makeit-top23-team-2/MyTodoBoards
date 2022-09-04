@@ -11,7 +11,8 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState({});
-  const navigate = useNavigate();
+  const [style, setStyle] = useState(0);
+  const navigate = useNavigate({});
 
   useEffect(() => {
     if (card.checklist.length) {
@@ -28,14 +29,14 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   };
 
   const handleChange = e => {
-    setTask({ description: e.target.value, id: uuid() });
+    setTask({ description: e.target.value, id: uuid(), completed:false });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     setTasks([...tasks, task]);
     document.getElementById(card._id).value = '';
-  };
+  };  
 
   const handleDelete = id => {
     const newTasks = tasks.filter(item => item.id !== id);
@@ -71,7 +72,26 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
 
   const handleDeleteCard = () => {
     cardDelete();
-  };
+  };  
+
+  const handleComplete = (id) => {     
+    setTasks(tasks.map((item) => 
+    item.id === id   
+    ? {...item, completed: !item.completed}
+    : {...item}
+    ))      
+  }    
+
+  const updateList = tasks.filter(item => item.completed);
+  const total = Math.round((updateList.length / tasks.length) * 100);  
+
+  setTimeout(() => {
+		const newStyle = {
+			opacity: 1,
+			width: `${total}%`
+		}		
+		setStyle(newStyle);
+	}, 30);
 
   return createPortal(
     <div>
@@ -115,12 +135,28 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
             </article>
 
             <section className='modal__section'>
-              <h3 className='modal__h3'>Checklist</h3>
-              <div>
+              <div className='modal__section__i'>
+                <i className="fa-regular fa-square-check"/>
+                <h3 className='modal__section__h3'>Checklist</h3>
+              </div>
+                
+              <div className='modal__section__percen'>                  
+                {total >= 0 ? `${total}%` : `0%`}
+                <div className='modal__section__progress'>
+                  <div className="modal__section__progress__done" style={style} /> 
+                </div>
+              </div>
+              
+              <div className='modal__section__list'>
                 {tasks?.map &&
                   tasks.map(item => (
                     <div key={item.id} className='modal__section__div'>
-                      <p className='modal__section__p'>{item.description}</p>
+                      <input
+                       type="checkbox" 
+                       checked={item.completed}
+                       onChange={() => handleComplete(item.id)}
+                       />
+                      <p className={`${item.completed ? 'modal__section__p__active' : 'modal__section__p'}`}>{item.description}</p>
                       <button
                         className='modal__section__button'
                         type='submit'
@@ -132,7 +168,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   ))}
               </div>
 
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} >
                 <input
                   name='description'
                   placeholder='Add an item...'
@@ -143,7 +179,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 <button
                   disabled={task.description ? '' : 'disabled'}
                   type='submit'
-                  className='modal__section__button'
+                  className='modal__section__button__add'
                 >
                   Add an Item
                 </button>
