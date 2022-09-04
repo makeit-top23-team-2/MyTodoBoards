@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactSortable } from 'react-sortablejs';
@@ -103,7 +102,7 @@ function MainBoard() {
           </a> */}
             <div className='button__options'>
               <button type='button' {...buttonProps}>
-                Options  
+                Options
                 <img
                   className='iconsBoard'
                   src='..\img\bars-solid.png'
