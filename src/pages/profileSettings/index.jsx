@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { resetPassword } from '../../services/auth';
 import { deleteUser } from '../../services/users';
 import ModalChangePhoto from '../../components/modalChangePhoto';
 
-// import ModalChangePhoto from '../../components/modalChangePhoto';
-
 function ProfileSettings() {
   const navigate = useNavigate();
-  const profile = useSelector(state => state.profile.value);
+  const profile = JSON.parse(localStorage.getItem('profile'));
+
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const passwordReset = async () => {
@@ -112,9 +111,9 @@ function ProfileSettings() {
             </button>
           </div>
           <ModalChangePhoto
-        isModalOpened={isModalOpened}
-        setIsModalOpened={setIsModalOpened}
-      />
+            isModalOpened={isModalOpened}
+            setIsModalOpened={setIsModalOpened}
+          />
         </section>
       </section>
     </div>
@@ -122,11 +121,3 @@ function ProfileSettings() {
 }
 
 export default ProfileSettings;
-
-/*
-<ModalChangePhoto 
-isModalOpened={isModalOpened}
-setIsModalOpened={setIsModalOpened}
-/>
-
-*/

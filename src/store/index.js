@@ -7,7 +7,7 @@ import cardsReducer from './cardsSlice';
 
 export default configureStore({
   reducer: {
-    profile: profileReducer,    
+    profile: profileReducer,
     boards: boardsReducer,
     singleBoard: singleBoardReducer,
     columns: columnsReducer,

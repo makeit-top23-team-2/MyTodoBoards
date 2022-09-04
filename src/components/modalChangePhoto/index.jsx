@@ -21,31 +21,28 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
     setButtonText('Loading...');
     setDisable('disable');
     setStyleButton('boton__save__photo__disable');
-    try {
-      const imgURL = await uploadProfilePhoto(file);
-      const newUser = {
-        avatar: imgURL,
-        userName: user.userName,
-        name: user.name,
-        lastName: user.lastName,
-      };
-      const { profile, message } = await updateUser(newUser);
 
-      dispatch(setProfile(profile));
-      if (message) {
-        Swal.fire({
-          title: 'Your image has been up!',
-          icon: 'success',
-          confirmButtonText: 'Got it!',
-        });
-      }
-      setIsModalOpened(false);
-      setDisable('');
-      setStyleButton('boton__save__photo');
-      setButtonText('Send');
-    } catch (err) {
-      console.log(err);
+    const imgURL = await uploadProfilePhoto(file);
+    const newUser = {
+      avatar: imgURL,
+      userName: user.userName,
+      name: user.name,
+      lastName: user.lastName,
+    };
+    const { profile, message } = await updateUser(newUser);
+    localStorage.setItem('profile', JSON.stringify(profile));
+    dispatch(setProfile(profile));
+    if (message) {
+      Swal.fire({
+        title: 'Your image has been up!',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
+      });
     }
+    setIsModalOpened(false);
+    setDisable('');
+    setStyleButton('boton__save__photo');
+    setButtonText('Send');
   };
   const handleCloseModal = () => {
     setIsModalOpened(false);
