@@ -5,47 +5,57 @@ import { createPortal } from 'react-dom';
 import BackgroundBoard from '../backgroundBoard';
 import { uploadColorBoard } from '../../services/upload';
 import { updateBoard } from '../../services/boards';
-import { setSingleBoard } from '../../store/singleBoardSlice'
+import { setSingleBoard } from '../../store/singleBoardSlice';
+import { setSelectImgBool } from '../../store/selectImgBoolSlice';
 
 function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
-   const [disable, setDisable] = useState('');
   const [buttonText, setButtonText] = useState('Send');
-  const [styleButton, setStyleButton] = useState('boton__save__photo');
+  const [styleButton, setStyleButton] = useState('board__section__button');
   const singleBoard = useSelector(state => state.singleBoard.value);
-  const dispatch = useDispatch()
+  const selectImgBool = useSelector(state => state.selectImgBool.value);
+  const imgSelected = useSelector(state => state.colorBoard.value);
+  const dispatch = useDispatch();
   const [file, setFile] = useState(null);
+  
 
   const handleChange = e => {
-    setFile(e.target.files[0]);
+    if (e.target.files[0] && !selectImgBool) setFile(e.target.files[0]);
   };
 
   const handleUploadColorBoard = async () => {
-    setButtonText('Loading...');
-    setDisable('disable');
-    setStyleButton('boton__save__photo__disable');
-    try {
+    if (file) {
+      // setEnableButton('')
+      setButtonText('Loading...');
+      setStyleButton('board__section__loading');
       const imgURL = await uploadColorBoard(file);
-      const color = imgURL.url
-      const id = singleBoard._id
-
-      const board = await updateBoard(id, {color})
-      
-
+      const color = imgURL.url;
+      const id = singleBoard._id;
+      const board = await updateBoard(id, { color });
       dispatch(setSingleBoard(board));
       setIsModalOpened(false);
-      setDisable('');
       setStyleButton('boton__save__photo');
       setButtonText('Send');
-    } catch (err) {
-      console.log(err);
     }
+    if (selectImgBool) {
+      // setEnableButton('')
+      const color = imgSelected;
+      const id = singleBoard._id;
+      const board = await updateBoard(id, { color });
+      dispatch(setSingleBoard(board));
+      setIsModalOpened(false);
+      setStyleButton('boton__save__photo');
+      setButtonText('Send');
+    }
+    window.location.reload();
+    setIsModalOpened(false);
+    setStyleButton('boton__save__photo');
+    setButtonText('Send');
+    dispatch(setSelectImgBool(false));
   };
-  
+
   const handleCloseModal = () => {
     setIsModalOpened(false);
   };
-
-  
 
   return createPortal(
     <div className='container__change__color__board'>
@@ -64,10 +74,10 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
-              <div className='board__color__actual'>
+            <div className='board__section__div' style={{backgroundImage:`url("${imgSelected}")`}}>
                 <img
                   className='board__section__image'
-                  src={singleBoard.color}
+                  src='https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg'
                   alt='image_board-preview'
                 />
               </div>
@@ -93,9 +103,15 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
                     type='file'
                     onChange={handleChange}
                     accept='image/*'
+                    required
                   />
-                  <button type='button' className={styleButton} onClick={handleUploadColorBoard} disabled={disable}>
-                  <b>{buttonText}</b>
+                  <button
+                    type='button'
+                    className={styleButton}
+                    onClick={handleUploadColorBoard}
+                    disabled={selectImgBool ? false : !file}
+                  >
+                    <b>{buttonText}</b>
                   </button>
                 </div>
               </form>
