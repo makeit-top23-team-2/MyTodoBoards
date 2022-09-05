@@ -4,6 +4,9 @@ import boardsReducer from './boardsSlice';
 import columnsReducer from './columnsSlice';
 import singleBoardReducer from './singleBoardSlice';
 import cardsReducer from './cardsSlice';
+import colorBoardReducer from './colorBoardSlice';
+import selectImgBoolReducer from './selectImgBoolSlice';
+
 
 export default configureStore({
   reducer: {
@@ -12,5 +15,8 @@ export default configureStore({
     singleBoard: singleBoardReducer,
     columns: columnsReducer,
     cards: cardsReducer,
+    colorBoard: colorBoardReducer,
+    selectImgBool: selectImgBoolReducer,
+
   },
 });

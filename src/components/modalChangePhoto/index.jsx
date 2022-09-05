@@ -8,41 +8,45 @@ import { setProfile } from '../../store/profileSlice';
 import { uploadProfilePhoto } from '../../services/upload';
 
 function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
-  const [disable, setDisable] = useState('');
+  const [disable, setDisable] = useState(false);
   const [buttonText, setButtonText] = useState('Send');
   const [styleButton, setStyleButton] = useState('boton__save__photo');
   const user = useSelector(state => state.profile.value);
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const handleChange = e => {
-    setFile(e.target.files[0]);
+    if (e.target.files[0]) setFile(e.target.files[0]);
   };
   const handleUploadProfilePhoto = async () => {
-    setButtonText('Loading...');
-    setDisable('disable');
-    setStyleButton('boton__save__photo__disable');
+    if (file) {
+      setButtonText('Loading...');
+      setDisable(true);
+      setStyleButton('boton__save__photo__disable');
 
-    const imgURL = await uploadProfilePhoto(file);
-    const newUser = {
-      avatar: imgURL,
-      userName: user.userName,
-      name: user.name,
-      lastName: user.lastName,
-    };
-    const { profile, message } = await updateUser(newUser);
-    localStorage.setItem('profile', JSON.stringify(profile));
-    dispatch(setProfile(profile));
-    if (message) {
-      Swal.fire({
-        title: 'Your image has been up!',
-        icon: 'success',
-        confirmButtonText: 'Got it!',
-      });
+      const imgURL = await uploadProfilePhoto(file);
+      const newUser = {
+        avatar: imgURL,
+        userName: user.userName,
+        name: user.name,
+        lastName: user.lastName,
+      };
+      const { profile, message } = await updateUser(newUser);
+      localStorage.setItem('profile', JSON.stringify(profile));
+      dispatch(setProfile(profile));
+      if (message) {
+        Swal.fire({
+          title: 'Your image has been up!',
+          icon: 'success',
+          confirmButtonText: 'Got it!',
+        });
+      }
+      setIsModalOpened(false);
+       window.location.reload()
+      setDisable('');
+      setStyleButton('boton__save__photo');
+      setButtonText('Send');
     }
-    setIsModalOpened(false);
-    setDisable('');
-    setStyleButton('boton__save__photo');
-    setButtonText('Send');
+    dispatch()
   };
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -78,8 +82,8 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
                 <button
                   type='button'
                   onClick={handleUploadProfilePhoto}
-                  disabled={disable}
-                  className={styleButton}
+                  disabled={!disable ? false : !file} 
+                  className={!file ? 'boton__save__photo__disable' : styleButton}
                 >
                   <b>{buttonText}</b>
                 </button>

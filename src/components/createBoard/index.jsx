@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
@@ -9,6 +10,12 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const colorBoard = useSelector(state => state.colorBoard.value);
+  const [text, setText] = useState('Create');
+  const [disable, setDisable] = useState('');
+  const [styleButton, setStyleButton] = useState('board__section__button');
+  const imgSelected = useSelector(state => state.colorBoard.value);
+  console.log("🚀 ~ file: index.jsx ~ line 18 ~ CreateBoard ~ imgSelected", imgSelected)
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -18,9 +25,16 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
     setTask(e.target.value);
   };
 
+  const handleChangeData = () => {
+    setDisable('');
+    setStyleButton('board__section__loading');
+    setText('Loading...');
+  };
+
+
   const handleForm = async e => {
     e.preventDefault();
-    const board = await createBoard({ title: task }, token);
+    const board = await createBoard({ title: task , color: colorBoard}, token);
     setTask('');
     navigate(`/board/${board._id}`);
   };
@@ -42,10 +56,10 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
-              <div className='board__section__div'>
+              <div className='board__section__div' style={{backgroundImage:`url("${imgSelected}")`}}>
                 <img
                   className='board__section__image'
-                  src='..\img\image_boardPreview.jpg'
+                  src='https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg'
                   alt='image_board-preview'
                 />
               </div>
@@ -77,10 +91,11 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                   </span>
                   <button
                     type='submit'
-                    className='board__section__button'
-                    disabled={task.length > 3 ? '' : 'disabled'}
+                    className={styleButton}
+                    disabled={task.length  > 3 || disable ? '' : 'disabled'}
+                    onClick={handleChangeData}
                   >
-                    Create
+                    {text}
                   </button>
                 </div>
               </form>
