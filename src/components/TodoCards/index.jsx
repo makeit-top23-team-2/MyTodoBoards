@@ -33,6 +33,10 @@ function ToDo({ column }) {
     }, 10);
   }, [tasks]);
 
+  const handlerChangeColumnTitle = async e => {
+    await updateColumn(id, { title: e.target.value });
+  };
+
   return (
     <div className='ToDo__column'>
       <div className='ToDo__DragImg'>
@@ -48,6 +52,7 @@ function ToDo({ column }) {
           className='ToDo__listTitle__input'
           placeholder='Write a title for this list...'
           defaultValue={column.title}
+          onBlur={handlerChangeColumnTitle}
         />
       </section>
       <div className='ToDo__submit'>
