@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
@@ -12,7 +11,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState({});
   const [style, setStyle] = useState(0);
-  const navigate = useNavigate({});
 
   useEffect(() => {
     if (card.checklist.length) {
@@ -56,8 +54,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
       members: [],
     };
     updateCard(card._id, newCard);
-    setIsModalOpened(false);
-    navigate(`/board/${card.board}`, { replace: true });
+    window.location.reload();
   };
 
   const handleSave = () => {
@@ -66,8 +63,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
 
   const cardDelete = () => {
     deleteCard(card._id);
-    setIsModalOpened(false);
-    navigate(`/board/${card.board}`, { replace: true });
+    window.location.reload();
   };
 
   const handleDeleteCard = () => {

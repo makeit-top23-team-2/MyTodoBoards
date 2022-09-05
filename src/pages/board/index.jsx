@@ -79,6 +79,10 @@ function MainBoard() {
     }
   };
 
+  const handleChangeTitleBoard = async e => {
+    await updateBoard(id, { title: e.target.value });
+  };
+
   return (
     <div>
       <NavBar />
@@ -95,6 +99,7 @@ function MainBoard() {
               type='text'
               placeholder=' Write a title for this board'
               defaultValue={titleBoard}
+              onBlur={handleChangeTitleBoard}
             />
             {/*           <a href='/'>
             {' '}
