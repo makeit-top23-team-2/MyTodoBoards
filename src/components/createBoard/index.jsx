@@ -15,7 +15,6 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [disable, setDisable] = useState('');
   const [styleButton, setStyleButton] = useState('board__section__button');
   const imgSelected = useSelector(state => state.colorBoard.value);
-  console.log("🚀 ~ file: index.jsx ~ line 18 ~ CreateBoard ~ imgSelected", imgSelected)
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -31,10 +30,9 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
     setText('Loading...');
   };
 
-
   const handleForm = async e => {
     e.preventDefault();
-    const board = await createBoard({ title: task , color: colorBoard}, token);
+    const board = await createBoard({ title: task, color: colorBoard }, token);
     setTask('');
     navigate(`/board/${board._id}`);
   };
@@ -56,7 +54,10 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
-              <div className='board__section__div' style={{backgroundImage:`url("${imgSelected}")`}}>
+              <div
+                className='board__section__div'
+                style={{ backgroundImage: `url("${imgSelected}")` }}
+              >
                 <img
                   className='board__section__image'
                   src='https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg'
@@ -92,7 +93,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                   <button
                     type='submit'
                     className={styleButton}
-                    disabled={task.length  > 3 || disable ? '' : 'disabled'}
+                    disabled={task.length > 3 || disable ? '' : 'disabled'}
                     onClick={handleChangeData}
                   >
                     {text}
