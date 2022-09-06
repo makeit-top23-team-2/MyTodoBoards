@@ -1,41 +1,30 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
 import NavBar from '../../components/NavBar';
 import { resetPassword } from '../../services/auth';
-import { deleteUser } from '../../services/users';
 import ModalChangePhoto from '../../components/modalChangePhoto';
+import DeleteAccountModal from '../../components/deleteAccountModal';
 
 function ProfileSettings() {
   const navigate = useNavigate();
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isDeleteAccountModalOpened, setIsDeleteAccountModalOpened] =
+    useState(false);
 
   const passwordReset = async () => {
     const { hash } = await resetPassword();
     navigate(`/reset-password/${hash}`);
   };
 
-  const deleteAccount = async () => {
-    await deleteUser();
-    localStorage.clear();
-    Swal.fire({
-      title: 'Your account has been deleted!',
-      text: 'We will miss you. Comeback soon!',
-      icon: 'success',
-      confirmButtonText: 'See ya!',
-    });
-    navigate('/', { new: true });
-  };
-
   const handleChangePassword = () => {
     passwordReset();
   };
 
-  const handleDeleteAccount = () => {
-    deleteAccount();
+  const handleOpenDeleteAccountModal = () => {
+    setIsDeleteAccountModalOpened(true);
   };
 
   const handleOpenModal = () => {
@@ -105,7 +94,7 @@ function ProfileSettings() {
             <button
               type='button'
               className='profile__section2__about__deleteAcount'
-              onClick={handleDeleteAccount}
+              onClick={handleOpenDeleteAccountModal}
             >
               <h4>Delete Account</h4>
             </button>
@@ -116,6 +105,11 @@ function ProfileSettings() {
           />
         </section>
       </section>
+
+      <DeleteAccountModal
+        isDeleteAccountModalOpened={isDeleteAccountModalOpened}
+        setIsDeleteAccountModalOpened={setIsDeleteAccountModalOpened}
+      />
     </div>
   );
 }

@@ -41,12 +41,12 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
         });
       }
       setIsModalOpened(false);
-       window.location.reload()
+      window.location.reload();
       setDisable('');
       setStyleButton('boton__save__photo');
       setButtonText('Send');
     }
-    dispatch()
+    dispatch();
   };
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -82,8 +82,10 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
                 <button
                   type='button'
                   onClick={handleUploadProfilePhoto}
-                  disabled={!disable ? false : !file} 
-                  className={!file ? 'boton__save__photo__disable' : styleButton}
+                  disabled={!disable ? false : !file}
+                  className={
+                    !file ? 'boton__save__photo__disable' : styleButton
+                  }
                 >
                   <b>{buttonText}</b>
                 </button>

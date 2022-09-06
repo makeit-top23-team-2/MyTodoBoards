@@ -12,6 +12,7 @@ import { setSingleBoard } from '../../store/singleBoardSlice';
 import { setColumns } from '../../store/columnsSlice';
 import { createColumnByBoardId } from '../../services/columns';
 import ChangeColorBoard from '../../components/modalChangeColorBoard';
+import DeleteBoard from '../../components/deleteBoardModal';
 
 function MainBoard() {
   const [titleBoard, setTitleBoard] = useState('');
@@ -20,6 +21,8 @@ function MainBoard() {
   const singleBoard = useSelector(state => state.singleBoard.value);
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
   const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isBoardDeleteModalOpened, setIsBoardDeleteModalOpened] =
+    useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpened(true);
@@ -83,6 +86,10 @@ function MainBoard() {
     await updateBoard(id, { title: e.target.value });
   };
 
+  const handleOpenDeleteBoardModal = () => {
+    setIsBoardDeleteModalOpened(true);
+  };
+
   return (
     <div>
       <NavBar />
@@ -132,6 +139,14 @@ function MainBoard() {
                 >
                   Share
                 </button>
+                <button
+                  {...itemProps[2]}
+                  href='https://example.com'
+                  type='button'
+                  onClick={handleOpenDeleteBoardModal}
+                >
+                  Delete Board
+                </button>
               </div>
             </div>
           </header>
@@ -174,6 +189,12 @@ function MainBoard() {
       <ChangeColorBoard
         isModalOpened={isModalOpened}
         setIsModalOpened={setIsModalOpened}
+      />
+
+      <DeleteBoard
+        isBoardDeleteModalOpened={isBoardDeleteModalOpened}
+        setIsBoardDeleteModalOpened={setIsBoardDeleteModalOpened}
+        id={id}
       />
       <Footer />
     </div>
