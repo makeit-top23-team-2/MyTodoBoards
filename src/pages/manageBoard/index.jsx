@@ -63,8 +63,23 @@ function ManageBoard() {
                         backgroundSize: 'cover',
                       }}
                     >
-                      <p className='container__article__p__item'>
-                        <span className='container__article__span'>
+                      <p
+                        className='container__article__p__item'
+                        style={{
+                          color: 'black',
+                        }}
+                      >
+                        <span
+                          className='container__article__span'
+                          style={{
+                            background: 'rgba(235,236,240,0.7)',
+                            borderRadius: '5px',
+                            padding: '5px',
+                            boxShadow: '9px 5px 17px 1px rgba(0,0,0,0.35)',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                          }}
+                        >
                           {board.title}
                         </span>
                       </p>

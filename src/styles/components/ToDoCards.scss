@@ -147,6 +147,7 @@ button {
 }
 
 .ToDo__input__text {
+  outline: none;
   width: 200px;
   margin-right: 5px;
   border: 0;
@@ -180,15 +181,44 @@ width: 20px;
 cursor:-webkit-grab;
 }
 
+.column__open__modal {
+  font-size: 8px;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  height: auto;
+  margin-right: 5px;
+  cursor: pointer;
+  background-color: #a5a5a5;
+}
+
+.column__open__modal:hover {
+  background-color: red;
+  transition-duration: 0.4s;
+}
+
+
 .ToDo__AddButton {
   cursor: pointer;
 }
 
-.ToDo__Checkbox {
+.ToDo__AddButton:hover {
+  background-color: #054eaf;
+  transition-duration: 0.4s;
+}
+
+.ToDo__open__modal {
   margin-top: 4px;
   margin-bottom: 4px;
   margin-left: 5px;
   height: auto;
   margin-right: 5px;
+  cursor: pointer;
+}
 
+.ToDo__open__modal:hover {
+  background-color: #054eaf;
+  transition-duration: 0.4s;
 }
