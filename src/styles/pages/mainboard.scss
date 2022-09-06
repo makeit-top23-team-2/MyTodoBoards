@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 .headerBoard {
+  align-items: center;
   width: 100%;
   color: white;
   cursor: pointer;
@@ -15,12 +16,10 @@
     background-color: #EBECF0;
     border-radius: 5px;
     padding: 5px 10px;
-    margin: 5px 10px 5px 0px;
     color:  #162534 ;
     display: flex;
     margin-left: 10px;
     font-size: 15px;
-    margin-top: 15px;
     position: relative;
     cursor: pointer;
     img{
@@ -32,32 +31,26 @@
   button:hover {
     background-color:#DDDDDD;
     border: white;
-    
+    transition-duration: 0.4s;
   }
 
-  input {
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    margin: 5px 10px 8px 50px;
-    color: white;
-    font-size: 20px;
-    font-family: 'Noto Sans', sans-serif;
-    margin-top: 15px;
-  }
-
-  input::placeholder {
-    color: white;
-    font-size: 20px;
-    font-family: 'Noto Sans', sans-serif;
-  }
-
-  input:hover {
-    background-color:#DDDDDD;
+  .nameBoard {
+    border: 0;
     border-radius: 3px;
-    color: #162534;
+    background-color: #EBECF0;
+    color: #141D29;
+    font-size: 20px;
+    margin-left: 10px;
+    outline: none;
   }
+
+  .nameBoard:hover {
+    transition-duration: 0.4s;
+    background-color: #e2dce9;
+    border-radius: 3px;
+    border: 0;
+  }
+
   .container__workspace__options {
     text-align: center;
     color: rgb(49, 132, 180);
@@ -76,13 +69,13 @@
   .container__workspace__options:hover{
     background-color: rgb(30, 73, 98);
     border: white;
-  } 
+  }
   .iconsBoard {
     max-width: 0.9rem;
     max-height: 0.9rem;
   }
   div[role='menu'] {
-    visibility: hidden; 
+    visibility: hidden;
   }
 
   div[role='menu'].visible {
@@ -101,7 +94,7 @@
     font-size: 10px;
     font-family: 'Noto Sans', sans-serif;
     padding: 10px 40px 20px;
-    
+
  }
  .dropDown button:hover{
   background-color:#DDDDDD;
@@ -118,11 +111,11 @@
       margin: 0 0 0 0px
    }
   }
-  
+
 }
 .container__workspace{
   min-height: 100vh;
-  background-position: center; 
+  background-position: center;
   background-size: cover;
 
   .buttonBoard__options__change{
@@ -140,12 +133,12 @@
   padding-top: 30px;
 
   .textContent {
-    background-color: #162534;
+    background-color: #EBECF0;
+    color: #141D29;
     width: 200px;
     height: 30px;
     font-size: 15px;
     border: none;
-    color: white;
     outline: none;
     border-radius: 3px;
     display: block;
@@ -153,10 +146,18 @@
   }
 
   .buttonCard::placeholder {
-    color: white;
+    color: #141D29;
+  }
+
+  .textContent:hover {
+    transition-duration: 0.4s;
+    background-color: #e2dce9;
+    border-radius: 3px;
+    border: 0;
   }
 
   .columns {
+    position: relative;
     background-color: #EBECF0;
     margin: 10px 10px;
     border-radius: 5px;
@@ -171,7 +172,7 @@
     margin: 0;
     justify-content: center;
   }
-  
+
   /*  @media {
     .list__Columns__Board{
 

@@ -14,7 +14,7 @@ function Card({ card, column }) {
       <li id={card.id} className='ToDo__cardlist__item'>
         <span className='ToDo__cardlist__cardTitle'>{card.title}</span>
         <button
-          className='non-draggable ToDo__Checkbox'
+          className='non-draggable ToDo__open__modal'
           type='button'
           onClick={handleOpenModal}
         >

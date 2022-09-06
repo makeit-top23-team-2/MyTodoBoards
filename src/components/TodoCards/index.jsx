@@ -5,11 +5,14 @@ import { useSelector } from 'react-redux';
 import { handlerChange, handlerSubmit } from './handlers';
 import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
+import DeleteColumn from '../deleteColumnModal';
 
 function ToDo({ column }) {
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
+  const [isColumnDeleteModalOpened, setIsColumnDeleteModalOpened] =
+    useState(false);
 
   const [tasks, setTasks] = useState([]);
 
@@ -37,8 +40,19 @@ function ToDo({ column }) {
     await updateColumn(id, { title: e.target.value });
   };
 
+  const handleOpenDeleteColumnModal = () => {
+    setIsColumnDeleteModalOpened(true);
+  };
+
   return (
     <div className='ToDo__column'>
+      <button
+        className='column__open__modal'
+        type='button'
+        onClick={handleOpenDeleteColumnModal}
+      >
+        <i className='fa-solid fa-trash' />
+      </button>
       <div className='ToDo__DragImg'>
         <img
           alt=''
@@ -100,6 +114,11 @@ function ToDo({ column }) {
         </ReactSortable>
         <hr className='ToDo_hr' />
       </div>
+      <DeleteColumn
+        isColumnDeleteModalOpened={isColumnDeleteModalOpened}
+        setIsColumnDeleteModalOpened={setIsColumnDeleteModalOpened}
+        id={id}
+      />
     </div>
   );
 }
