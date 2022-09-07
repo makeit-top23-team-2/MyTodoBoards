@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ModalCard from '../modalCard';
+import { getSingleCard } from '../../services/cards';
 
 function Card({ card, column }) {
   const [isModalOpened, setIsModalOpened] = useState(false);
+  const [singleCard, setSingleCard] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const SingleCard = await getSingleCard(card._id);
+      setSingleCard(SingleCard);
+    };
+    fetchData();
+  }, [isModalOpened]);
 
   const handleOpenModal = () => {
     setIsModalOpened(true);
@@ -12,7 +22,7 @@ function Card({ card, column }) {
   return (
     <>
       <li id={card.id} className='ToDo__cardlist__item'>
-        <span className='ToDo__cardlist__cardTitle'>{card.title}</span>
+        <span className='ToDo__cardlist__cardTitle'>{singleCard.title}</span>
         <button
           className='non-draggable ToDo__open__modal'
           type='button'

@@ -11,13 +11,20 @@ function NotFound() {
           className='main__logo'
         />
       </NavLink>
-      <aside className='main__Description'>
+      <aside>
         <h2 className='main__error'>UPS! PAGE NOT FOUND</h2>
       </aside>
       <section className='main__img'>
-        <img src='..\img\goku_genkidama.png' alt='reflector' />
-        <p className='main__number'>404</p>
+        <img src='..\img\notFound.jpg' alt='reflector' className='main__image'/>        
       </section>
+
+      <div className='main__Description'>
+        <NavLink to='/'>
+          <p className='main__p'>We invite you to return to our Home Page:</p>
+          <button type='button' className='main__button'>Trello</button>
+        </NavLink>
+      </div>
+
       <footer className='footer__img'>
         <img
           className='footer__img1'

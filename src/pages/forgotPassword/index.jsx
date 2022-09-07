@@ -9,16 +9,34 @@ function ForgotPassword() {
   const handleChange = e => {
     setEmail(e.target.value);
   };
-  const handleResetPassword = () => {
-    forgotPassword(email);
-    Swal.fire({
-      title: 'An email has been sent to reset your password',
-      text: 'Please, check your email inbox.',
-      icon: 'success',
-      confirmButtonText: 'Got it!',
-    });
-
-    navigate('/login');
+  const handleResetPassword = async e => {
+    e.preventDefault();
+    const response = await forgotPassword(email);
+    if (response.status === 200) {
+      Swal.fire({
+        title: 'An email has been sent to reset your password',
+        text: 'Please, check your email inbox.',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
+      });
+      navigate('/login');
+    }
+    if (response.status === 404) {
+      Swal.fire({
+        title: `We couldn't find this email!`,
+        text: 'This email address is not registered in Trello.',
+        icon: 'warning',
+        confirmButtonText: 'Ok!',
+      });
+    }
+    if (response.status === 500) {
+      Swal.fire({
+        title: 'We are sorry. An error has ocurred!',
+        text: 'Please, try again later.',
+        icon: 'error',
+        confirmButtonText: 'Ok!',
+      });
+    }
   };
   return (
     <div className='forgot'>
@@ -33,7 +51,10 @@ function ForgotPassword() {
         <section className='forgot__section'>
           <div className='forgot__section__container'>
             <h1>Cannot Log in?</h1>
-            <form className='forgot__section__form'>
+            <form
+              className='forgot__section__form'
+              onSubmit={handleResetPassword}
+            >
               <span className='forgot__section__span'>
                 We will send a recovery link to
               </span>
@@ -43,12 +64,9 @@ function ForgotPassword() {
                 placeholder='Enter email'
                 className='forgot__section__input'
                 onChange={handleChange}
+                required
               />
-              <button
-                type='button'
-                className='forgot__section__button'
-                onClick={handleResetPassword}
-              >
+              <button type='submit' className='forgot__section__button'>
                 Send Recovery Link
               </button>
             </form>
