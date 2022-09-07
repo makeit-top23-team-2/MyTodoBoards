@@ -207,13 +207,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   <span className='modal__aside__span'>Checklist</span>
                 </button>
 
-                <button
-                  type='button'
-                  className='modal__section__delete'
-                  onClick={handleDeleteCard}
-                >
-                  Delete Card
-                </button>
                 <div>
                   <button
                     type='button'
@@ -229,6 +222,13 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   >
                     Cancel
                   </button>
+                <button
+                  type='button'
+                  className='modal__section__delete'
+                  onClick={handleDeleteCard}
+                >
+                  Delete Card
+                </button>
                 </div>
               </div>
             </aside>
