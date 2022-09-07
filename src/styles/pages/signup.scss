@@ -1,0 +1,225 @@
+.signup {
+  display: flexbox;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.signup__header {
+  display: flex;
+  justify-content: space-around;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.signup__header__logo {
+  display: block;
+  height: 43px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.signup__form {
+  display: block;
+  padding: 10px;
+  height: 400px;
+  max-width: 350px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 25px 40px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  justify-content: space-around;
+  font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #5e6c84;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.signup__politics {
+  text-align: justify;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5e6c84;
+}
+
+.signup__button {
+  color: rgb(255, 255, 255);
+  width: 100%;
+  height: 8%;
+  font: inherit;
+  border: none;
+  background-color: #5aac44;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.signup__with {
+  display: block;
+}
+
+.signup__with__button {
+  width: 100%;
+  margin-top: 10px;
+  font: inherit;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+  border: antiquewhite;
+  background-color: #ffffff;
+  padding: 5px;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  color: #5e6c84;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.signup__with__button:hover {
+  transition-duration: 0.4s;
+  background-color: #f6f6f6;
+}
+
+.signup__with__img {
+  height: 18px;
+  width: 18px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid hsl(0, 0%, 80%);
+  margin: 2em;
+}
+.signup__language {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  max-width: 350px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.signup__language-picker {
+  background: none;
+  border: 2px solid #edeff0;
+  height: 50px;
+  padding: 0.5em;
+}
+
+a {
+  color: #0052cc;
+  text-decoration: none;
+}
+
+.signup__footer__img {
+  visibility: hidden;
+}
+
+.signup__footer__img1 {
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  height: 5px;
+  width: 5px;
+}
+
+.signup__footer__img2 {
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  height: 5px;
+  width: 5px;
+}
+
+@media (min-width: 640px) {
+  .signup {
+    background-color: #f9fafc;
+    position: relative;
+    z-index: 0;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  .signup__form {
+    display: block;
+    padding: 10px;
+    height: 430px;
+    max-width: 350px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 25px 40px;
+    box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    justify-content: space-around;
+    font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+  .signup__header__logo {
+    margin-bottom: 40px;
+  }
+  .signup__footer__img {
+    display: inline;
+    visibility: visible;
+  }
+  .signup__footer__img1 {
+    z-index: -1;
+    position: fixed;
+    bottom: 0px;
+    left: 5px;
+    height: 200px;
+    width: 200px;
+  }
+  .signup__footer__img2 {
+    z-index: -1;
+    position: fixed;
+    bottom: 0px;
+    right: 5px;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .signup__footer__img1 {
+    height: 350px;
+    width: 350px;
+  }
+  .signup__footer__img2 {
+    height: 350px;
+    width: 350px;
+  }
+}
