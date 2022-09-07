@@ -46,14 +46,14 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     setForm({ ...form, [name]: value });
   };
 
-  const saveCardUpdate = () => {
+  const saveCardUpdate = async () => {
     const newCard = {
       title: form.title,
       description: form.cardDescription,
       checklist: tasks,
       members: [],
     };
-    updateCard(card._id, newCard);
+    await updateCard(card._id, newCard);
     window.location.reload();
   };
 
@@ -61,8 +61,8 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     saveCardUpdate();
   };
 
-  const cardDelete = () => {
-    deleteCard(card._id);
+  const cardDelete = async () => {
+    await deleteCard(card._id);
     window.location.reload();
   };
 
@@ -222,13 +222,13 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   >
                     Cancel
                   </button>
-                <button
-                  type='button'
-                  className='modal__section__delete'
-                  onClick={handleDeleteCard}
-                >
-                  Delete Card
-                </button>
+                  <button
+                    type='button'
+                    className='modal__section__delete'
+                    onClick={handleDeleteCard}
+                  >
+                    Delete Card
+                  </button>
                 </div>
               </div>
             </aside>
