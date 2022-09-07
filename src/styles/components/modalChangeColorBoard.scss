@@ -1,7 +1,24 @@
+.container__change__color {
+  display: flex;
+  align-items: flex-start;
+  background-color: #000000a3;
+  min-height: 100vh;
+  justify-content: center;
+  left: 0;
+  overflow-y: hidden;
+  padding-bottom: 16px;
+  top: 100px;
+  width: 100%;
+  z-index: 0;
+  position: absolute;
+}
+
 .container__change__color__board{
     text-align: center;
     margin-bottom: 30px;
     background-color: #000000a3;
+    top: 50px;
+
     .boton__save__photo{
       border: none;
       border-radius: 3px;

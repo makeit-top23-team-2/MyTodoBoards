@@ -19,6 +19,7 @@
     color:  #162534 ;
     display: flex;
     margin-left: 10px;
+    margin-right: 5px;
     font-size: 15px;
     position: relative;
     cursor: pointer;
@@ -171,12 +172,6 @@
     align-items: flex-start;
     margin: 0;
     justify-content: center;
-  }
-
-  /*  @media {
-    .list__Columns__Board{
-
-    }
-  } */
+  }  
 }
 

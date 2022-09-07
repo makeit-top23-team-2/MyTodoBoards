@@ -3,7 +3,7 @@
   display: flex;
   align-items: flex-start;
   background-color: #000000a3;
-  height: 100%;
+  min-height: 100vh;
   justify-content: center;
   left: 0;
   overflow-y: hidden;
@@ -11,11 +11,12 @@
   padding-bottom: 16px;
   top: 100px;
   width: 100%;
+  z-index: 1;
 
   &__card {
     background-color: #f4f5f7;
     border-radius: 2px;
-    margin: 30px 0 80px;
+    margin-top: 100px;
     width: 300px;
     font-size: 14px;
     font-weight: 400;
@@ -442,8 +443,7 @@
       color: white;
       float: right;
       font-size: 16px;
-      margin-top: 40px;
-      margin-right: 40px;
+      margin-top: 30px;
       margin-bottom: 20px;
       cursor: pointer;
       padding: 8px;
@@ -458,7 +458,8 @@
   }
 }
 
-@media (min-width: 768px) {
+
+@media (min-width: 699px) {
   .modal__card {
     background-color: #f4f5f7;
     border-radius: 2px;
@@ -518,5 +519,18 @@
     font-weight: 400;
     line-height: 20px;
     top: 0;
+  }
+
+  .modal__section__delete {
+    background-color:rgba(255, 77, 0, 0.568);
+    color: white;
+    float: right;
+    font-size: 16px;
+    margin-right: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 20px;
   }
 }

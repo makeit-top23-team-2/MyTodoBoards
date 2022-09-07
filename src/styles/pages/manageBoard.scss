@@ -4,7 +4,7 @@ $background-blue: rgb(0, 121, 191);
   margin-top: 20px;
   margin-left: 30px;
   width: 70vw;
-  height: 78.5vh;
+  height: auto;
 
   &__header {
     margin-left: 20px;
@@ -170,7 +170,7 @@ $background-blue: rgb(0, 121, 191);
     margin-top: 20px;
     margin-left: 30px;
     width: 70vw;
-    height: 81vh;
+    height: auto;
   }
   .container__header {
     margin-left: 100px;
