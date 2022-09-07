@@ -16,7 +16,17 @@ export async function getAllUserBoards() {
     method: 'GET',
     headers: { Authorization: `Bearer ${token}` },
   };
-  const response = await fetch(`${BASE_URL}/api/boards/user/`, options);
+  const response = await fetch(`${BASE_URL}/api/boards/user`, options);
+  return response.json();
+}
+
+export async function getAllSharedBoards() {
+  const token = localStorage.getItem('token');
+  const options = {
+    method: 'GET',
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const response = await fetch(`${BASE_URL}/api/users/shared-boards`, options);
   return response.json();
 }
 
@@ -38,6 +48,19 @@ export async function updateBoard(id, updateBoardData) {
   const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
     method: 'PATCH',
     body: JSON.stringify(updateBoardData),
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return response.json();
+}
+
+export async function addCollaborators(id, email) {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${BASE_URL}/api/boards/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(email),
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,

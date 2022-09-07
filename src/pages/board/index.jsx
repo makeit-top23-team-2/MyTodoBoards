@@ -13,6 +13,7 @@ import { setColumns } from '../../store/columnsSlice';
 import { createColumnByBoardId } from '../../services/columns';
 import ChangeColorBoard from '../../components/modalChangeColorBoard';
 import DeleteBoard from '../../components/deleteBoardModal';
+import AddCollaborators from '../../components/addCollaboratorsModal';
 
 function MainBoard() {
   const [titleBoard, setTitleBoard] = useState('');
@@ -20,15 +21,12 @@ function MainBoard() {
   const dispatch = useDispatch();
   const singleBoard = useSelector(state => state.singleBoard.value);
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
+  const { id } = useParams();
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [isBoardDeleteModalOpened, setIsBoardDeleteModalOpened] =
     useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpened(true);
-  };
-
-  const { id } = useParams();
+  const [isAddCollaboratorsModalOpened, setIsAddCollaboratorsModalOpened] =
+    useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,8 +84,16 @@ function MainBoard() {
     await updateBoard(id, { title: e.target.value });
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpened(true);
+  };
+
   const handleOpenDeleteBoardModal = () => {
     setIsBoardDeleteModalOpened(true);
+  };
+
+  const handleOpenAddCollaboratorsModal = () => {
+    setIsAddCollaboratorsModalOpened(true);
   };
 
   return (
@@ -136,8 +142,9 @@ function MainBoard() {
                   type='button'
                   {...itemProps[1]}
                   href='https://example.com'
+                  onClick={handleOpenAddCollaboratorsModal}
                 >
-                  Share
+                  Add Collaborators
                 </button>
                 <button
                   {...itemProps[2]}
@@ -194,6 +201,12 @@ function MainBoard() {
       <DeleteBoard
         isBoardDeleteModalOpened={isBoardDeleteModalOpened}
         setIsBoardDeleteModalOpened={setIsBoardDeleteModalOpened}
+        id={id}
+      />
+
+      <AddCollaborators
+        isAddCollaboratorsModalOpened={isAddCollaboratorsModalOpened}
+        setIsAddCollaboratorsModalOpened={setIsAddCollaboratorsModalOpened}
         id={id}
       />
       <Footer />
