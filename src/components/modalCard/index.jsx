@@ -114,7 +114,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 In list <strong>{column.title}</strong>
               </p>
             </header>
-
             <article className='modal__article'>
               <div>
                 <h3 className='modal__h3'>Description</h3>
@@ -129,7 +128,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 />
               </div>
             </article>
-
             <section className='modal__section'>
               <div className='modal__section__i'>
                 <i className='fa-regular fa-square-check' />
@@ -145,7 +143,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   />
                 </div>
               </div>
-
               <div className='modal__section__list'>
                 {tasks?.map &&
                   tasks.map(item => (
@@ -174,7 +171,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                     </div>
                   ))}
               </div>
-
               <form onSubmit={handleSubmit}>
                 <input
                   name='description'
@@ -192,7 +188,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 </button>
               </form>
             </section>
-
             <aside className='modal__aside'>
               <h3 className='modal__h3'>Add to card</h3>
               <div className='modal__aside__div'>
@@ -206,7 +201,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 >
                   <span className='modal__aside__span'>Checklist</span>
                 </button>
-
                 <div>
                   <button
                     type='button'

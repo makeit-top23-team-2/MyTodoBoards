@@ -87,7 +87,7 @@ function LogIn() {
             </li>
             <li>
               {' '}
-              <NavLink to='/signup'>Sign up for an account</NavLink>{' '}
+              <NavLink to='/signUp-form'>Sign up for an account</NavLink>{' '}
             </li>
           </ul>
         </div>
