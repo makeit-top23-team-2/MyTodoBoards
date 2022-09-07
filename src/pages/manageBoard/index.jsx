@@ -13,11 +13,7 @@ function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const boards = useSelector(state => state.boards.value);
   const sharedBoards = useSelector(state => state.sharedBoards.value);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 16 ~ ManageBoard ~ sharedBoards',
-    sharedBoards
-  );
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       const Boards = await getAllUserBoards();
