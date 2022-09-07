@@ -18,7 +18,18 @@ function PasswordChange() {
         confirmButtonText: 'Got it!',
       });
     } else {
-      await changePassword(resetToken, form.password);
+      const res = await changePassword(resetToken, form.password);
+      if (res.details) {
+        if (res.details[0].message.includes('newPassword')) {
+          res.details[0].message = `Password needs to be at least 6 characters long and include only alphanumeric!`;
+        }
+        Swal.fire({
+          title: res.details[0].message,
+          icon: 'warning',
+          confirmButtonText: 'Got it!',
+        });
+        return;
+      }
       Swal.fire({
         title: 'Your password has been changed successfully',
         icon: 'success',
