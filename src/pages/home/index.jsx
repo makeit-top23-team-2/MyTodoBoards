@@ -6,7 +6,6 @@ function Home() {
   return (
     <div>
       <NavBar />
-
       <section className='home__section1'>
         <div className='home__section1__img'>
           <img
