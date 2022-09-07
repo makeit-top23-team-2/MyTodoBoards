@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { handlerChangeCheck } from './handlers';
+import ModalCard from '../modalCard';
 
-function Card({ card, Tasks, setTasks }) {
+function Card({ card, column }) {
+  const [isModalOpened, setIsModalOpened] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpened(true);
+  };
+
   return (
-    <li id={card.id} className='ToDo__cardlist__item'>
-      <input
-        className='non-draggable ToDo__Checkbox'
-        type='checkbox'
-        onChange={() => {
-          handlerChangeCheck(card.id, Tasks, setTasks);
-        }}
+    <>
+      <li id={card.id} className='ToDo__cardlist__item'>
+        <span className='ToDo__cardlist__cardTitle'>{card.title}</span>
+        <button
+          className='non-draggable ToDo__open__modal'
+          type='button'
+          onClick={handleOpenModal}
+        >
+          <i className='fa-solid fa-ellipsis' />
+        </button>
+      </li>
+      <ModalCard
+        isModalOpened={isModalOpened}
+        setIsModalOpened={setIsModalOpened}
+        card={card}
+        column={column}
       />
-      {card.title}
-    </li>
+    </>
   );
 }
 
@@ -21,12 +35,10 @@ export default Card;
 
 Card.propTypes = {
   card: PropTypes.shape(),
-  Tasks: PropTypes.arrayOf(PropTypes.shape()),
-  setTasks: PropTypes.func,
+  column: PropTypes.shape(),
 };
 
 Card.defaultProps = {
   card: {},
-  Tasks: [],
-  setTasks: () => null,
+  column: {},
 };

@@ -25,7 +25,7 @@
    padding: 8px 20px 10px 20px;
    width: 100px;
  }
- 
+
 .profile__section__buttons__profileInSettings{
    background-color: #C1C7D0;
    border-top-left-radius: 3px 3px;
@@ -36,7 +36,7 @@
    height: 100px;
    margin: 2px 5px 0px 2px;
    padding: 8px 20px 8.5px 20px;
-   width: 100px; 
+   width: 100px;
  }
  .profile__section__buttons__profileInSettings:hover{
   background-color: #b2b5b8;
@@ -63,10 +63,11 @@
   }
 }
 
-.profile__section2__about__changeEmail:hover{
-  background-color: #C1C7D0;
-  border-radius: 3px;
+.profile__section2__about__changePassword, .profile__section2__about__deleteAcount{
+  background-color: transparent;
+  cursor: pointer;
 }
+
 .profile__section2__about__changePassword:hover{
   background-color: #C1C7D0;
   border-radius: 3px;
@@ -87,7 +88,7 @@
 
  @media (min-width: 768px) {
 
- 
+
   .profile__settings__detail{
    display: flex;
    justify-content: space-between;
@@ -98,10 +99,10 @@
     height: 50px;
     width: 100%;
   }
-  
+
     .profile__settings{
       width: 80%;
-    
+
       h4{
       margin: 0;
       padding: 10px 15px;
@@ -112,6 +113,5 @@
       text-align: left;
 }
 
-    
+
   }
-  

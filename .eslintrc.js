@@ -18,6 +18,8 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'no-param-reassign': ['error', { props: false }]
+    'no-param-reassign': ['error', { props: false }],
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'react/jsx-props-no-spreading': 'off',
   },
 };

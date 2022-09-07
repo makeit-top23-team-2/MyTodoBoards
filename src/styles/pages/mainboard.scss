@@ -1,13 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 .headerBoard {
+  align-items: center;
   width: 100%;
   color: white;
   cursor: pointer;
   list-style: none;
   float: none;
-  background-color: #0079bf;
-  height: 300px;
-  a {
+  background-color: transparent;
+  height: 100px;
+
+  button {
+    text-align: center;
+    opacity: 0.9;
+    text-decoration: none;
+    background-color: #EBECF0;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color:  #162534 ;
+    display: flex;
+    margin-left: 10px;
+    font-size: 15px;
+    position: relative;
+    cursor: pointer;
+    img{
+      margin-left: 10px;
+      margin-top: 3px;
+    }
+  }
+
+  button:hover {
+    background-color:#DDDDDD;
+    border: white;
+    transition-duration: 0.4s;
+  }
+
+  .nameBoard {
+    border: 0;
+    border-radius: 3px;
+    background-color: #EBECF0;
+    color: #141D29;
+    font-size: 20px;
+    margin-left: 10px;
+    outline: none;
+  }
+
+  .nameBoard:hover {
+    transition-duration: 0.4s;
+    background-color: #e2dce9;
+    border-radius: 3px;
+    border: 0;
+  }
+
+  .container__workspace__options {
     text-align: center;
     color: rgb(49, 132, 180);
     opacity: 0.9;
@@ -22,39 +66,39 @@
     font-size: 15px;
     margin-top: 15px;
   }
-
-  a:hover {
+  .container__workspace__options:hover{
     background-color: rgb(30, 73, 98);
     border: white;
   }
-
-  input {
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-    margin: 5px 10px 8px 50px;
-    color: white;
-    font-size: 20px;
-    font-family: 'Noto Sans', sans-serif;
-    margin-top: 15px;
-  }
-
-  input::placeholder {
-    color: white;
-    font-size: 20px;
-    font-family: 'Noto Sans', sans-serif;
-  }
-
-  input:hover {
-    background-color: rgb(30, 73, 98);
-    border-radius: 3px;
-  }
-
   .iconsBoard {
     max-width: 0.9rem;
     max-height: 0.9rem;
   }
+  div[role='menu'] {
+    visibility: hidden;
+  }
+
+  div[role='menu'].visible {
+    visibility: visible;
+  }
+ .dropDown button {
+    background-color: #F1F1F1;
+    color: #243555;
+    width: 200px;
+    height: 20px;
+    margin: 0 0 0 20px;
+    border-radius: 0;
+    text-align: left;
+    display: flex;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    padding: 10px 40px 20px;
+
+ }
+ .dropDown button:hover{
+  background-color:#DDDDDD;
+}
 
   //Aplicacion de escritorio
   @media (min-width: 768px) {
@@ -62,23 +106,39 @@
     justify-content: flex-start;
     align-items: center;
     height: auto;
+    .dropDown button {
+      top: 30px;
+      margin: 0 0 0 0px
+   }
+  }
+
+}
+.container__workspace{
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+
+  .buttonBoard__options__change{
+    cursor: pointer;
+    background-color: transparent ;
+    text-align: center;
+    margin-top: 10px;
   }
 }
-
 .workSpace {
-  background-color: #0079bf;
+  background-color: transparent;
   width: 100%;
   min-height: 90vh;
   height: auto;
   padding-top: 30px;
 
   .textContent {
-    background-color: rgb(82, 164, 212);
+    background-color: #EBECF0;
+    color: #141D29;
     width: 200px;
     height: 30px;
     font-size: 15px;
     border: none;
-    color: white;
     outline: none;
     border-radius: 3px;
     display: block;
@@ -86,17 +146,23 @@
   }
 
   .buttonCard::placeholder {
-    color: white;
+    color: #141D29;
+  }
+
+  .textContent:hover {
+    transition-duration: 0.4s;
+    background-color: #e2dce9;
+    border-radius: 3px;
+    border: 0;
   }
 
   .columns {
-    background-color: rgb(82, 164, 212);
+    position: relative;
+    background-color: #EBECF0;
     margin: 10px 10px;
     border-radius: 5px;
     display: inline-block;
-    color: white;
     font-size: 15px;
-
   }
 
   .list__Columns__Board {
@@ -106,9 +172,11 @@
     margin: 0;
     justify-content: center;
   }
+
   /*  @media {
     .list__Columns__Board{
 
     }
   } */
 }
+

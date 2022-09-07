@@ -1,23 +1,19 @@
 import React from 'react';
 import './styles/styles.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-/*
-Pages
-*/
+
 import LogIn from './pages/login';
 import SignUp from './pages/signup';
 import MainBoard from './pages/board';
 import Home from './pages/home';
 import ManageBoard from './pages/manageBoard';
 import NotFound from './pages/NotFound/NotFound';
-import ActivateAccount from './pages/ActivateAccount';
-import ForgotPassword from './pages/ForgotPassword';
+import ActivateAccount from './pages/activateAccount';
+import ForgotPassword from './pages/forgotPassword';
 import Profile from './pages/profile';
 import ProfileSettings from './pages/profileSettings';
 import SignupForm from './pages/signupForm';
-/*
-components
-*/
+import PasswordChange from './pages/passwordChange';
 
 function App() {
   return (
@@ -25,14 +21,21 @@ function App() {
       <Routes>
         <Route path='/signUp' element={<SignUp />} />
         <Route path='/logIn' element={<LogIn />} />
-        <Route path='/board' element={<MainBoard />} />
+        <Route path='/board/:id' element={<MainBoard />} />
         <Route path='/' element={<Home />} />
-        <Route path='/manage-board' element={<ManageBoard />} />
-        <Route path='/activate-account/:id' element={<ActivateAccount />} />
+        <Route path='/manage-board/:userName' element={<ManageBoard />} />
+        <Route path='/activate-account/:token' element={<ActivateAccount />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
+        <Route
+          path='/reset-password/:resetToken'
+          element={<PasswordChange />}
+        />
         <Route path='*' element={<NotFound />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/profile-settings' element={<ProfileSettings />} />
+        <Route path='/profile/:userName' element={<Profile />} />
+        <Route
+          path='/profile-settings/:userName'
+          element={<ProfileSettings />}
+        />
         <Route path='/signUp-form' element={<SignupForm />} />
       </Routes>
     </BrowserRouter>

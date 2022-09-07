@@ -1,35 +1,52 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
+import { createBoard } from '../../services/boards';
 import BackgroundBoard from '../backgroundBoard';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
-  
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const colorBoard = useSelector(state => state.colorBoard.value);
+  const [text, setText] = useState('Create');
+  const [disable, setDisable] = useState('');
+  const [styleButton, setStyleButton] = useState('board__section__button');
+  const imgSelected = useSelector(state => state.colorBoard.value);
+
   const handleCloseModal = () => {
     setIsModalOpened(false);
-  }
-  
+  };
+
   const handleInput = e => {
     setTask(e.target.value);
   };
 
-  const handleForm = e => {
+  const handleChangeData = () => {
+    setDisable('');
+    setStyleButton('board__section__loading');
+    setText('Loading...');
+  };
+
+  const handleForm = async e => {
     e.preventDefault();
+    const board = await createBoard({ title: task, color: colorBoard }, token);
     setTask('');
+    navigate(`/board/${board._id}`);
   };
 
   return createPortal(
     <div>
-    
       {isModalOpened && (
-        <div>  
+        <div>
           <main className='board'>
             <header className='board__header'>
               <div className='board__header__div'>Create Board</div>
               <button
                 type='button'
-                className='board__header__button'                
+                className='board__header__button'
                 onClick={handleCloseModal}
               >
                 <i className='fa-solid fa-xmark' />
@@ -37,10 +54,13 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
-              <div className='board__section__div'>
+              <div
+                className='board__section__div'
+                style={{ backgroundImage: `url("${imgSelected}")` }}
+              >
                 <img
                   className='board__section__image'
-                  src='..\img\image_boardPreview.jpg'
+                  src='https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg'
                   alt='image_board-preview'
                 />
               </div>
@@ -71,18 +91,19 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                     👋 Board title is required
                   </span>
                   <button
-                    type='button'
-                    className='board__section__button'
-                    disabled={task.length > 3 ? '' : 'disabled'}
+                    type='submit'
+                    className={styleButton}
+                    disabled={task.length > 3 || disable ? '' : 'disabled'}
+                    onClick={handleChangeData}
                   >
-                    Create
+                    {text}
                   </button>
                 </div>
-              </form>              
+              </form>
             </section>
           </main>
         </div>
-        )}    
+      )}
     </div>,
     document.getElementById('modal')
   );
@@ -90,7 +111,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
 CreateBoard.propTypes = {
   isModalOpened: PropTypes.bool,
-  setIsModalOpened:  PropTypes.func,
+  setIsModalOpened: PropTypes.func,
 };
 CreateBoard.defaultProps = {
   isModalOpened: false,

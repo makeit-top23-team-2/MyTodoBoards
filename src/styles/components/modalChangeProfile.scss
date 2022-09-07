@@ -1,0 +1,89 @@
+.modal__header{
+  .title__change__photo{
+    text-align: center;
+  }
+  .input__change__profile{
+    padding: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .boton__save{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .section__imagen{
+    text-align: center;
+  }
+
+   .send__file{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 20px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+   }
+
+   .boton__save__photo__container{
+    text-align: center;
+    margin-bottom: 30px   ;
+    .boton__save__photo{
+      border: none;
+      border-radius: 3px;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      justify-content: center;
+      line-height: 20px;
+      margin-top: 40px;
+      padding: 6px 12px;
+      text-decoration: none;
+      white-space: normal;
+      width: 70%;
+    }
+    .boton__save__photo:hover{
+      background-color: #026AA7;
+    }
+    .boton__save__photo__disable{
+      background-color: #a5adba;
+      border: none;
+      border-radius: 3px;
+      box-shadow: none;
+      box-sizing: border-box;
+      color: #ffffff;
+      display: inline-flex;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      justify-content: center;
+      line-height: 20px;
+      margin-top: 40px;
+      padding: 6px 12px;
+      text-decoration: none;
+      white-space: normal;
+      width: 70%;
+      cursor: not-allowed;
+
+    }
+
+   }
+
+}
+
+.photo {
+  border-radius: 50%;
+  display: inline-block;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  width: 150px;
+
+  img{
+    height: auto;
+    max-width: 100%;
+  }
+}

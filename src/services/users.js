@@ -6,17 +6,12 @@ export async function getUsers() {
 }
 
 export async function getUserByEmail(email) {
-  const response = await fetch(`${BASE_URL}/api/users/${email}`, {});
+  const response = await fetch(`${BASE_URL}/api/users/email/${email}`, {});
   return response.json();
 }
 
 export async function getUserByUserName(userName) {
   const response = await fetch(`${BASE_URL}/api/users/user/${userName}`, {});
-  return response.json();
-}
-
-export async function getUserBy(name, value) {
-  const response = await fetch(`${BASE_URL}/api/users${name}_like=${value}`);
   return response.json();
 }
 
@@ -31,21 +26,22 @@ export async function createUser(user) {
   return response.text();
 }
 
-export async function updateUser(id, user, token) {
-  const response = await fetch(`${BASE_URL}/api/users/${id}`, {
+export async function updateUser(userUpdate) {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'PATCH',
-    body: {
-      newUser: JSON.stringify(user),
-    },
+    body: JSON.stringify(userUpdate),
     headers: {
+      'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
   });
   return response.json();
 }
 
-export async function deleteUser(id, token) {
-  const response = await fetch(`${BASE_URL}/api/users/${id}`, {
+export async function deleteUser() {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${BASE_URL}/api/users`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,

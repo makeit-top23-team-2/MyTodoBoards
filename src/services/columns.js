@@ -16,30 +16,39 @@ export async function getColumnByBoardId(id) {
 }
 
 export async function createColumnByBoardId(id, column) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/columns/board/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(column),
   });
   return response.json();
 }
 
-export async function updateColumn(id, column) {
+export async function updateColumn(id, updateColumnData) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(column),
+    body: JSON.stringify(updateColumnData),
   });
   return response.json();
 }
 
 export async function deleteColumn(id) {
+  const token = localStorage.getItem('token');
   const response = await fetch(`${BASE_URL}/api/columns/${id}`, {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
   });
   return response.json();
 }

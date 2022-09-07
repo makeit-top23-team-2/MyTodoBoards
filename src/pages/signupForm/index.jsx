@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import {
   getUserByEmail,
   createUser,
@@ -8,27 +9,57 @@ import {
 
 function SignupForm() {
   const [form, setForm] = useState({});
-
   const navigate = useNavigate();
 
-  const handleLogin = e => {
-    e.preventDefault();
-    const newUser = async () => {
-      const user = await getUserByEmail(form.email);
-      const user1 = await getUserByUserName(form.userName);
+  const newUser = async () => {
+    const user = await getUserByEmail(form.email);
+    const userByUserName = await getUserByUserName(form.userName);
 
-      if (user.email) {
-        alert('This email is already registered');
-      } else if (user1.userName) {
-        alert('This user name is already used');
-      } else {
-        await createUser(form);
-        alert(
-          'Your account has been created. Please check your email inbox to activate your account.'
-        );
-        navigate('/login', { replace: true });
+    if (user.email) {
+      Swal.fire({
+        title: 'This email is already in use!',
+        text: 'Please enter a different email.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
+    } else if (userByUserName.userName) {
+      Swal.fire({
+        title: 'This Username is already in use!',
+        text: 'Please enter a different Username.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
+    } else if (form.password !== form.confirmPassword) {
+      Swal.fire({
+        title: 'Password and confirm password are different!',
+        text: 'Password and confirm password must match.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
+    } else {
+      const response = await createUser(form);
+      const res = JSON.parse(response);
+      if (res.details) {
+        Swal.fire({
+          title: res.details[0].message,
+          icon: 'warning',
+          confirmButtonText: 'Got it!',
+        });
+        return;
       }
-    };
+      Swal.fire({
+        title: 'Your account has been created!',
+        text: 'Please check your email inbox to activate your account.',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
+      });
+
+      navigate('/', { replace: true });
+    }
+  };
+
+  const handleSignUp = e => {
+    e.preventDefault();
     newUser();
   };
 
@@ -47,13 +78,13 @@ function SignupForm() {
           alt=''
         />
       </NavLink>
-      <form className='signupForm__form' onSubmit={handleLogin}>
+      <form className='signupForm__form' onSubmit={handleSignUp}>
         <h1>Sign Up to Trello</h1>
         <input
           className='signupForm__email '
           type='email'
           name='email'
-          placeholder=' Enter email'
+          placeholder=' Enter your email *'
           required
           onChange={handleChange}
         />
@@ -61,7 +92,7 @@ function SignupForm() {
           className='signupForm__userName'
           type='text'
           name='userName'
-          placeholder=' Enter a user name'
+          placeholder=' Enter a user name *'
           required
           onChange={handleChange}
         />
@@ -69,7 +100,7 @@ function SignupForm() {
           className='signupForm__name'
           type='text'
           name='name'
-          placeholder=' Enter your name'
+          placeholder=' Enter your name *'
           required
           onChange={handleChange}
         />
@@ -77,7 +108,7 @@ function SignupForm() {
           className='signupForm__lastName'
           type='text'
           name='lastName'
-          placeholder=' Enter your last name'
+          placeholder=' Enter your last name *'
           required
           onChange={handleChange}
         />
@@ -85,15 +116,15 @@ function SignupForm() {
           className='signupForm__password'
           type='password'
           name='password'
-          placeholder=' Enter a password'
+          placeholder=' Enter a password *'
           required
           onChange={handleChange}
         />
         <input
           className='signupForm__password'
           type='password'
-          name='cheking-password'
-          placeholder=' Confirm your password'
+          name='confirmPassword'
+          placeholder=' Confirm your password *'
           required
           onChange={handleChange}
         />

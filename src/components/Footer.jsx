@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -12,9 +11,6 @@ function Footer() {
               alt=''
               className='footer__logo'
             />
-            <div className='footer__a'>
-              <NavLink to='/login'>Login</NavLink>
-            </div>
           </div>
         </div>
       </section>

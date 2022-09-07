@@ -1,21 +1,43 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUserBy } from '../../services/users';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
+import { setProfile } from '../../store/profileSlice';
+import { login } from '../../services/auth';
 
 function LogIn() {
   const navigate = useNavigate();
   const [form, setForm] = useState({});
+  const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
+  const fetchData = async () => {
+    const response = await login(form.email, form.password);
+
+    const { profile, jwtoken, message } = response;
+
+    if (profile) {
+      dispatch(setProfile(profile));
+      localStorage.setItem('token', jwtoken);
+      localStorage.setItem('profile', JSON.stringify(profile));
+      Swal.fire({
+        title: message,
+        text: `Let's star organizing your ToDos!`,
+        icon: 'success',
+        confirmButtonText: `Let's go!`,
+      });
+      navigate(`/manage-board/${profile.userName}`);
+    } else {
+      Swal.fire({
+        title: message,
+        text: 'Please, check that the introduced credentials are correct.',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+      });
+    }
+  };
+
+  const handleLogin = e => {
     e.preventDefault();
-    const fetchData = async () => {
-      const findUser = await getUserBy('email', form.email);
-      if (findUser[0]?.email === form?.email && findUser[0]?.password === form?.password) {
-        navigate(`/manage_board/${findUser[0].id}`, { replace: true });
-      }else{
-        alert('invalid credentials');
-      }
-    };
     fetchData();
   };
 
@@ -42,14 +64,16 @@ function LogIn() {
           className='login__email '
           type='email'
           name='email'
-          placeholder=' Enter email'
+          placeholder=' Enter email *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <input
           className='login__password '
           type='password'
           name='password'
-          placeholder=' Enter password'
+          placeholder=' Enter password *'
+          autoComplete='on'
           onChange={handleChange}
         />
         <button type='submit' className='login__button'>

@@ -1,16 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { ReactSortable } from 'react-sortablejs';
-
-import { handlerChange, handlerSubmit, handlerDelete } from './handlers';
+import { useSelector } from 'react-redux';
+import { handlerChange, handlerSubmit } from './handlers';
+import { getColumnById, updateColumn } from '../../services/columns';
 import Card from './Card';
+import DeleteColumn from '../deleteColumnModal';
 
-function ToDo({ column, taskTaker, Task }) {
-  const [Texto, setTexto] = useState('');
-  const [Tasks, setTasks] = useState([]);
+function ToDo({ column }) {
+  const [texto, setTexto] = useState('');
+  const board = useSelector(state => state.singleBoard.value);
+  const { id } = column;
+  const [isColumnDeleteModalOpened, setIsColumnDeleteModalOpened] =
+    useState(false);
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const singleColumn = await getColumnById(id);
+      const { cards } = singleColumn;
+      if (cards) {
+        setTasks(cards);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const columnUpdate = async () => {
+      await updateColumn(id, { cards: tasks });
+    };
+    setTimeout(() => {
+      columnUpdate();
+    }, 10);
+  }, [tasks]);
+
+  const handlerChangeColumnTitle = async e => {
+    await updateColumn(id, { title: e.target.value });
+  };
+
+  const handleOpenDeleteColumnModal = () => {
+    setIsColumnDeleteModalOpened(true);
+  };
 
   return (
     <div className='ToDo__column'>
+      <button
+        className='column__open__modal'
+        type='button'
+        onClick={handleOpenDeleteColumnModal}
+      >
+        <i className='fa-solid fa-trash' />
+      </button>
       <div className='ToDo__DragImg'>
         <img
           alt=''
@@ -23,11 +65,17 @@ function ToDo({ column, taskTaker, Task }) {
           type='text'
           className='ToDo__listTitle__input'
           placeholder='Write a title for this list...'
-          defaultValue={column.name}
+          defaultValue={column.title}
+          onBlur={handlerChangeColumnTitle}
         />
       </section>
       <div className='ToDo__submit'>
-        <form onSubmit={e => handlerSubmit(e, Texto, column, Tasks, setTasks)}>
+        <form
+          className='ToDo__submit__form'
+          onSubmit={e =>
+            handlerSubmit(e, texto, column, tasks, setTasks, board)
+          }
+        >
           <input
             className='ToDo__input__text'
             type='text'
@@ -42,7 +90,7 @@ function ToDo({ column, taskTaker, Task }) {
         </form>
         <ReactSortable
           id={column.id}
-          list={Tasks}
+          list={tasks}
           setList={setTasks}
           group='groupName'
           animation={150}
@@ -54,43 +102,32 @@ function ToDo({ column, taskTaker, Task }) {
           tag='ul'
           filter='.non-draggable'
         >
-          {Tasks.map(card => (
+          {tasks?.map(card => (
             <Card
-              key={card.id}
-              card={card}
-              taskTaker={taskTaker}
-              Task={Task}
               column={column}
-              Tasks={Tasks}
+              key={card._id}
+              card={card}
+              tasks={tasks}
               setTasks={setTasks}
             />
           ))}
         </ReactSortable>
-
         <hr className='ToDo_hr' />
-        <span className='ToDo__delete'>
-          <button
-            type='button'
-            onClick={() => handlerDelete(Tasks, setTasks)}
-            className='ToDo__DeleteButton'
-          >
-            Press to delete selected
-          </button>
-        </span>
       </div>
+      <DeleteColumn
+        isColumnDeleteModalOpened={isColumnDeleteModalOpened}
+        setIsColumnDeleteModalOpened={setIsColumnDeleteModalOpened}
+        id={id}
+      />
     </div>
   );
 }
 
 ToDo.propTypes = {
   column: PropTypes.shape(),
-  taskTaker: PropTypes.func,
-  Task: PropTypes.shape(),
 };
 ToDo.defaultProps = {
   column: {},
-  Task: {},
-  taskTaker: () => null,
 };
 
 export default ToDo;

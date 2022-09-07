@@ -1,32 +1,37 @@
+import Swal from 'sweetalert2';
+import { createCard } from '../../services/cards';
+
 export const handlerChange = (e, setTexto) => {
   setTexto(e.target.value);
 };
 
-export const handlerSubmit = (e, Texto, column, Tasks, setTasks) => {
+export const handlerSubmit = async (
+  e,
+  texto,
+  column,
+  tasks,
+  setTasks,
+  board
+) => {
   e.preventDefault();
   const object = {
-    title: Texto,
+    title: texto,
     checked: false,
-    id: Date.now(),
     columnId: column.id,
+    column: column.id,
+    board: board._id,
   };
+
   if (document.getElementById(column.inputId).value !== '') {
-    setTasks([...Tasks, object]);
+    const card = await createCard(column.id, object);
+    setTasks([...tasks, card]);
     document.getElementById(column.inputId).value = '';
   } else {
-    alert('Please, introduce a card.');
+    Swal.fire({
+      title: 'Please, introduce a card!',
+      text: 'Write a title for the card.',
+      icon: 'warning',
+      confirmButtonText: 'Got it!',
+    });
   }
-};
-export const handlerChangeCheck = (id, Tasks, setTasks) => {
-  const newTasks = Tasks.map(task => {
-    if (task.id === id) {
-      task.checked = !task.checked;
-    }
-    return task;
-  });
-  setTasks(newTasks);
-};
-export const handlerDelete = (Tasks, setTasks) => {
-  const newTasks = Tasks.filter(task => task.checked === false);
-  setTasks(newTasks);
 };
