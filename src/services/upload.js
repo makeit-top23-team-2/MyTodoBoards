@@ -20,4 +20,17 @@ export async function uploadColorBoard(file) {
   return response.json();
 }
 
+export async function upLoadFiles(files) {
+  const formData = new FormData();
+  for (let i = 0; i < files.length; i += 1) {
+    formData.append('files', files[i]);
+  }
+  formData.append('files', files);
+  const response = await fetch(`${BASE_URL}/api/upload/files/cards`, {
+    method: 'POST',
+    body: formData,
+  });
+  return response.json();
+}
+
 

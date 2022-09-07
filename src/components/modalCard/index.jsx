@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
-import ModalChecklist from '../modalChecklist';
+import ModalAddFiles from '../modalAddFiles';
 import { updateCard, deleteCard } from '../../services/cards';
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
@@ -128,6 +128,16 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   onChange={handleFormChange}
                 />
               </div>
+              {card.files.length > 0 ? 
+                card.files.map(files => (
+                  <div key={files._id}>
+                    <a href={files.url} >
+                      <p src={files.name} alt='file' className='modal__img' />
+                    </a>
+    
+                  </div>
+                )
+                ) : null}
             </article>
 
             <section className='modal__section'>
@@ -204,7 +214,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   className='modal__aside__button'
                   onClick={handleClick}
                 >
-                  <span className='modal__aside__span'>Checklist</span>
+                  <span className='modal__aside__span'>Add files</span>
                 </button>
 
                 <button
@@ -232,9 +242,10 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 </div>
               </div>
             </aside>
-            <ModalChecklist
+            <ModalAddFiles
               modalChecklist={modalChecklist}
               setModalCheclist={setModalCheclist}
+              cardId={card._id}
             />
           </main>
         </div>

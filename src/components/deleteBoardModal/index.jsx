@@ -12,7 +12,7 @@ function DeleteBoard({
 }) {
   const user = JSON.parse(localStorage.getItem('profile'));
   const navigate = useNavigate();
-  console.log(id);
+  // console.log(id);
 
   const handleCloseModal = () => {
     setIsBoardDeleteModalOpened(false);

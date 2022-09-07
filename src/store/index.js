@@ -6,6 +6,7 @@ import singleBoardReducer from './singleBoardSlice';
 import cardsReducer from './cardsSlice';
 import colorBoardReducer from './colorBoardSlice';
 import selectImgBoolReducer from './selectImgBoolSlice';
+import singleCardReducer from './singleCardSlice';
 
 
 export default configureStore({
@@ -17,6 +18,6 @@ export default configureStore({
     cards: cardsReducer,
     colorBoard: colorBoardReducer,
     selectImgBool: selectImgBoolReducer,
-
+    singleCard: singleCardReducer,
   },
 });
