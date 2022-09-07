@@ -60,7 +60,6 @@ function SignupForm() {
 
   const handleSignUp = e => {
     e.preventDefault();
-
     newUser();
   };
 

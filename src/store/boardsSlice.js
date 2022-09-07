@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const boardsSlice = createSlice({
   name: 'boards',
   initialState: {
-    value: {},
+    value: [],
   },
   reducers: {
     setBoards: (state, action) => {
