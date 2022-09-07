@@ -84,6 +84,7 @@ function MainBoard() {
     await updateBoard(id, { title: e.target.value });
   };
 
+
   const handleOpenModal = () => {
     setIsModalOpened(true);
   };
@@ -209,6 +210,7 @@ function MainBoard() {
         setIsAddCollaboratorsModalOpened={setIsAddCollaboratorsModalOpened}
         id={id}
       />
+
       <Footer />
     </div>
   );
