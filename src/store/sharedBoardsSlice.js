@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const sharedBoardsSlice = createSlice({
   name: 'sharedBoards',
   initialState: {
-    value: {},
+    value: [],
   },
   reducers: {
     setSharedBoards: (state, action) => {

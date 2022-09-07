@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
+import Swal from 'sweetalert2';
 import { addCollaborators } from '../../services/boards';
 
 function AddCollaborators({
@@ -17,10 +18,35 @@ function AddCollaborators({
     setEmail(e.target.value);
   };
 
-  const handleAddCollaborators = async () => {
-    await addCollaborators(id, email);
+  const handleAddCollaborators = async e => {
+    e.preventDefault();
+    const response = await addCollaborators(id, { email });
     setIsAddCollaboratorsModalOpened(false);
-    // window.location.reload();
+
+    if (response.status === 200) {
+      Swal.fire({
+        title: 'Collabator added!',
+        text: 'An invitation email has been sent to the collaborator.',
+        icon: 'success',
+        confirmButtonText: 'Nice!',
+      });
+    }
+    if (response.status === 404) {
+      Swal.fire({
+        title: `This collaborator can't be added at this time!`,
+        text: 'This email address is not registered in Trello.',
+        icon: 'warning',
+        confirmButtonText: 'Ok!',
+      });
+    }
+    if (response.status === 500) {
+      Swal.fire({
+        title: 'We are sorry. An error has ocurred!',
+        text: 'Please, try again later.',
+        icon: 'error',
+        confirmButtonText: 'Ok!',
+      });
+    }
   };
 
   return createPortal(
@@ -38,25 +64,24 @@ function AddCollaborators({
               </button>
               <br />
               <p className='title'>
-                Enter the email address of the Collaborator you want to invite.
+                Enter the email address of the Collaborator you want to invite:
               </p>
-              <div className='modal__addCollaborators__input'>
-                <input
-                  type='text'
-                  placeholder='Enter the email address...'
-                  onChange={handleChange}
-                  className='input'
-                />
-              </div>
-              <div className='boton__addCollaborators__container'>
-                <button
-                  type='button'
-                  onClick={handleAddCollaborators}
-                  className='addCollaborators__button'
-                >
-                  <b>Add Collaborator</b>
-                </button>
-              </div>
+              <form onSubmit={handleAddCollaborators}>
+                <div className='modal__addCollaborators__input'>
+                  <input
+                    type='email'
+                    placeholder='Enter the email address...'
+                    onChange={handleChange}
+                    className='input'
+                    required
+                  />
+                </div>
+                <div className='boton__addCollaborators__container'>
+                  <button type='submit' className='addCollaborators__button'>
+                    <b>Add Collaborator</b>
+                  </button>
+                </div>
+              </form>
             </header>
           </main>
         </div>

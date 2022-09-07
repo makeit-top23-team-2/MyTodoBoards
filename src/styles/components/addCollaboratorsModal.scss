@@ -60,9 +60,12 @@
   }
 
   .input {
+    width: 90%;
+    opacity: 0.5;
     padding: 2px;
     outline: none;
     border: 0;
+    border: 1px solid rgb(223, 219, 212);
     border-radius: 5px;
     box-shadow:
     1.6px 1.4px 2px -6px rgba(0, 0, 0, 0.051),
