@@ -4,33 +4,36 @@ import { PropTypes } from 'prop-types';
 import { upLoadFiles } from '../../services/upload';
 import { updateCard } from '../../services/cards';
 
-function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
+function ModalChecklist({
+  modalChecklist,
+  setModalChecklist,
+  cardId,
+  setFiles: handleFiles,
+}) {
   const [files, setFiles] = useState(null);
   const [Text, setText] = useState('Add');
   const [className, setClassName] = useState('check__form__button');
   const [disable, setDisable] = useState(false);
 
   const handleModal = () => {
-    setModalCheclist(false);
+    setModalChecklist(false);
   };
 
   const handleChange = e => {
     setFiles(e.target.files);
   };
 
-  const handleSubmit = e => {
+  const handleUploadFiles = async e => {
     e.preventDefault();
-  };
-
-  const handleUploadFiles = async () => {
     setText('Loading');
     setClassName('check__form__loading');
     setDisable(true);
     const result = await upLoadFiles(files);
     const card = await updateCard(cardId, { files: result });
+    handleFiles(card.files);
     if (card) {
       Swal.fire({
-        title: 'Your image has been up!',
+        title: 'Your file has been uploaded!',
         icon: 'success',
         confirmButtonText: 'Got it!',
       });
@@ -38,8 +41,7 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
     setText('Add');
     setClassName('check__form__button');
     setDisable(false);
-
-    setModalCheclist(false);
+    setModalChecklist(false);
   };
 
   return (
@@ -58,7 +60,7 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
           </header>
 
           <main className='check__main'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleUploadFiles}>
               <span className='check__form__span'>Select your files</span>
               <input
                 type='file'
@@ -66,12 +68,7 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
                 onChange={handleChange}
                 multiple
               />
-              <button
-                type='button'
-                className={className}
-                onClick={handleUploadFiles}
-                disabled={disable}
-              >
+              <button type='submit' className={className} disabled={disable}>
                 {Text}
               </button>
             </form>
@@ -84,13 +81,15 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
 
 ModalChecklist.propTypes = {
   modalChecklist: PropTypes.bool,
-  setModalCheclist: PropTypes.func,
+  setModalChecklist: PropTypes.func,
   cardId: PropTypes.string,
+  setFiles: PropTypes.func,
 };
 ModalChecklist.defaultProps = {
   modalChecklist: false,
-  setModalCheclist: () => null,
+  setModalChecklist: () => null,
   cardId: '',
+  setFiles: () => null,
 };
 
 export default ModalChecklist;

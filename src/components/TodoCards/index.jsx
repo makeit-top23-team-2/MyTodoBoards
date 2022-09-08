@@ -8,6 +8,7 @@ import Card from './Card';
 import DeleteColumn from '../deleteColumnModal';
 
 function ToDo({ column }) {
+  let controlInitialData = false;
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
@@ -16,15 +17,25 @@ function ToDo({ column }) {
 
   const [tasks, setTasks] = useState([]);
 
+  const fetchData = async () => {
+    const singleColumn = await getColumnById(id);
+    const { cards } = singleColumn;
+    if (cards !== tasks) {
+      setTasks(cards);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const singleColumn = await getColumnById(id);
-      const { cards } = singleColumn;
-      if (cards) {
-        setTasks(cards);
-      }
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 1000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, []);
 
   useEffect(() => {

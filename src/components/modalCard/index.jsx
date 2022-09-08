@@ -5,10 +5,10 @@ import { PropTypes } from 'prop-types';
 import ModalChecklist from '../modalAddFiles';
 import { updateCard, deleteCard, getSingleCard } from '../../services/cards';
 
-
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [singleCard, setSingleCard] = useState({});
-  const [modalChecklist, setModalCheclist] = useState(false);
+  const [modalChecklist, setModalChecklist] = useState(false);
+  const [files, setFiles] = useState([]);
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState({});
@@ -18,19 +18,22 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     const fetchData = async () => {
       const SingleCard = await getSingleCard(card._id);
       setSingleCard(SingleCard);
-      if (singleCard.checklist) {
-        setTasks(singleCard.checklist);
+      if (SingleCard.checklist) {
+        setTasks(SingleCard.checklist);
+      }
+      if (SingleCard.files) {
+        setFiles(SingleCard.files);
       }
     };
     fetchData();
-  }, [isModalOpened]);
+  }, []);
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
   };
 
   const handleClick = () => {
-    setModalCheclist(true);
+    setModalChecklist(true);
   };
 
   const handleChange = e => {
@@ -58,8 +61,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
       title: form.title,
       description: form.cardDescription,
       checklist: tasks,
-      members: [],
-      files: [],
+      // files: [],
     };
     await updateCard(card._id, newCard);
     setIsModalOpened(false);
@@ -135,10 +137,12 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   onChange={handleFormChange}
                 />
                 <div className='modal__files'>
-                  {card.files.length > 0
-                    ? card.files.map(file => (
+                  {files.length > 0
+                    ? files.map(file => (
                         <div key={file._id}>
-                          <a href={file.url}>{file.name}</a>
+                          <a href={file.url} target='_blank' rel='noreferrer'>
+                            {file.name}{' '}
+                          </a>
                           <button
                             type='button'
                             className='modal__files__delete'
@@ -251,8 +255,9 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
             </aside>
             <ModalChecklist
               modalChecklist={modalChecklist}
-              setModalCheclist={setModalCheclist}
+              setModalChecklist={setModalChecklist}
               cardId={card._id}
+              setFiles={setFiles}
             />
           </main>
         </div>
@@ -277,4 +282,4 @@ ModalCard.defaultProps = {
   setTasks: () => null,
 };
 
-export default ModalCard;
+export default React.memo(ModalCard);
