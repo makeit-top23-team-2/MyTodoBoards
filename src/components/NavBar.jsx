@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import BurgerButton from './BurgerButton';
 
 function NavBar() {
+  const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
@@ -41,22 +43,48 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
-              <NavLink
+              <button
+                type='button'
                 className='navBar__navLink'
                 to={`/profile/${user.userName}`}
               >
-                {user.userName}
-              </NavLink>
-            </li>
-            <li>
-              <button
-                type='submit'
-                className='navBar__logout'
-                onClick={handleLogout}
-              >
-                LogOut
+                <picture className='profile__section1__photo' {...buttonProps}>
+                  <img
+                    className='profile__section1__photo__img'
+                    src={user.avatar}
+                    alt='avatar'
+                  />
+                </picture>
               </button>
             </li>
+            <div className='navBar__dropDown'>
+              <ul
+                className={
+                  isOpen ? 'visible dropDown-active' : 'dropDown-unactive'
+                }
+                role='menu'
+              >
+                <li>
+                  <NavLink
+                    {...itemProps[0]}
+                    className='navBar__navLink'
+                    to={`/profile/${user.userName}`}
+                  >
+                    {user.userName}
+                  </NavLink>
+                </li>
+                <li>
+                  <button
+                    {...itemProps[1]}
+                    type='submit'
+                    className='navBar__logout'
+                    onClick={handleLogout}
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
+            </div>
           </>
         ) : (
           <>
@@ -66,7 +94,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
-              <NavLink className='navBar__navLink' to='/signUp-form'>
+              <NavLink className='navBar__navLink' to='/signup'>
                 signUp
               </NavLink>
             </li>
