@@ -40,6 +40,9 @@ function SignupForm() {
       const response = await createUser(form);
       const res = JSON.parse(response);
       if (res.details) {
+        if (res.details[0].message.includes('password')) {
+          res.details[0].message = `Password needs to be at least 6 characters long and include only alphanumeric!`;
+        }
         Swal.fire({
           title: res.details[0].message,
           icon: 'warning',
