@@ -2,14 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
-<<<<<<< HEAD
 import ModalChecklist from '../modalAddFiles';
-import { updateCard, deleteCard } from '../../services/cards';
-=======
-import ModalAddFiles from '../modalAddFiles';
-import ModalChecklist from '../modalChecklist';
 import { updateCard, deleteCard, getSingleCard } from '../../services/cards';
->>>>>>> f9670b5b4569fe6f80c29a6740407e3ebfd8fc81
+
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [singleCard, setSingleCard] = useState({});
