@@ -4,30 +4,32 @@ import { PropTypes } from 'prop-types';
 import { upLoadFiles } from '../../services/upload';
 import { updateCard } from '../../services/cards';
 
-function ModalChecklist({
-  modalChecklist,
-  setModalChecklist,
+function ModalAddFiles({
+  modalAddFiles,
+  setModalAddFiles,
   cardId,
   setFiles: handleFiles,
 }) {
   const [files, setFiles] = useState(null);
   const [Text, setText] = useState('Add');
-  const [className, setClassName] = useState('check__form__button');
-  const [disable, setDisable] = useState(false);
+  const [className, setClassName] = useState('add__files__diabled');
 
   const handleModal = () => {
-    setModalChecklist(false);
+    setModalAddFiles(false);
+    setClassName('add__files__diabled');
+    setFiles(null);
   };
 
   const handleChange = e => {
     setFiles(e.target.files);
+    setClassName('add__files__enabled');
   };
 
   const handleUploadFiles = async e => {
     e.preventDefault();
     setText('Loading');
-    setClassName('check__form__loading');
-    setDisable(true);
+    setClassName('add__files__diabled');
+    // setDisable(true);
     const result = await upLoadFiles(files);
     const card = await updateCard(cardId, { files: result });
     handleFiles(card.files);
@@ -39,14 +41,14 @@ function ModalChecklist({
       });
     }
     setText('Add');
-    setClassName('check__form__button');
-    setDisable(false);
-    setModalChecklist(false);
+    setClassName('board__section__button');
+    setModalAddFiles(false);
+    setFiles(null);
   };
 
   return (
     <div>
-      {modalChecklist && (
+      {modalAddFiles && (
         <section className='check'>
           <header className='check__header'>
             <span className='check__title'>Add files</span>
@@ -68,7 +70,11 @@ function ModalChecklist({
                 onChange={handleChange}
                 multiple
               />
-              <button type='submit' className={className} disabled={disable}>
+              <button
+                type='submit'
+                className={className}
+                disabled={!files ? 'disabled' : ''}
+              >
                 {Text}
               </button>
             </form>
@@ -79,17 +85,17 @@ function ModalChecklist({
   );
 }
 
-ModalChecklist.propTypes = {
-  modalChecklist: PropTypes.bool,
-  setModalChecklist: PropTypes.func,
+ModalAddFiles.propTypes = {
+  modalAddFiles: PropTypes.bool,
+  setModalAddFiles: PropTypes.func,
   cardId: PropTypes.string,
   setFiles: PropTypes.func,
 };
-ModalChecklist.defaultProps = {
-  modalChecklist: false,
-  setModalChecklist: () => null,
+ModalAddFiles.defaultProps = {
+  modalAddFiles: false,
+  setModalAddFiles: () => null,
   cardId: '',
   setFiles: () => null,
 };
 
-export default ModalChecklist;
+export default ModalAddFiles;

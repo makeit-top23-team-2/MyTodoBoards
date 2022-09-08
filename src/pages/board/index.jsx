@@ -44,7 +44,7 @@ function MainBoard() {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       fetchData();
-    }, 1000);
+    }, 5000);
     if (!controlInitialData) {
       fetchData();
       controlInitialData = true;

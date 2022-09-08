@@ -9,6 +9,7 @@ import DeleteColumn from '../deleteColumnModal';
 
 function ToDo({ column }) {
   let controlInitialData = false;
+  const [titleColumn, setTitleColumn] = useState('');
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
@@ -20,6 +21,7 @@ function ToDo({ column }) {
   const fetchData = async () => {
     const singleColumn = await getColumnById(id);
     const { cards } = singleColumn;
+    setTitleColumn(singleColumn.title);
     if (cards !== tasks) {
       setTasks(cards);
     }
@@ -28,7 +30,7 @@ function ToDo({ column }) {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       fetchData();
-    }, 1000);
+    }, 5000);
     if (!controlInitialData) {
       fetchData();
       controlInitialData = true;
@@ -76,7 +78,7 @@ function ToDo({ column }) {
           type='text'
           className='ToDo__listTitle__input'
           placeholder='Write a title for this list...'
-          defaultValue={column.title}
+          defaultValue={titleColumn}
           onBlur={handlerChangeColumnTitle}
         />
       </section>
