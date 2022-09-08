@@ -56,9 +56,9 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
   };
 
   return createPortal(
-    <div className='container__change__color__board'>
+    <div >
       {isModalOpened && (
-        <div className='modal'>
+        <div className='container__change__color'>
           <main className='board'>
             <header className='board__header'>
               <div className='board__header__div'>Change background image</div>

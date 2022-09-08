@@ -3,7 +3,6 @@ import './styles/styles.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import LogIn from './pages/login';
-import SignUp from './pages/signup';
 import MainBoard from './pages/board';
 import Home from './pages/home';
 import ManageBoard from './pages/manageBoard';
@@ -19,7 +18,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/signUp' element={<SignUp />} />
         <Route path='/logIn' element={<LogIn />} />
         <Route path='/board/:id' element={<MainBoard />} />
         <Route path='/' element={<Home />} />

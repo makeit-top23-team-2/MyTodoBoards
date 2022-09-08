@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 import CreateBoard from '../../components/createBoard';
 import { getAllUserBoards, getAllSharedBoards } from '../../services/boards';
 import { setBoards } from '../../store/boardsSlice';
@@ -13,7 +12,7 @@ function ManageBoard() {
   const [isModalOpened, setIsModalOpened] = useState(false);
   const boards = useSelector(state => state.boards.value);
   const sharedBoards = useSelector(state => state.sharedBoards.value);
- 
+
   useEffect(() => {
     const fetchData = async () => {
       const Boards = await getAllUserBoards();
@@ -150,7 +149,6 @@ function ManageBoard() {
         isModalOpened={isModalOpened}
         setIsModalOpened={setIsModalOpened}
       />
-      <Footer />
     </div>
   );
 }

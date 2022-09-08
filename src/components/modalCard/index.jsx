@@ -3,9 +3,11 @@ import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
 import ModalAddFiles from '../modalAddFiles';
-import { updateCard, deleteCard } from '../../services/cards';
+import ModalChecklist from '../modalChecklist';
+import { updateCard, deleteCard, getSingleCard } from '../../services/cards';
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
+  const [singleCard, setSingleCard] = useState({});
   const [modalChecklist, setModalCheclist] = useState(false);
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
@@ -13,10 +15,15 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [style, setStyle] = useState(0);
 
   useEffect(() => {
-    if (card.checklist.length) {
-      setTasks(card.checklist);
-    }
-  }, []);
+    const fetchData = async () => {
+      const SingleCard = await getSingleCard(card._id);
+      setSingleCard(SingleCard);
+      if (singleCard.checklist) {
+        setTasks(singleCard.checklist);
+      }
+    };
+    fetchData();
+  }, [isModalOpened]);
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -46,23 +53,23 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     setForm({ ...form, [name]: value });
   };
 
-  const saveCardUpdate = () => {
+  const saveCardUpdate = async () => {
     const newCard = {
       title: form.title,
       description: form.cardDescription,
       checklist: tasks,
       members: [],
     };
-    updateCard(card._id, newCard);
-    window.location.reload();
+    await updateCard(card._id, newCard);
+    setIsModalOpened(false);
   };
 
   const handleSave = () => {
     saveCardUpdate();
   };
 
-  const cardDelete = () => {
-    deleteCard(card._id);
+  const cardDelete = async () => {
+    await deleteCard(card._id);
     window.location.reload();
   };
 
@@ -106,7 +113,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 type='text'
                 className='modal__textarea'
                 placeholder='title'
-                defaultValue={card.title}
+                defaultValue={singleCard.title}
                 name='title'
                 onChange={handleFormChange}
               />
@@ -114,7 +121,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 In list <strong>{column.title}</strong>
               </p>
             </header>
-
             <article className='modal__article'>
               <div>
                 <h3 className='modal__h3'>Description</h3>
@@ -123,7 +129,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 <textarea
                   placeholder='Add a more detailed description...'
                   className='modal__text'
-                  defaultValue={card.description}
+                  defaultValue={singleCard.description}
                   name='cardDescription'
                   onChange={handleFormChange}
                 />
@@ -144,7 +150,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 </div>
               </div>
             </article>
-
             <section className='modal__section'>
               <div className='modal__section__i'>
                 <i className='fa-regular fa-square-check' />
@@ -160,7 +165,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   />
                 </div>
               </div>
-
               <div className='modal__section__list'>
                 {tasks?.map &&
                   tasks.map(item => (
@@ -189,7 +193,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                     </div>
                   ))}
               </div>
-
               <form onSubmit={handleSubmit}>
                 <input
                   name='description'
@@ -207,7 +210,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 </button>
               </form>
             </section>
-
             <aside className='modal__aside'>
               <h3 className='modal__h3'>Add to card</h3>
               <div className='modal__aside__div'>
@@ -220,14 +222,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   onClick={handleClick}
                 >
                   <span className='modal__aside__span'>Add files</span>
-                </button>
-
-                <button
-                  type='button'
-                  className='modal__section__delete'
-                  onClick={handleDeleteCard}
-                >
-                  Delete Card
                 </button>
                 <div>
                   <button
@@ -243,6 +237,13 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                     onClick={handleCloseModal}
                   >
                     Cancel
+                  </button>
+                  <button
+                    type='button'
+                    className='modal__section__delete'
+                    onClick={handleDeleteCard}
+                  >
+                    Delete Card
                   </button>
                 </div>
               </div>

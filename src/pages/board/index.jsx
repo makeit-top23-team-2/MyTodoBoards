@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
 import ToDo from '../../components/TodoCards';
 import { getBoardById, updateBoard } from '../../services/boards';
 import { setSingleBoard } from '../../store/singleBoardSlice';
@@ -209,7 +208,6 @@ function MainBoard() {
         setIsAddCollaboratorsModalOpened={setIsAddCollaboratorsModalOpened}
         id={id}
       />
-      <Footer />
     </div>
   );
 }

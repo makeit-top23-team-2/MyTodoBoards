@@ -66,7 +66,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li>
-              <NavLink className='navBar__navLink' to='/signup'>
+              <NavLink className='navBar__navLink' to='/signUp-form'>
                 signUp
               </NavLink>
             </li>
