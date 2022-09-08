@@ -16,7 +16,6 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
   const imgSelected = useSelector(state => state.colorBoard.value);
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
-  
 
   const handleChange = e => {
     if (e.target.files[0] && !selectImgBool) setFile(e.target.files[0]);
@@ -32,9 +31,9 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
       const id = singleBoard._id;
       const board = await updateBoard(id, { color });
       dispatch(setSingleBoard(board));
-      setIsModalOpened(false);
       setStyleButton('boton__save__photo');
       setButtonText('Send');
+      setIsModalOpened(false);
     }
     if (selectImgBool) {
       // setEnableButton('')
@@ -42,15 +41,14 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
       const id = singleBoard._id;
       const board = await updateBoard(id, { color });
       dispatch(setSingleBoard(board));
-      setIsModalOpened(false);
       setStyleButton('boton__save__photo');
       setButtonText('Send');
+      setIsModalOpened(false);
     }
-    window.location.reload();
-    setIsModalOpened(false);
     setStyleButton('boton__save__photo');
     setButtonText('Send');
     dispatch(setSelectImgBool(false));
+    setIsModalOpened(false);
   };
 
   const handleCloseModal = () => {
@@ -74,7 +72,10 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
-            <div className='board__section__div' style={{backgroundImage:`url("${imgSelected}")`}}>
+              <div
+                className='board__section__div'
+                style={{ backgroundImage: `url("${imgSelected}")` }}
+              >
                 <img
                   className='board__section__image'
                   src='https://a.trellocdn.com/prgb/dist/images/board-preview-skeleton.14cda5dc635d1f13bc48.svg'

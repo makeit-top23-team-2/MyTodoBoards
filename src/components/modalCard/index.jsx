@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
-import ModalChecklist from '../modalChecklist';
+import ModalChecklist from '../modalAddFiles';
 import { updateCard, deleteCard, getSingleCard } from '../../services/cards';
+
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [singleCard, setSingleCard] = useState({});
@@ -58,6 +59,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
       description: form.cardDescription,
       checklist: tasks,
       members: [],
+      files: [],
     };
     await updateCard(card._id, newCard);
     setIsModalOpened(false);
@@ -132,6 +134,21 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   name='cardDescription'
                   onChange={handleFormChange}
                 />
+                <div className='modal__files'>
+                  {card.files.length > 0
+                    ? card.files.map(file => (
+                        <div key={file._id}>
+                          <a href={file.url}>{file.name}</a>
+                          <button
+                            type='button'
+                            className='modal__files__delete'
+                          >
+                            <i className='fa-solid fa-trash' />
+                          </button>
+                        </div>
+                      ))
+                    : null}
+                </div>
               </div>
             </article>
             <section className='modal__section'>
@@ -205,7 +222,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   className='modal__aside__button'
                   onClick={handleClick}
                 >
-                  <span className='modal__aside__span'>Checklist</span>
+                  <span className='modal__aside__span'>Add files</span>
                 </button>
                 <div>
                   <button
@@ -235,6 +252,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
             <ModalChecklist
               modalChecklist={modalChecklist}
               setModalCheclist={setModalCheclist}
+              cardId={card._id}
             />
           </main>
         </div>

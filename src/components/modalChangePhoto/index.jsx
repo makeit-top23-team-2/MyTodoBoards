@@ -40,11 +40,10 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
           confirmButtonText: 'Got it!',
         });
       }
-      setIsModalOpened(false);
-      window.location.reload();
       setDisable('');
       setStyleButton('boton__save__photo');
       setButtonText('Send');
+      setIsModalOpened(false);
     }
     dispatch();
   };

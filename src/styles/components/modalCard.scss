@@ -148,6 +148,44 @@
     }
   }
 
+  &__files  {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    
+    a{
+      padding: 5px 10px;
+      height: 100%;
+      font-size: 11px;
+      text-decoration: none;
+      background: #E2E4E9;
+      border-top-left-radius:5px ;
+      border-bottom-left-radius: 5px;
+      margin-bottom: 10px;
+      
+    }
+    button {
+        font-size: 11px;
+        height: 25px;
+        cursor: pointer;
+        background-color: #a5a5a5;
+        margin-left: 0;
+        margin-right: 8px;
+        border-top-left-radius:0px ;
+        border-bottom-left-radius: 0px;
+        margin-bottom: 10px;
+        
+    }
+    button:hover{
+      background-color: red;
+      transition-duration: 0.4s;
+    }
+    
+    
+  }
+
   &__save {
     background-color: #055a8c;
     border: none;
