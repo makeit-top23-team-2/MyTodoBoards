@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import { upLoadFiles } from '../../services/upload';
 import { updateCard } from '../../services/cards';
 
-function ModalAddFiles({ modalChecklist, setModalCheclist, cardId }) {
+function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
   const [files, setFiles] = useState(null);
   const [Text, setText] = useState('Add');
   const [className, setClassName] = useState('check__form__button');
@@ -82,15 +82,15 @@ function ModalAddFiles({ modalChecklist, setModalCheclist, cardId }) {
   );
 }
 
-ModalAddFiles.propTypes = {
+ModalChecklist.propTypes = {
   modalChecklist: PropTypes.bool,
   setModalCheclist: PropTypes.func,
   cardId: PropTypes.string,
 };
-ModalAddFiles.defaultProps = {
+ModalChecklist.defaultProps = {
   modalChecklist: false,
   setModalCheclist: () => null,
   cardId: '',
 };
 
-export default ModalAddFiles;
+export default ModalChecklist;

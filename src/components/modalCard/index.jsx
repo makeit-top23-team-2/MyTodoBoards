@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
-import ModalAddFiles from '../modalAddFiles';
+import ModalChecklist from '../modalAddFiles';
 import { updateCard, deleteCard } from '../../services/cards';
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
@@ -52,6 +52,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
       description: form.cardDescription,
       checklist: tasks,
       members: [],
+      files: [],
     };
     updateCard(card._id, newCard);
     window.location.reload();
@@ -247,7 +248,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 </div>
               </div>
             </aside>
-            <ModalAddFiles
+            <ModalChecklist
               modalChecklist={modalChecklist}
               setModalCheclist={setModalCheclist}
               cardId={card._id}
