@@ -142,6 +142,28 @@
       color: #fff;
     }
   }
+
+  &__form__loading {
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: #a5adba;
+    border: none;
+    box-shadow: none;
+    color: #ffffff;
+    border-radius: 3px;
+    cursor: no-drop;
+    font-size: 14px;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 20px;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition-duration: 85ms;
+    margin: 8px 4px 0 0;
+    outline: none;
+    width: 73.53px;
+  }
 }
 
 @media (min-width: 500px) {
@@ -167,7 +189,7 @@
     left: 200px;
     top: 400px;
     display: block;
-    background: #fff;
+    background: #a5adba;
     border-radius: 3px;
     box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
     overflow: hidden;

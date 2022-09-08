@@ -127,17 +127,22 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                   name='cardDescription'
                   onChange={handleFormChange}
                 />
+                <div className='modal__files'>
+                  {card.files.length > 0
+                    ? card.files.map(file => (
+                        <div key={file._id}>
+                          <a href={file.url}>{file.name}</a>
+                          <button
+                            type='button'
+                            className='modal__files__delete'
+                          >
+                            <i className='fa-solid fa-trash' />
+                          </button>
+                        </div>
+                      ))
+                    : null}
+                </div>
               </div>
-              {card.files.length > 0 ? 
-                card.files.map(files => (
-                  <div key={files._id}>
-                    <a href={files.url} >
-                      <p src={files.name} alt='file' className='modal__img' />
-                    </a>
-    
-                  </div>
-                )
-                ) : null}
             </article>
 
             <section className='modal__section'>

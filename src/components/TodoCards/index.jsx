@@ -47,7 +47,7 @@ function ToDo({ column }) {
   return (
     <div className='ToDo__column'>
       <button
-        className='column__open__modal'
+        className='column__delete__button'
         type='button'
         onClick={handleOpenDeleteColumnModal}
       >

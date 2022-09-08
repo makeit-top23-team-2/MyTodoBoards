@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import { PropTypes } from 'prop-types';
 import { upLoadFiles } from '../../services/upload';
 import { updateCard } from '../../services/cards';
 
 function ModalAddFiles({ modalChecklist, setModalCheclist, cardId }) {
   const [files, setFiles] = useState(null);
+  const [Text, setText] = useState('Add');
+  const [className, setClassName] = useState('check__form__button');
+  const [disable, setDisable] = useState(false);
 
   const handleModal = () => {
     setModalCheclist(false);
@@ -19,19 +23,25 @@ function ModalAddFiles({ modalChecklist, setModalCheclist, cardId }) {
   };
 
   const handleUploadFiles = async () => {
-  
-     const result = await upLoadFiles(files);
-     const updateFiles= async() =>{
-      for (let i = 0; i < result.length; i+=1) {
-      // eslint-disable-next-line no-await-in-loop
-      await updateCard(cardId, {
-        files: [{ url: result.resultsAll[i], name: result.names[i] }],
+    setText('Loading');
+    setClassName('check__form__loading');
+    setDisable(true);
+    const result = await upLoadFiles(files);
+    const card = await updateCard(cardId, { files: result });
+    if (card) {
+      Swal.fire({
+        title: 'Your image has been up!',
+        icon: 'success',
+        confirmButtonText: 'Got it!',
       });
     }
-    
+    setText('Add');
+    setClassName('check__form__button');
+    setDisable(false);
+
+    setModalCheclist(false);
   };
-     console.log("🚀 ~ file: index.jsx ~ line 32 ~ updateFiles ~ updateFiles", updateFiles)
-}
+
   return (
     <div>
       {modalChecklist && (
@@ -58,10 +68,11 @@ function ModalAddFiles({ modalChecklist, setModalCheclist, cardId }) {
               />
               <button
                 type='button'
-                className='check__form__button'
+                className={className}
                 onClick={handleUploadFiles}
+                disabled={disable}
               >
-                Add
+                {Text}
               </button>
             </form>
           </main>

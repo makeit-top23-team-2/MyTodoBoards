@@ -19,9 +19,6 @@ export default configureStore({
     cards: cardsReducer,
     colorBoard: colorBoardReducer,
     selectImgBool: selectImgBoolReducer,
-<<<<<<< HEAD
     singleCard: singleCardReducer,
-=======
->>>>>>> develop
   },
 });
