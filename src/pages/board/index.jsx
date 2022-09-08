@@ -15,6 +15,7 @@ import DeleteBoard from '../../components/deleteBoardModal';
 import AddCollaborators from '../../components/addCollaboratorsModal';
 
 function MainBoard() {
+  let controlInitialData = false;
   const [titleBoard, setTitleBoard] = useState('');
   const [columns, setColumns1] = useState([]);
   const dispatch = useDispatch();
@@ -27,16 +28,30 @@ function MainBoard() {
   const [isAddCollaboratorsModalOpened, setIsAddCollaboratorsModalOpened] =
     useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const board = await getBoardById(id);
-      setTitleBoard(board.title);
-      const boardColumns = board.columns;
+  const fetchData = async () => {
+    const board = await getBoardById(id);
+    setTitleBoard(board.title);
+    const boardColumns = board.columns;
+    if (board !== singleBoard) {
       dispatch(setSingleBoard(board));
+    }
+    if (boardColumns !== columns) {
       dispatch(setColumns(boardColumns));
       setColumns1(boardColumns.map(column => ({ ...column, id: column._id })));
+    }
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 5000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, []);
 
   useEffect(() => {

@@ -4,47 +4,51 @@ import { PropTypes } from 'prop-types';
 import { upLoadFiles } from '../../services/upload';
 import { updateCard } from '../../services/cards';
 
-function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
+function ModalAddFiles({
+  modalAddFiles,
+  setModalAddFiles,
+  cardId,
+  setFiles: handleFiles,
+}) {
   const [files, setFiles] = useState(null);
   const [Text, setText] = useState('Add');
-  const [className, setClassName] = useState('check__form__button');
-  const [disable, setDisable] = useState(false);
+  const [className, setClassName] = useState('add__files__diabled');
 
   const handleModal = () => {
-    setModalCheclist(false);
+    setModalAddFiles(false);
+    setClassName('add__files__diabled');
+    setFiles(null);
   };
 
   const handleChange = e => {
     setFiles(e.target.files);
+    setClassName('add__files__enabled');
   };
 
-  const handleSubmit = e => {
+  const handleUploadFiles = async e => {
     e.preventDefault();
-  };
-
-  const handleUploadFiles = async () => {
     setText('Loading');
-    setClassName('check__form__loading');
-    setDisable(true);
+    setClassName('add__files__diabled');
+    // setDisable(true);
     const result = await upLoadFiles(files);
     const card = await updateCard(cardId, { files: result });
+    handleFiles(card.files);
     if (card) {
       Swal.fire({
-        title: 'Your image has been up!',
+        title: 'Your file has been uploaded!',
         icon: 'success',
         confirmButtonText: 'Got it!',
       });
     }
     setText('Add');
-    setClassName('check__form__button');
-    setDisable(false);
-
-    setModalCheclist(false);
+    setClassName('board__section__button');
+    setModalAddFiles(false);
+    setFiles(null);
   };
 
   return (
     <div>
-      {modalChecklist && (
+      {modalAddFiles && (
         <section className='check'>
           <header className='check__header'>
             <span className='check__title'>Add files</span>
@@ -58,7 +62,7 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
           </header>
 
           <main className='check__main'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleUploadFiles}>
               <span className='check__form__span'>Select your files</span>
               <input
                 type='file'
@@ -67,10 +71,9 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
                 multiple
               />
               <button
-                type='button'
+                type='submit'
                 className={className}
-                onClick={handleUploadFiles}
-                disabled={disable}
+                disabled={!files ? 'disabled' : ''}
               >
                 {Text}
               </button>
@@ -82,15 +85,17 @@ function ModalChecklist({ modalChecklist, setModalCheclist, cardId }) {
   );
 }
 
-ModalChecklist.propTypes = {
-  modalChecklist: PropTypes.bool,
-  setModalCheclist: PropTypes.func,
+ModalAddFiles.propTypes = {
+  modalAddFiles: PropTypes.bool,
+  setModalAddFiles: PropTypes.func,
   cardId: PropTypes.string,
+  setFiles: PropTypes.func,
 };
-ModalChecklist.defaultProps = {
-  modalChecklist: false,
-  setModalCheclist: () => null,
+ModalAddFiles.defaultProps = {
+  modalAddFiles: false,
+  setModalAddFiles: () => null,
   cardId: '',
+  setFiles: () => null,
 };
 
-export default ModalChecklist;
+export default ModalAddFiles;
