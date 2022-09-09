@@ -91,18 +91,18 @@ function ManageBoard() {
         </article>
       </main>
 
-      <main className='container'>
-        <div className='container__header'>
-          <span className='container__span'>
-            <i className='fa-solid fa-people-group' />
-          </span>
-          <p className='container__p'>Shared with you</p>
-        </div>
+      {sharedBoards.length ? (
+        <main className='container'>
+          <div className='container__header'>
+            <span className='container__span'>
+              <i className='fa-solid fa-people-group' />
+            </span>
+            <p className='container__p'>Shared with you</p>
+          </div>
 
-        <article className='container__article'>
-          <ul className='container__article__ul'>
-            {sharedBoards.length ? (
-              sharedBoards.map(board => (
+          <article className='container__article'>
+            <ul className='container__article__ul'>
+              {sharedBoards.map(board => (
                 <li className='container__article__li__item' key={board._id}>
                   <Link
                     to={`/board/${board._id}`}
@@ -135,15 +135,11 @@ function ManageBoard() {
                     </p>
                   </Link>
                 </li>
-              ))
-            ) : (
-              <div className='container__article__li__item'>
-                You do not have shared Boards yet
-              </div>
-            )}
-          </ul>
-        </article>
-      </main>
+              ))}
+            </ul>
+          </article>
+        </main>
+      ) : null}
 
       <CreateBoard
         isModalOpened={isModalOpened}

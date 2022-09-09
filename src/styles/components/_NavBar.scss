@@ -16,9 +16,13 @@
   border: 0;
   margin: 0;
   background-color: transparent;
-  color: rgb(36, 53, 85);
-  font-size: 1rem;
+  color: #ffffff;
+  font-size: 2rem;
   cursor: pointer;
+}
+
+.navBar__logout:hover {
+  opacity: 0.6;
 }
 .navBar__links {
   display: flex;
@@ -67,8 +71,64 @@
 .navBar__navLink {
   color: #ffffff;
   font-size: 2rem;
+  background: none;
+  cursor: pointer;
 }
 
+.navBar__navLink:hover {
+  opacity: 0.6;
+}
+.fa-sharp{
+  margin-right: 5px;
+}
+
+.fa-regular{
+  margin-right: 5px;
+}
+
+.fa-house{
+  margin-right: 5px;
+}
+
+.fa-right-to-bracket{
+  margin-right: 5px;
+}
+.fa-user-plus{
+  margin-right: 5px;
+}
+
+.fa-chalkboard{
+  margin-right: 5px;
+}
+
+ul[role='menu'] {
+  visibility: hidden;
+}
+
+ul[role='menu'].visible {
+  visibility: visible;
+}
+
+.navBar__avatar {
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+.navBar__dropDown {
+  padding-top: 5px;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  background: #f3f3f3;
+  border-radius: 10px;
+}
+
+.dropDown-unactive {
+  display: none;
+  top: 100px;
+  right: 30px;
+  background: #ffffff;
+}
 @media (min-width: 768px) {
   .navBar__links {
     background: #ffffff;
@@ -86,5 +146,14 @@
     font-size: 1rem;
     margin: 15px;
     color: #243555;
+  }
+  .navBar__logout {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background-color: transparent;
+    color: rgb(36, 53, 85);
+    font-size: 1rem;
+    cursor: pointer;
   }
 }
