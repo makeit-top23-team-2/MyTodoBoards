@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
+
 import ModalAddFiles from '../modalAddFiles';
 import {
   updateCard,
