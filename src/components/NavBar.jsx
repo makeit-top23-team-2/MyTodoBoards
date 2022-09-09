@@ -29,6 +29,7 @@ function NavBar() {
       <ul className={isActive ? 'navBar__links--active' : 'navBar__links'}>
         <li>
           <NavLink className='navBar__navLink' to='/'>
+            <i className='fa-solid fa-house' />
             Home
           </NavLink>
         </li>
@@ -39,7 +40,8 @@ function NavBar() {
                 className='navBar__navLink'
                 to={`/manage-board/${user.userName}`}
               >
-                Manage-Boards
+                <i className='fa-solid fa-chalkboard' />
+                Boards
               </NavLink>
             </li>
             <li>
@@ -70,6 +72,7 @@ function NavBar() {
                     className='navBar__navLink'
                     to={`/profile/${user.userName}`}
                   >
+                    <i className='fa-regular fa-user' />
                     {user.userName}
                   </NavLink>
                 </li>
@@ -80,7 +83,8 @@ function NavBar() {
                     className='navBar__logout'
                     onClick={handleLogout}
                   >
-                    LogOut
+                    <i className='fa-sharp fa-solid fa-power-off' />
+                    Logout
                   </button>
                 </li>
               </ul>
@@ -90,12 +94,14 @@ function NavBar() {
           <>
             <li>
               <NavLink className='navBar__navLink' to='/login'>
+                <i className='fa-solid fa-right-to-bracket' />
                 Login
               </NavLink>
             </li>
             <li>
-              <NavLink className='navBar__navLink' to='/signup'>
-                signUp
+              <NavLink className='navBar__navLink' to='/signup-form'>
+                <i className='fa-solid fa-user-plus' />
+                Signup
               </NavLink>
             </li>
           </>

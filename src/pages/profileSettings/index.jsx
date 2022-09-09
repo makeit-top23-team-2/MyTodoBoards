@@ -89,7 +89,7 @@ function ProfileSettings() {
               className='profile__section2__about__changePassword'
               onClick={handleOpenModal}
             >
-              <h4>Change Photo Image</h4>
+              <h4>Change Profile Picture</h4>
             </button>
             <button
               type='button'

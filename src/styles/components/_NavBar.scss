@@ -20,6 +20,10 @@
   font-size: 2rem;
   cursor: pointer;
 }
+
+.navBar__logout:hover {
+  opacity: 0.6;
+}
 .navBar__links {
   display: flex;
   flex-direction: column;
@@ -68,6 +72,33 @@
   color: #ffffff;
   font-size: 2rem;
   background: none;
+  cursor: pointer;
+}
+
+.navBar__navLink:hover {
+  opacity: 0.6;
+}
+.fa-sharp{
+  margin-right: 5px;
+}
+
+.fa-regular{
+  margin-right: 5px;
+}
+
+.fa-house{
+  margin-right: 5px;
+}
+
+.fa-right-to-bracket{
+  margin-right: 5px;
+}
+.fa-user-plus{
+  margin-right: 5px;
+}
+
+.fa-chalkboard{
+  margin-right: 5px;
 }
 
 ul[role='menu'] {
@@ -84,12 +115,14 @@ ul[role='menu'].visible {
 }
 
 .navBar__dropDown {
+  padding-top: 5px;
   position: absolute;
   top: 90px;
-  right: 30px;
-  background: #ffffff;
+  right: 20px;
+  background: #f3f3f3;
   border-radius: 10px;
 }
+
 .dropDown-unactive {
   display: none;
   top: 100px;
