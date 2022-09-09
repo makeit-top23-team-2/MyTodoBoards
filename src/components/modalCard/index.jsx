@@ -13,6 +13,7 @@ import {
 } from '../../services/cards';
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
+  let controlInitialData = false;
   const [modalAddFiles, setModalAddFiles] = useState(false);
   const [files, setFiles] = useState([]);
   const [task, setTask] = useState({});
@@ -21,23 +22,33 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [style, setStyle] = useState(0);
   const [Card, setCard] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const SingleCard = await getSingleCard(card._id);
-      setCard(SingleCard);
-      setForm({
-        title: SingleCard.title,
-        cardDescription: SingleCard.description,
-      });
+  const fetchData = async () => {
+    const SingleCard = await getSingleCard(card._id);
+    setCard(SingleCard);
+    setForm({
+      title: SingleCard.title,
+      cardDescription: SingleCard.description,
+    });
 
-      if (SingleCard.checklist) {
-        setTasks(SingleCard.checklist);
-      }
-      if (SingleCard.files) {
-        setFiles(SingleCard.files);
-      }
+    if (SingleCard.checklist) {
+      setTasks(SingleCard.checklist);
+    }
+    if (SingleCard.files) {
+      setFiles(SingleCard.files);
+    }
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 5000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, []);
 
   const handleCloseModal = () => {

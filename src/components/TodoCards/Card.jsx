@@ -4,15 +4,26 @@ import ModalCard from '../modalCard';
 import { getSingleCard } from '../../services/cards';
 
 function Card({ card, column }) {
+  let controlInitialData = false;
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [singleCard, setSingleCard] = useState({});
 
+  const fetchData = async () => {
+    const SingleCard = await getSingleCard(card._id);
+    setSingleCard(SingleCard);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const SingleCard = await getSingleCard(card._id);
-      setSingleCard(SingleCard);
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 5000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, [isModalOpened]);
 
   const handleOpenModal = () => {
