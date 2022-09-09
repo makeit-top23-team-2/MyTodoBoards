@@ -49,6 +49,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     return () => {
       clearInterval(intervalId);
     };
+
   }, []);
 
   const handleCloseModal = () => {
