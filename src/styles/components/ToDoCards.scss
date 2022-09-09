@@ -181,7 +181,7 @@ width: 20px;
 cursor:-webkit-grab;
 }
 
-.column__open__modal {
+.column__delete__button {
   font-size: 8px;
   bottom: 0;
   right: 0;
@@ -194,7 +194,7 @@ cursor:-webkit-grab;
   background-color: #a5a5a5;
 }
 
-.column__open__modal:hover {
+.column__delete__button:hover {
   background-color: red;
   transition-duration: 0.4s;
 }

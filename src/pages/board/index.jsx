@@ -10,15 +10,19 @@ import { getBoardById, updateBoard } from '../../services/boards';
 import { setSingleBoard } from '../../store/singleBoardSlice';
 import { setColumns } from '../../store/columnsSlice';
 import { createColumnByBoardId } from '../../services/columns';
+import Collaborator from '../../components/collaborators';
 import ChangeColorBoard from '../../components/modalChangeColorBoard';
 import DeleteBoard from '../../components/deleteBoardModal';
 import AddCollaborators from '../../components/addCollaboratorsModal';
 
 function MainBoard() {
+  let controlInitialData = false;
+  const singleBoard = useSelector(state => state.singleBoard.value);
+  const { owner } = singleBoard;
   const [titleBoard, setTitleBoard] = useState('');
   const [columns, setColumns1] = useState([]);
+  const [collaborators, setCollaborators] = useState([]);
   const dispatch = useDispatch();
-  const singleBoard = useSelector(state => state.singleBoard.value);
   const { buttonProps, itemProps, isOpen } = useDropdownMenu(2);
   const { id } = useParams();
   const [isModalOpened, setIsModalOpened] = useState(false);
@@ -27,16 +31,31 @@ function MainBoard() {
   const [isAddCollaboratorsModalOpened, setIsAddCollaboratorsModalOpened] =
     useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const board = await getBoardById(id);
-      setTitleBoard(board.title);
-      const boardColumns = board.columns;
+  const fetchData = async () => {
+    const board = await getBoardById(id);
+    setTitleBoard(board.title);
+    const boardColumns = board.columns;
+    if (board !== singleBoard) {
       dispatch(setSingleBoard(board));
+      setCollaborators(board.collaborators);
+    }
+    if (boardColumns !== columns) {
       dispatch(setColumns(boardColumns));
       setColumns1(boardColumns.map(column => ({ ...column, id: column._id })));
+    }
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 5000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, []);
 
   useEffect(() => {
@@ -157,6 +176,22 @@ function MainBoard() {
             </div>
           </header>
         </div>
+        <ul className='collaborators__container'>
+          <p className='boar__members'>Members</p>
+          {owner ? (
+            <li key={owner._id} className='board__collaborators'>
+              <img
+                src={owner.avatar}
+                className='collaborators__avatar'
+                alt={owner.userName}
+              />
+              <p className='userName__tooltip'>{owner.userName} Owner</p>
+            </li>
+          ) : null}
+          {collaborators?.map(collaborator => (
+            <Collaborator collaborator={collaborator} key={collaborator._id} />
+          ))}
+        </ul>
 
         <div className='workSpace'>
           <div>

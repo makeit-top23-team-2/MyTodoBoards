@@ -17,7 +17,17 @@ function DeleteBoard({
   };
 
   const handleDeleteBoard = async () => {
-    await deleteBoard(id);
+    const res = await deleteBoard(id);
+    if (res.message === 'Unauthorized') {
+      Swal.fire({
+        title: `You can't delete a board that you don't own!`,
+        text: 'A Board can only be deleted by its owner.',
+        icon: 'warning',
+        confirmButtonText: 'Got it!',
+      });
+      setIsBoardDeleteModalOpened(false);
+      return;
+    }
     Swal.fire({
       title: 'The board has been deleted!',
       icon: 'success',

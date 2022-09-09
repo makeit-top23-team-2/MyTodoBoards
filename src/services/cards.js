@@ -42,3 +42,16 @@ export async function deleteCard(id) {
   });
   return response.json();
 }
+
+export async function deleteFile(idCard, idFile) {
+  const token = localStorage.getItem('token');
+  const response = await fetch(`${BASE_URL}/api/cards/file/${idCard}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ idFile }),
+  });
+  return response.json();
+}

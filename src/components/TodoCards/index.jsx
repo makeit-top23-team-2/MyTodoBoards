@@ -8,6 +8,8 @@ import Card from './Card';
 import DeleteColumn from '../deleteColumnModal';
 
 function ToDo({ column }) {
+  let controlInitialData = false;
+  const [titleColumn, setTitleColumn] = useState('');
   const [texto, setTexto] = useState('');
   const board = useSelector(state => state.singleBoard.value);
   const { id } = column;
@@ -16,15 +18,26 @@ function ToDo({ column }) {
 
   const [tasks, setTasks] = useState([]);
 
+  const fetchData = async () => {
+    const singleColumn = await getColumnById(id);
+    const { cards } = singleColumn;
+    setTitleColumn(singleColumn.title);
+    if (cards !== tasks) {
+      setTasks(cards);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const singleColumn = await getColumnById(id);
-      const { cards } = singleColumn;
-      if (cards) {
-        setTasks(cards);
-      }
+    const intervalId = setInterval(async () => {
+      fetchData();
+    }, 5000);
+    if (!controlInitialData) {
+      fetchData();
+      controlInitialData = true;
+    }
+    return () => {
+      clearInterval(intervalId);
     };
-    fetchData();
   }, []);
 
   useEffect(() => {
@@ -47,7 +60,7 @@ function ToDo({ column }) {
   return (
     <div className='ToDo__column'>
       <button
-        className='column__open__modal'
+        className='column__delete__button'
         type='button'
         onClick={handleOpenDeleteColumnModal}
       >
@@ -65,7 +78,7 @@ function ToDo({ column }) {
           type='text'
           className='ToDo__listTitle__input'
           placeholder='Write a title for this list...'
-          defaultValue={column.title}
+          defaultValue={titleColumn}
           onBlur={handlerChangeColumnTitle}
         />
       </section>
