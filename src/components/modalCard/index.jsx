@@ -4,12 +4,16 @@ import { v4 as uuid } from 'uuid';
 import { createPortal } from 'react-dom';
 import { PropTypes } from 'prop-types';
 import ModalAddFiles from '../modalAddFiles';
+<<<<<<< HEAD
 import {
   updateCard,
   deleteCard,
   getSingleCard,
   deleteFile,
 } from '../../services/cards';
+=======
+import { updateCard, deleteCard, getSingleCard } from '../../services/cards';
+>>>>>>> 1a41b0f70a293707fd8f2b74a0f20c1a1435cb68
 
 function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [modalAddFiles, setModalAddFiles] = useState(false);
@@ -248,7 +252,10 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                             <button
                               type='button'
                               className='modal__files__delete'
+<<<<<<< HEAD
                               onClick={() => handleDeleteFile(file._id)}
+=======
+>>>>>>> 1a41b0f70a293707fd8f2b74a0f20c1a1435cb68
                             >
                               <i className='fa-solid fa-trash' />
                             </button>
