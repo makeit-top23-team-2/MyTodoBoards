@@ -3,7 +3,6 @@
   align-items: center;
   width: 100%;
   color: white;
-  cursor: pointer;
   list-style: none;
   float: none;
   background-color: transparent;
@@ -118,6 +117,7 @@
   min-height: 100vh;
   background-position: center;
   background-size: cover;
+  position: relative;
 
   .buttonBoard__options__change{
     cursor: pointer;
@@ -172,6 +172,6 @@
     align-items: flex-start;
     margin: 0;
     justify-content: center;
-  }  
+  }
 }
 

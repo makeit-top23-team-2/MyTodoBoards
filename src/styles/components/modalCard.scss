@@ -93,7 +93,7 @@
     padding-bottom: 0;
     display: inline-block;
     margin: 6px 8px;
-    font-size: 15px;
+    font-size: 11px;
   }
 
   &__article {
@@ -121,7 +121,7 @@
 
   &__section__button {
     height: 20px  ;
-  }  
+  }
 
   &__text {
     background: #fff;
@@ -153,8 +153,8 @@
     flex-wrap: wrap;
     margin-top: 10px;
     margin-bottom: 10px;
-    
-    
+
+
     a{
       padding: 5px 10px;
       height: 100%;
@@ -164,7 +164,7 @@
       border-top-left-radius:5px ;
       border-bottom-left-radius: 5px;
       margin-bottom: 10px;
-      
+
     }
     button {
         font-size: 11px;
@@ -176,14 +176,14 @@
         border-top-left-radius:0px ;
         border-bottom-left-radius: 0px;
         margin-bottom: 10px;
-        
+
     }
     button:hover{
       background-color: red;
       transition-duration: 0.4s;
     }
-    
-    
+
+
   }
 
   &__save {
@@ -399,7 +399,7 @@
         margin: 0 5px;
         align-items: center;
       }
-    }    
+    }
 
     &__button {
       align-items: center;

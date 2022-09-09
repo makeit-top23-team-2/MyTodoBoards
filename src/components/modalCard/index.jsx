@@ -12,10 +12,12 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [tasks, setTasks] = useState([]);
   const [form, setForm] = useState({});
   const [style, setStyle] = useState(0);
+  const [Card, setCard] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const SingleCard = await getSingleCard(card._id);
+      setCard(SingleCard);
       setForm({
         title: SingleCard.title,
         cardDescription: SingleCard.description,
@@ -65,7 +67,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
       title: form.title,
       description: form.cardDescription,
       checklist: tasks,
-      // files: [],
     };
     await updateCard(card._id, newCard);
     setIsModalOpened(false);
@@ -124,9 +125,20 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 name='title'
                 onChange={handleFormChange}
               />
-              <p className='modal__p'>
-                In list <strong>{column.title}</strong>
-              </p>
+              <div>
+                <p className='modal__p'>
+                  In list <strong>{column.title}</strong>
+                </p>
+                <p className='modal__p'>
+                  Created by: <strong>{Card.creator.userName}</strong>
+                </p>
+                <p className='modal__p'>
+                  Created at: <strong>{Card.createdAt.split('T')[0]}</strong>
+                </p>
+                <p className='modal__p'>
+                  Updated at: <strong>{Card.updatedAt.split('T')[0]}</strong>
+                </p>
+              </div>
             </header>
             <article className='modal__article'>
               <div>
