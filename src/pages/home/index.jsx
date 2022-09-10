@@ -15,11 +15,11 @@ function Home() {
           />
         </div>
         <div className='home__section1__datail'>
-          <h2>Frello helps teams move work forward.</h2>
+          <h2>Trello helps teams move work forward.</h2>
           <p className='home__section1__datail__paragraph'>
             Collaborate, manage projects, and reach new productivity peaks. From
             high rises to the home office, the way your team works is
-            unique—accomplish it all with Frello.
+            unique—accomplish it all with Trello.
           </p>
         </div>
       </section>
@@ -53,7 +53,7 @@ function Home() {
         <div className='home__section3__datail'>
           <h2>Cards contain everything you need</h2>
           <p className='home__section3__datail__paragraph'>
-            Frello cards are your portal to more organized work—where every
+            Trello cards are your portal to more organized work—where every
             single part of your task can be managed, tracked, and shared with
             teammates. Open any card to uncover an ecosystem of checklists, due
             dates, attachments, conversations, and more.
@@ -72,7 +72,7 @@ function Home() {
         <div className='home__section4__datail'>
           <h2>Cards contain everything you need</h2>
           <p className='home__section4__datail__paragraph'>
-            Frello cards are your portal to more organized work—where every
+            Trello cards are your portal to more organized work—where every
             single part of your task can be managed, tracked, and shared with
             teammates. Open any card to uncover an ecosystem of checklists, due
             dates, attachments, conversations, and more.

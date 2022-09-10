@@ -18,12 +18,12 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
   const [file, setFile] = useState(null);
 
   const handleChange = e => {
-    if (e.target.files[0] && !selectImgBool) setFile(e.target.files[0]);
+    dispatch(setSelectImgBool(false));
+    if (e.target.files[0]) setFile(e.target.files[0]);
   };
 
   const handleUploadColorBoard = async () => {
     if (file) {
-      // setEnableButton('')
       setButtonText('Loading...');
       setStyleButton('board__section__loading');
       const imgURL = await uploadColorBoard(file);
@@ -33,10 +33,10 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
       dispatch(setSingleBoard(board));
       setStyleButton('boton__save__photo');
       setButtonText('Send');
+      dispatch(setSelectImgBool(false));
       setIsModalOpened(false);
     }
     if (selectImgBool) {
-      // setEnableButton('')
       const color = imgSelected;
       const id = singleBoard._id;
       const board = await updateBoard(id, { color });
@@ -45,18 +45,20 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
       setButtonText('Send');
       setIsModalOpened(false);
     }
-    setStyleButton('boton__save__photo');
+    setStyleButton('board__section__button');
     setButtonText('Send');
     dispatch(setSelectImgBool(false));
     setIsModalOpened(false);
+    setFile(null);
   };
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
+    setFile(null);
   };
 
   return createPortal(
-    <div >
+    <div>
       {isModalOpened && (
         <div className='container__change__color'>
           <main className='board'>
@@ -74,7 +76,11 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
             <section className='board__section'>
               <div
                 className='board__section__div'
-                style={{ backgroundImage: `url("${imgSelected}")` }}
+                style={{
+                  backgroundImage: `url("${
+                    file ? URL.createObjectURL(file) : imgSelected
+                  }")`,
+                }}
               >
                 <img
                   className='board__section__image'
@@ -90,7 +96,7 @@ function ChangeColorBoard({ isModalOpened, setIsModalOpened }) {
                   </span>
                 </div>
                 <div>
-                  <BackgroundBoard />
+                  <BackgroundBoard setFile={setFile} />
                 </div>
               </div>
 

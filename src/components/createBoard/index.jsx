@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { createBoard } from '../../services/boards';
 import BackgroundBoard from '../backgroundBoard';
+import { uploadColorBoard } from '../../services/upload';
+import { setSelectImgBool } from '../../store/selectImgBoolSlice';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const [task, setTask] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const colorBoard = useSelector(state => state.colorBoard.value);
   const [text, setText] = useState('Create');
   const [disable, setDisable] = useState('');
+  const dispatch = useDispatch();
   const [styleButton, setStyleButton] = useState('board__section__button');
   const imgSelected = useSelector(state => state.colorBoard.value);
+  const selectImgBool = useSelector(state => state.selectImgBool.value);
+  const [file, setFile] = useState(null);
+
+  const handleChange = e => {
+    dispatch(setSelectImgBool(false));
+    if (e.target.files[0]) setFile(e.target.files[0]);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
+    setFile(null);
   };
 
   const handleInput = e => {
@@ -32,9 +42,25 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
   const handleForm = async e => {
     e.preventDefault();
-    const board = await createBoard({ title: task, color: colorBoard }, token);
-    setTask('');
-    navigate(`/board/${board._id}`);
+    if (!selectImgBool) {
+      const imgURL = await uploadColorBoard(file);
+      const colorBoard = imgURL.url;
+      dispatch(setSelectImgBool(false));
+      const board = await createBoard(
+        { title: task, color: colorBoard },
+        token
+      );
+      navigate(`/board/${board._id}`);
+    }
+
+    if (selectImgBool) {
+      const colorBoard = imgSelected;
+      const board = await createBoard(
+        { title: task, color: colorBoard },
+        token
+      );
+      navigate(`/board/${board._id}`);
+    }
   };
 
   return createPortal(
@@ -56,7 +82,11 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             <section className='board__section'>
               <div
                 className='board__section__div'
-                style={{ backgroundImage: `url("${imgSelected}")` }}
+                style={{
+                  backgroundImage: `url("${
+                    file ? URL.createObjectURL(file) : imgSelected
+                  }")`,
+                }}
               >
                 <img
                   className='board__section__image'
@@ -72,9 +102,24 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                   </span>
                 </div>
                 <div>
-                  <BackgroundBoard />
+                  <BackgroundBoard setFile={setFile} />
                 </div>
               </div>
+
+              <form className='board__section__form'>
+                <div>
+                  <span className='board__section__label'>
+                    Upload Image <span className='board__section__span'>*</span>
+                  </span>
+                  <input
+                    className='board__section__input'
+                    type='file'
+                    onChange={handleChange}
+                    accept='image/*'
+                    required
+                  />
+                </div>
+              </form>
 
               <form className='board__section__form' onSubmit={handleForm}>
                 <div>
@@ -85,7 +130,6 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
                     onChange={handleInput}
                     className='board__section__input'
                     type='text'
-                    value={task}
                   />
                   <span className='board__section__span--2'>
                     👋 Board title is required

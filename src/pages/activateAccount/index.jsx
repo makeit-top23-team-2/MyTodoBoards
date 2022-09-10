@@ -29,7 +29,7 @@ function ActivateAccount() {
     Swal.fire({
       title: message,
       icon: 'success',
-      confirmButtonText: `Let's beggin!`,
+      confirmButtonText: `Let's begin!`,
     });
     navigate(`/manage-board/${profile.userName}`);
   };
