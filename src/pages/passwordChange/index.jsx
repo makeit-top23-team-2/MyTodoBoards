@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { changePassword, login } from '../../services/auth';
+import { changePassword } from '../../services/auth';
 
 function PasswordChange() {
   const { resetToken } = useParams();
@@ -10,17 +10,6 @@ function PasswordChange() {
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   const resetPassword = async () => {
-    const response = await login(profile.email, form.currentPassword);
-
-    if (response.status === 401 || response.error) {
-      Swal.fire({
-        title: 'The password you introduced as current is incorrect!',
-        text: 'Please, check your password to continue.',
-        icon: 'error',
-        confirmButtonText: 'Ok!',
-      });
-      return;
-    }
     if (form.password !== form.confirmPassword) {
       Swal.fire({
         title: 'Password and confirm password must match!',
@@ -80,27 +69,22 @@ function PasswordChange() {
         <p>
           <b>Change your password</b>
         </p>
-        <input
-          className='resetPassword__password '
-          type='password'
-          name='currentPassword'
-          placeholder=' Enter your current password *'
-          autoComplete='on'
-          onChange={handleChange}
-        />
+
+        <span className='resetPassword__label'>New Password</span>
         <input
           className='resetPassword__password '
           type='password'
           name='password'
-          placeholder=' Enter password *'
+          placeholder=' Enter the new password *'
           autoComplete='on'
           onChange={handleChange}
         />
+        <span className='resetPassword__label'>Confirm your New Password</span>
         <input
           className='resetPassword__password '
           type='password'
           name='confirmPassword'
-          placeholder=' Confirm the password *'
+          placeholder=' Confirm the new password *'
           autoComplete='on'
           onChange={handleChange}
         />

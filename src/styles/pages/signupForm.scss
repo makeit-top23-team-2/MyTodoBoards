@@ -41,6 +41,13 @@
     Ubuntu, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
+.signup__label {
+  color: #5e6c84;
+  display: flex;
+  text-align: left;
+  font-size: 15px;
+}
+
 h1 {
   text-align: center;
   color: #5e6c84;
@@ -50,10 +57,6 @@ h1 {
   margin-top: 10px;
   margin-bottom: 25px;
 }
-
-/* .signupForm__email:invalid {
-  border: 1px solid red;
-} */
 
 .signupForm__email,
 .signupForm__name,
@@ -107,6 +110,36 @@ h1 {
   border: 1px solid rgb(15, 74, 223);
   box-shadow: 0 0 10px #719ece;
   transition-duration: 0.4s;
+}
+
+.signupForm__email::placeholder {
+color: #cdd2d4;
+font-style: italic;
+opacity: 0.8;
+}
+
+.signupForm__name::placeholder {
+  color: #cdd2d4;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.signupForm__lastName::placeholder {
+  color: #cdd2d4;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.signupForm__userName::placeholder {
+  color: #cdd2d4;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.signupForm__password::placeholder {
+  color: #cdd2d4;
+  font-style: italic;
+  opacity: 0.8;
 }
 
 .signupForm__button {
