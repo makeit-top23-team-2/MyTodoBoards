@@ -83,6 +83,7 @@
 
   .input:hover{
     background-color: #f0f1f5;
+    transition-duration: 0.8s;
   }
 }
 
@@ -151,7 +152,8 @@
   width: 70%;
 }
 .profile__section2__button:hover{
-  background-color: #026AA7;
+  background-color: #0db60f;
+  transition-duration: 0.8s;
 }
 
 .profile__section__buttons{
@@ -317,7 +319,8 @@
 
   }
   .profile__section2__button:hover{
-    background-color: #026AA7;
+    background-color: #0db60f;
+    transition-duration: 0.8s;
   }
 
   .profile__section__buttons{

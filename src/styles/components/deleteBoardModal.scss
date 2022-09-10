@@ -32,7 +32,7 @@
     overflow: hidden;
     padding: 4px;
     position: absolute;
-    transition: background-color 85ms,color 85ms;
+    border-radius: 50%;
     width: 32px;
     font-family: Helvetica Neue,sans-serif;
     font-size: 20px;
@@ -43,13 +43,14 @@
     margin-bottom: 5px;
     cursor: pointer;
   }
+
   .button:hover{
     background-color: var(--ds-background-neutral-hovered,#091e4240);
     color: var(--ds-icon,#42526e);
     outline: 0;
-    border-radius: 50%;
-
+    transition-duration: 0.8s;
   }
+
   .title {
     text-align: center;
   }
@@ -79,6 +80,7 @@
     }
     .delete__button--enable:hover{
       background-color: red;
+      transition-duration: 0.8s;
     }
   }
 }

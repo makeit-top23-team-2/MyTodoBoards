@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { changePassword } from '../../services/auth';
+import { changePassword, login } from '../../services/auth';
 
 function PasswordChange() {
   const { resetToken } = useParams();
@@ -10,6 +10,17 @@ function PasswordChange() {
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   const resetPassword = async () => {
+    const response = await login(profile.email, form.currentPassword);
+
+    if (response.status === 401 || response.error) {
+      Swal.fire({
+        title: 'The password you introduced as current is incorrect!',
+        text: 'Please, check your password to continue.',
+        icon: 'error',
+        confirmButtonText: 'Ok!',
+      });
+      return;
+    }
     if (form.password !== form.confirmPassword) {
       Swal.fire({
         title: 'Password and confirm password must match!',
@@ -69,6 +80,14 @@ function PasswordChange() {
         <p>
           <b>Change your password</b>
         </p>
+        <input
+          className='resetPassword__password '
+          type='password'
+          name='currentPassword'
+          placeholder=' Enter your current password *'
+          autoComplete='on'
+          onChange={handleChange}
+        />
         <input
           className='resetPassword__password '
           type='password'

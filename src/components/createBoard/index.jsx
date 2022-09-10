@@ -9,7 +9,7 @@ import { uploadColorBoard } from '../../services/upload';
 import { setSelectImgBool } from '../../store/selectImgBoolSlice';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
-  const [task, setTask] = useState('');
+  const [title, setTitle] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const [text, setText] = useState('Create');
@@ -28,10 +28,11 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
   const handleCloseModal = () => {
     setIsModalOpened(false);
     setFile(null);
+    setTitle('');
   };
 
   const handleInput = e => {
-    setTask(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleChangeData = () => {
@@ -46,19 +47,13 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
       const imgURL = await uploadColorBoard(file);
       const colorBoard = imgURL.url;
       dispatch(setSelectImgBool(false));
-      const board = await createBoard(
-        { title: task, color: colorBoard },
-        token
-      );
+      const board = await createBoard({ title, color: colorBoard }, token);
       navigate(`/board/${board._id}`);
     }
 
     if (selectImgBool) {
       const colorBoard = imgSelected;
-      const board = await createBoard(
-        { title: task, color: colorBoard },
-        token
-      );
+      const board = await createBoard({ title, color: colorBoard }, token);
       navigate(`/board/${board._id}`);
     }
   };
@@ -80,6 +75,14 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
+              <span className='board__section__label'>
+                Board Title <span className='board__section__span'>*</span>
+              </span>
+              <input
+                onChange={handleInput}
+                className='board__section__input'
+                type='text'
+              />
               <div
                 className='board__section__div'
                 style={{
@@ -98,7 +101,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
               <div className='board__section__background'>
                 <div>
                   <span className='board__section__background__label'>
-                    Background
+                    Select a Background
                   </span>
                 </div>
                 <div>
@@ -109,7 +112,7 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
               <form className='board__section__form'>
                 <div>
                   <span className='board__section__label'>
-                    Upload Image <span className='board__section__span'>*</span>
+                    Or use one of yours
                   </span>
                   <input
                     className='board__section__input'
@@ -123,21 +126,10 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
               <form className='board__section__form' onSubmit={handleForm}>
                 <div>
-                  <span className='board__section__label'>
-                    Board Title <span className='board__section__span'>*</span>
-                  </span>
-                  <input
-                    onChange={handleInput}
-                    className='board__section__input'
-                    type='text'
-                  />
-                  <span className='board__section__span--2'>
-                    👋 Board title is required
-                  </span>
                   <button
                     type='submit'
                     className={styleButton}
-                    disabled={task.length > 3 || disable ? '' : 'disabled'}
+                    disabled={title.length > 3 || disable ? '' : 'disabled'}
                     onClick={handleChangeData}
                   >
                     {text}
