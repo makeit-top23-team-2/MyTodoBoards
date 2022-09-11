@@ -18,17 +18,12 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [files, setFiles] = useState([]);
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
-  const [form, setForm] = useState({});
   const [style, setStyle] = useState(0);
   const [Card, setCard] = useState(0);
 
   const fetchData = async () => {
     const SingleCard = await getSingleCard(card._id);
     setCard(SingleCard);
-    setForm({
-      title: SingleCard.title,
-      cardDescription: SingleCard.description,
-    });
 
     if (SingleCard.checklist) {
       setTasks(SingleCard.checklist);
@@ -41,7 +36,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       fetchData();
-    }, 5000);
+    }, 7000);
     if (!controlInitialData) {
       fetchData();
       controlInitialData = true;
@@ -49,8 +44,15 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     return () => {
       clearInterval(intervalId);
     };
-
   }, []);
+
+  const handleTitleUpdate = async e => {
+    await updateCard(card._id, { title: e.target.value });
+  };
+
+  const handleDescriptionUpdate = async e => {
+    await updateCard(card._id, { description: e.target.value });
+  };
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
@@ -76,24 +78,12 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
     setTasks(newTasks);
   };
 
-  const handleFormChange = e => {
-    const { value, name } = e.target;
-    setForm({ ...form, [name]: value });
-  };
-
-  const saveCardUpdate = async () => {
-    const newCard = {
-      title: form.title,
-      description: form.cardDescription,
-      checklist: tasks,
+  useEffect(() => {
+    const checklistUpdate = async () => {
+      await updateCard(card._id, { checklist: tasks });
     };
-    await updateCard(card._id, newCard);
-    setIsModalOpened(false);
-  };
-
-  const handleSave = () => {
-    saveCardUpdate();
-  };
+    checklistUpdate();
+  }, [tasks]);
 
   const cardDelete = async () => {
     await deleteCard(card._id);
@@ -154,9 +144,9 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 type='text'
                 className='modal__textarea'
                 placeholder='title'
-                defaultValue={form.title}
+                defaultValue={Card.title}
                 name='title'
-                onChange={handleFormChange}
+                onBlur={handleTitleUpdate}
               />
               <div>
                 <p className='modal__p'>
@@ -181,9 +171,9 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 <textarea
                   placeholder='Add a more detailed description...'
                   className='modal__text'
-                  defaultValue={form.cardDescription}
+                  defaultValue={Card.description}
                   name='cardDescription'
-                  onChange={handleFormChange}
+                  onBlur={handleDescriptionUpdate}
                 />
               </div>
             </article>
@@ -250,7 +240,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
             <aside className='modal__aside'>
               <h3 className='modal__h3'>Add files to the card</h3>
               <div className='modal__aside__div'>
-                <div>
+                <div className='modal__buttons__section'>
                   <div className='modal__files'>
                     {files.length > 0
                       ? files.map(file => (
@@ -275,20 +265,6 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                     onClick={handleClick}
                   >
                     <span className='modal__aside__span'>Add files</span>
-                  </button>
-                  <button
-                    type='button'
-                    className='modal__save'
-                    onClick={handleSave}
-                  >
-                    Save
-                  </button>
-                  <button
-                    type='button'
-                    className='modal__cancel'
-                    onClick={handleCloseModal}
-                  >
-                    Cancel
                   </button>
                   <button
                     type='button'

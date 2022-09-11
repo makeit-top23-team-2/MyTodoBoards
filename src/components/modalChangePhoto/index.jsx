@@ -13,8 +13,13 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
   const [styleButton, setStyleButton] = useState('boton__save__photo');
   const user = useSelector(state => state.profile.value);
   const [file, setFile] = useState(null);
+  console.log('🚀 ~ file: index.jsx ~ line 16 ~ ModalChangePhoto ~ file', file);
   const dispatch = useDispatch();
   const handleChange = e => {
+    console.log(
+      '🚀 ~ file: index.jsx ~ line 18 ~ handleChange ~ e',
+      e.target.files
+    );
     if (e.target.files[0]) setFile(e.target.files[0]);
   };
   const handleUploadProfilePhoto = async () => {
@@ -49,6 +54,7 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
   };
   const handleCloseModal = () => {
     setIsModalOpened(false);
+    setFile(null);
   };
   return createPortal(
     <div>
@@ -74,7 +80,11 @@ function ModalChangePhoto({ isModalOpened, setIsModalOpened }) {
               </div>
               <section className='section__imagen'>
                 <div className='photo'>
-                  <img className='photo__img' src={user.avatar} alt='' />
+                  <img
+                    className='photo__img'
+                    src={file ? URL.createObjectURL(file) : user.avatar}
+                    alt=''
+                  />
                 </div>
               </section>
               <div className='boton__save__photo__container'>

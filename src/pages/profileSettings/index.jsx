@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 import NavBar from '../../components/NavBar';
-import { resetPassword } from '../../services/auth';
 import ModalChangePhoto from '../../components/modalChangePhoto';
 import DeleteAccountModal from '../../components/deleteAccountModal';
+import ChangePasswordModal from '../../components/modalChangePassword';
 
 function ProfileSettings() {
-  const navigate = useNavigate();
   const profile = JSON.parse(localStorage.getItem('profile'));
 
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [isDeleteAccountModalOpened, setIsDeleteAccountModalOpened] =
     useState(false);
+  const [isChangePasswordModalOpened, setIsChangePasswordModalOpened] =
+    useState(false);
 
-  const passwordReset = async () => {
-    const { hash } = await resetPassword();
-    navigate(`/reset-password/${hash}`);
-  };
-
-  const handleChangePassword = () => {
-    passwordReset();
+  const handleOpenChangePasswordModal = () => {
+    setIsChangePasswordModalOpened(true);
   };
 
   const handleOpenDeleteAccountModal = () => {
@@ -48,7 +44,6 @@ function ProfileSettings() {
           </h1>
         </div>
       </section>
-
       <section className='profile__section__buttons'>
         <NavLink
           to={`/profile/${profile.userName}`}
@@ -63,7 +58,6 @@ function ProfileSettings() {
           Settings
         </NavLink>
       </section>
-
       <section className='profile__section2'>
         <div className='profile__section2__img'>
           <img
@@ -80,7 +74,7 @@ function ProfileSettings() {
             <button
               type='button'
               className='profile__section2__about__changePassword'
-              onClick={handleChangePassword}
+              onClick={handleOpenChangePasswordModal}
             >
               <h4>Change Password</h4>
             </button>
@@ -105,10 +99,13 @@ function ProfileSettings() {
           />
         </section>
       </section>
-
       <DeleteAccountModal
         isDeleteAccountModalOpened={isDeleteAccountModalOpened}
         setIsDeleteAccountModalOpened={setIsDeleteAccountModalOpened}
+      />
+      <ChangePasswordModal
+        isChangePasswordModalOpened={isChangePasswordModalOpened}
+        setIsChangePasswordModalOpened={setIsChangePasswordModalOpened}
       />
     </div>
   );

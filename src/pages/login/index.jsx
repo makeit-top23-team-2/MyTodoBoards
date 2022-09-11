@@ -60,6 +60,7 @@ function LogIn() {
       </div>
       <form className='login__form' onSubmit={handleLogin}>
         <h1>Log in to Trello</h1>
+        <span className='login__label'>Email</span>
         <input
           className='login__email '
           type='email'
@@ -68,6 +69,7 @@ function LogIn() {
           autoComplete='on'
           onChange={handleChange}
         />
+        <span className='login__label'>Password</span>
         <input
           className='login__password '
           type='password'
@@ -78,7 +80,7 @@ function LogIn() {
         />
         <button type='submit' className='login__button'>
           <b>Log in</b>
-        </button>    
+        </button>
         <hr />
         <div className='login__cantlog'>
           <ul>
@@ -91,7 +93,7 @@ function LogIn() {
             </li>
           </ul>
         </div>
-      </form>      
+      </form>
       <div className='login__footer__img'>
         <img
           className='login__footer__img1'
