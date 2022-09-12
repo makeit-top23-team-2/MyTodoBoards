@@ -17,14 +17,15 @@
 .profile__section1__photo {
   border-radius: 50%;
   display: inline-block;
-  height: 75px;
+  height: 50px;
   overflow: hidden;
   position: relative;
-  width: 75px;
+  width: 50px;
 
   img{
-    height: auto;
-    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 }
 
@@ -82,6 +83,7 @@
 
   .input:hover{
     background-color: #f0f1f5;
+    transition-duration: 0.8s;
   }
 }
 
@@ -150,7 +152,8 @@
   width: 70%;
 }
 .profile__section2__button:hover{
-  background-color: #026AA7;
+  background-color: #0db60f;
+  transition-duration: 0.8s;
 }
 
 .profile__section__buttons{
@@ -206,14 +209,15 @@
   .profile__section1__photo {
     border-radius: 50%;
     display: inline-block;
-    height: 75px;
+    height: 50px;
     overflow: hidden;
     position: relative;
-    width: 75px;
+    width: 50px;
 
     img{
-      height: auto;
-      max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
     }
   }
 
@@ -315,7 +319,8 @@
 
   }
   .profile__section2__button:hover{
-    background-color: #026AA7;
+    background-color: #0db60f;
+    transition-duration: 0.8s;
   }
 
   .profile__section__buttons{

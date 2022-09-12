@@ -69,19 +69,22 @@ function PasswordChange() {
         <p>
           <b>Change your password</b>
         </p>
+
+        <span className='resetPassword__label'>New Password</span>
         <input
           className='resetPassword__password '
           type='password'
           name='password'
-          placeholder=' Enter password *'
+          placeholder=' Enter the new password *'
           autoComplete='on'
           onChange={handleChange}
         />
+        <span className='resetPassword__label'>Confirm your New Password</span>
         <input
           className='resetPassword__password '
           type='password'
           name='confirmPassword'
-          placeholder=' Confirm the password *'
+          placeholder=' Confirm the new password *'
           autoComplete='on'
           onChange={handleChange}
         />

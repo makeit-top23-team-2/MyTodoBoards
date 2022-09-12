@@ -32,7 +32,7 @@ function Card({ card, column }) {
 
   return (
     <>
-      <li id={card.id} className='ToDo__cardlist__item'>
+      <li className='ToDo__cardlist__item'>
         <span className='ToDo__cardlist__cardTitle'>{singleCard.title}</span>
         <button
           className='non-draggable ToDo__open__modal'

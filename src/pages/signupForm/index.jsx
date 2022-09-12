@@ -83,6 +83,7 @@ function SignupForm() {
       </NavLink>
       <form className='signupForm__form' onSubmit={handleSignUp}>
         <h1>Sign Up to Trello</h1>
+        <span className='signup__label'>Email</span>
         <input
           className='signupForm__email '
           type='email'
@@ -91,6 +92,7 @@ function SignupForm() {
           required
           onChange={handleChange}
         />
+        <span className='signup__label'>User name</span>
         <input
           className='signupForm__userName'
           type='text'
@@ -99,6 +101,7 @@ function SignupForm() {
           required
           onChange={handleChange}
         />
+        <span className='signup__label'>Name</span>
         <input
           className='signupForm__name'
           type='text'
@@ -107,6 +110,7 @@ function SignupForm() {
           required
           onChange={handleChange}
         />
+        <span className='signup__label'>Last name</span>
         <input
           className='signupForm__lastName'
           type='text'
@@ -115,6 +119,7 @@ function SignupForm() {
           required
           onChange={handleChange}
         />
+        <span className='signup__label'>Password</span>
         <input
           className='signupForm__password'
           type='password'
@@ -123,6 +128,7 @@ function SignupForm() {
           required
           onChange={handleChange}
         />
+        <span className='signup__label'>Confirm password</span>
         <input
           className='signupForm__password'
           type='password'

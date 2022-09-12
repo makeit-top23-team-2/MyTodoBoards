@@ -1,27 +1,38 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { createPortal } from 'react-dom';
 import { createBoard } from '../../services/boards';
 import BackgroundBoard from '../backgroundBoard';
+import { uploadColorBoard } from '../../services/upload';
+import { setSelectImgBool } from '../../store/selectImgBoolSlice';
 
 function CreateBoard({ isModalOpened, setIsModalOpened }) {
-  const [task, setTask] = useState('');
+  const [title, setTitle] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const colorBoard = useSelector(state => state.colorBoard.value);
   const [text, setText] = useState('Create');
   const [disable, setDisable] = useState('');
+  const dispatch = useDispatch();
   const [styleButton, setStyleButton] = useState('board__section__button');
   const imgSelected = useSelector(state => state.colorBoard.value);
+  const selectImgBool = useSelector(state => state.selectImgBool.value);
+  const [file, setFile] = useState(null);
+
+  const handleChange = e => {
+    dispatch(setSelectImgBool(false));
+    if (e.target.files[0]) setFile(e.target.files[0]);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpened(false);
+    setFile(null);
+    setTitle('');
   };
 
   const handleInput = e => {
-    setTask(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleChangeData = () => {
@@ -32,9 +43,19 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
 
   const handleForm = async e => {
     e.preventDefault();
-    const board = await createBoard({ title: task, color: colorBoard }, token);
-    setTask('');
-    navigate(`/board/${board._id}`);
+    if (!selectImgBool) {
+      const imgURL = await uploadColorBoard(file);
+      const colorBoard = imgURL.url;
+      dispatch(setSelectImgBool(false));
+      const board = await createBoard({ title, color: colorBoard }, token);
+      navigate(`/board/${board._id}`);
+    }
+
+    if (selectImgBool) {
+      const colorBoard = imgSelected;
+      const board = await createBoard({ title, color: colorBoard }, token);
+      navigate(`/board/${board._id}`);
+    }
   };
 
   return createPortal(
@@ -54,9 +75,21 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
             </header>
 
             <section className='board__section'>
+              <span className='board__section__label'>
+                Board Title <span className='board__section__span'>*</span>
+              </span>
+              <input
+                onChange={handleInput}
+                className='board__section__input'
+                type='text'
+              />
               <div
                 className='board__section__div'
-                style={{ backgroundImage: `url("${imgSelected}")` }}
+                style={{
+                  backgroundImage: `url("${
+                    file ? URL.createObjectURL(file) : imgSelected
+                  }")`,
+                }}
               >
                 <img
                   className='board__section__image'
@@ -68,32 +101,35 @@ function CreateBoard({ isModalOpened, setIsModalOpened }) {
               <div className='board__section__background'>
                 <div>
                   <span className='board__section__background__label'>
-                    Background
+                    Select a Background
                   </span>
                 </div>
                 <div>
-                  <BackgroundBoard />
+                  <BackgroundBoard setFile={setFile} />
                 </div>
               </div>
 
-              <form className='board__section__form' onSubmit={handleForm}>
+              <form className='board__section__form'>
                 <div>
                   <span className='board__section__label'>
-                    Board Title <span className='board__section__span'>*</span>
+                    Or use one of yours
                   </span>
                   <input
-                    onChange={handleInput}
                     className='board__section__input'
-                    type='text'
-                    value={task}
+                    type='file'
+                    onChange={handleChange}
+                    accept='image/*'
+                    required
                   />
-                  <span className='board__section__span--2'>
-                    👋 Board title is required
-                  </span>
+                </div>
+              </form>
+
+              <form className='board__section__form' onSubmit={handleForm}>
+                <div>
                   <button
                     type='submit'
                     className={styleButton}
-                    disabled={task.length > 3 || disable ? '' : 'disabled'}
+                    disabled={title.length > 3 || disable ? '' : 'disabled'}
                     onClick={handleChangeData}
                   >
                     {text}

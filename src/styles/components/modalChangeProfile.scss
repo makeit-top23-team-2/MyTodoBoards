@@ -2,16 +2,16 @@
   .title__change__photo{
     text-align: center;
     font-size: 14px;
-  }  
+  }
   .input__change__profile{
     padding: auto;
     text-align: center;
     padding: 20px;
-  }  
+  }
   .boton__save{
     text-align: center;
     padding-bottom: 20px;
-  }  
+  }
   .section__imagen{
     text-align: center;
   }
@@ -82,7 +82,8 @@
   width: 150px;
 
   img{
-    height: auto;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }

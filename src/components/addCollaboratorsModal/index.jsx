@@ -25,7 +25,7 @@ function AddCollaborators({
 
     if (response.status === 200) {
       Swal.fire({
-        title: 'Collabator added!',
+        title: 'Collaborator added!',
         text: 'An invitation email has been sent to the collaborator.',
         icon: 'success',
         confirmButtonText: 'Nice!',

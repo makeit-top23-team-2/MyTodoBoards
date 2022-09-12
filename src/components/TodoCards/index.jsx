@@ -18,6 +18,13 @@ function ToDo({ column }) {
 
   const [tasks, setTasks] = useState([]);
 
+  const onEndHandler = e => {
+    const initialColumn = e.from.id;
+    if (tasks.length === 1) {
+      updateColumn(initialColumn, { cards: [] });
+    }
+  };
+
   const fetchData = async () => {
     const singleColumn = await getColumnById(id);
     const { cards } = singleColumn;
@@ -30,7 +37,7 @@ function ToDo({ column }) {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       fetchData();
-    }, 5000);
+    }, 7000);
     if (!controlInitialData) {
       fetchData();
       controlInitialData = true;
@@ -44,9 +51,9 @@ function ToDo({ column }) {
     const columnUpdate = async () => {
       await updateColumn(id, { cards: tasks });
     };
-    setTimeout(() => {
+    if (tasks.length) {
       columnUpdate();
-    }, 10);
+    }
   }, [tasks]);
 
   const handlerChangeColumnTitle = async e => {
@@ -114,6 +121,7 @@ function ToDo({ column }) {
           ghostClass='sortable-ghost'
           tag='ul'
           filter='.non-draggable'
+          onEnd={onEndHandler}
         >
           {tasks?.map(card => (
             <Card

@@ -29,7 +29,7 @@ function ActivateAccount() {
     Swal.fire({
       title: message,
       icon: 'success',
-      confirmButtonText: `Let's beggin!`,
+      confirmButtonText: `Let's begin!`,
     });
     navigate(`/manage-board/${profile.userName}`);
   };
@@ -39,8 +39,8 @@ function ActivateAccount() {
   };
 
   return (
-    <div className='ActivateAccount'>
-      <div className='ActivateAccount__container'>
+    <div className='activateAccount'>
+      <div className='activateAccount__container'>
         <div className='ActivateAccount__image'>
           <img
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Trello-logo-blue.svg/2560px-Trello-logo-blue.svg.png'
@@ -51,14 +51,25 @@ function ActivateAccount() {
         <h1>Thanks for join us!</h1>
         <button
           type='button'
-          className='ActivateAccount__button'
+          className='activateAccount__button'
           onClick={handleClick}
         >
           <b>Continue</b>
         </button>
       </div>
+      <div className='activateAccount__footer__img'>
+        <img
+          className='activateAccount__footer__img1'
+          src='..\img\logSing__footer__img1.png'
+          alt=''
+        />
+        <img
+          className='activateAccount__footer__img2'
+          src='..\img\logSing__footer__img2.png'
+          alt=''
+        />
+      </div>
     </div>
   );
 }
-
 export default ActivateAccount;
