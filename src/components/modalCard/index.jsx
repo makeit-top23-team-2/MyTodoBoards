@@ -187,7 +187,11 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 {total >= 0 ? `${total}%` : `0%`}
                 <div className='modal__section__progress'>
                   <div
-                    className={`${total < 100 ? 'modal__section__progress__done' : 'modal__section__progress__green'}`}
+                    className={`${
+                      total < 100
+                        ? 'modal__section__progress__done'
+                        : 'modal__section__progress__green'
+                    }`}
                     style={style}
                   />
                 </div>
