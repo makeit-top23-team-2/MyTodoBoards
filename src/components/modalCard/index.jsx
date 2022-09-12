@@ -19,11 +19,15 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
   const [task, setTask] = useState({});
   const [tasks, setTasks] = useState([]);
   const [style, setStyle] = useState(0);
-  const [Card, setCard] = useState(0);
+  const [Card, setCard] = useState({});
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const fetchData = async () => {
     const SingleCard = await getSingleCard(card._id);
     setCard(SingleCard);
+    setTitle(SingleCard.title);
+    setDescription(SingleCard.description);
 
     if (SingleCard.checklist) {
       setTasks(SingleCard.checklist);
@@ -48,10 +52,12 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
 
   const handleTitleUpdate = async e => {
     await updateCard(card._id, { title: e.target.value });
+    setTitle(e.target.value);
   };
 
   const handleDescriptionUpdate = async e => {
     await updateCard(card._id, { description: e.target.value });
+    setDescription(e.target.value);
   };
 
   const handleCloseModal = () => {
@@ -144,7 +150,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 type='text'
                 className='modal__textarea'
                 placeholder='title'
-                defaultValue={Card.title}
+                defaultValue={title}
                 name='title'
                 onBlur={handleTitleUpdate}
               />
@@ -171,7 +177,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
                 <textarea
                   placeholder='Add a more detailed description...'
                   className='modal__text'
-                  defaultValue={Card.description}
+                  defaultValue={description}
                   name='cardDescription'
                   onBlur={handleDescriptionUpdate}
                 />
@@ -227,7 +233,7 @@ function ModalCard({ isModalOpened, setIsModalOpened, card, column }) {
               <form onSubmit={handleSubmit}>
                 <input
                   name='description'
-                  placeholder='Add an item...'
+                  placeholder='Add a task...'
                   onChange={handleChange}
                   className='modal__section__input'
                   id={card._id}

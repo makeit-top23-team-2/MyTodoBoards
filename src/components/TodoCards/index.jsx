@@ -37,7 +37,7 @@ function ToDo({ column }) {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       fetchData();
-    }, 5000);
+    }, 7000);
     if (!controlInitialData) {
       fetchData();
       controlInitialData = true;
@@ -127,7 +127,6 @@ function ToDo({ column }) {
             <Card
               column={column}
               key={card._id}
-              id={card._id}
               card={card}
               tasks={tasks}
               setTasks={setTasks}
